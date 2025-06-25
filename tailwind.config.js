@@ -1,31 +1,103 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    darkMode: ['class'],
+    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {
-      colors: {
-        green: {
-          100: "#BDE79A", // Verde bem claro
-          200: "#8CC152", // Verde médio
-          300: "#3B7F44", // Verde oliva
-          400: "#38761D", // Verde escuro
-          500: "#053A35", // Verde mais escuro
-        },
-        gold: {
-          100: "#FDD835", // Amarelo/Dourado claro
-          200: "#D4AF37", // Dourado médio
-          300: "#C0941F", // Dourado escuro
-        },
-        red: {
-          100: "#F5C2C2",
-        },
-        "base-white": "#FFFFFF",
-        "base-white-light": "#F3F3F3",
-        "base-black": "#333333",
-        "base-gray": "#6D6D6D",
-        "base-gray-light": "#A7ADA4",
-      },
-    },
+  	extend: {
+  		colors: {
+  			green: {
+  				'100': '#BDE79A',
+  				'200': '#8CC152',
+  				'300': '#3B7F44',
+  				'400': '#38761D',
+  				'500': '#053A35'
+  			},
+  			gold: {
+  				'100': '#FDD835',
+  				'200': '#D4AF37',
+  				'300': '#C0941F'
+  			},
+  			red: {
+  				'100': '#F5C2C2'
+  			},
+  			'base-white': '#FFFFFF',
+  			'base-white-light': '#F3F3F3',
+  			'base-black': '#333333',
+  			'base-gray': '#6D6D6D',
+  			'base-gray-light': '#A7ADA4',
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			popover: {
+  				DEFAULT: 'hsl(var(--popover))',
+  				foreground: 'hsl(var(--popover-foreground))'
+  			},
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			secondary: {
+  				DEFAULT: 'hsl(var(--secondary))',
+  				foreground: 'hsl(var(--secondary-foreground))'
+  			},
+  			muted: {
+  				DEFAULT: 'hsl(var(--muted))',
+  				foreground: 'hsl(var(--muted-foreground))'
+  			},
+  			accent: {
+  				DEFAULT: 'hsl(var(--accent))',
+  				foreground: 'hsl(var(--accent-foreground))'
+  			},
+  			destructive: {
+  				DEFAULT: 'hsl(var(--destructive))',
+  				foreground: 'hsl(var(--destructive-foreground))'
+  			},
+  			border: 'hsl(var(--border))',
+  			input: 'hsl(var(--input))',
+  			ring: 'hsl(var(--ring))',
+  			chart: {
+  				'1': 'hsl(var(--chart-1))',
+  				'2': 'hsl(var(--chart-2))',
+  				'3': 'hsl(var(--chart-3))',
+  				'4': 'hsl(var(--chart-4))',
+  				'5': 'hsl(var(--chart-5))'
+  			}
+  		},
+  		keyframes: {
+  			'zoom-in': {
+  				'0%': {
+  					transform: 'scale(0.5)',
+  					opacity: '0'
+  				},
+  				'100%': {
+  					transform: 'scale(1)',
+  					opacity: '1'
+  				}
+  			},
+  			'fade-in-up': {
+  				'0%': {
+  					transform: 'translateY(20px)',
+  					opacity: '0'
+  				},
+  				'100%': {
+  					transform: 'translateY(0)',
+  					opacity: '1'
+  				}
+  			}
+  		},
+  		animation: {
+  			'zoom-in': 'zoom-in 1s ease-out',
+  			'fade-in-up': 'fade-in-up 0.8s ease-out'
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		}
+  	}
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
