@@ -1,14 +1,11 @@
-import React from "react";
-import AppRoutes from "./AppRoutes";
-import PWABadge from "./PWABadge";
+import { AppRouter } from './AppRouter';
+import PWABadge from './PWABadge';
 
-const App: React.FC = () => {
+export function App() {
   return (
-    <div className="max-w-md mx-auto bg-gray-900 min-h-screen">
-      <AppRoutes />
+    <div className="min-h-screen bg-base-white-light lg:max-w-7xl">
+      <AppRouter />
       <PWABadge />
     </div>
   );
-};
-
-export default App;
+}
