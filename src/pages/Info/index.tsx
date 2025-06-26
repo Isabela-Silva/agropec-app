@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from '../../components/Header';
-import BottomNavBar from '../../components/BottomNavBar';
 import FaqItem from './components/FaqItem';
 import InfoItem from './components/InfoItem';
 
@@ -35,7 +34,7 @@ const sponsors = [
   },
 ];
 
-const InfoScreen: React.FC = () => {
+export function InfoScreen() {
   const [expandedFAQ, setExpandedFAQ] = useState<string | null>(null);
 
   return (
@@ -90,10 +89,6 @@ const InfoScreen: React.FC = () => {
           </div>
         </section>
       </div>
-
-      <BottomNavBar />
     </div>
   );
-};
-
-export default InfoScreen;
+}
