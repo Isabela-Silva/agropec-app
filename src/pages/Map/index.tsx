@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Search, Building, Utensils, Mic, PersonStanding } from 'lucide-react';
-import BottomNavBar from '../../components/BottomNavBar';
+import { Building, Mic, PersonStanding, Search, Utensils } from 'lucide-react';
+import { useState } from 'react';
 import MapView from './components/MapView';
 
 declare global {
@@ -16,7 +15,7 @@ const filters = [
   { name: 'WC', icon: PersonStanding },
 ];
 
-const MapScreen: React.FC = () => {
+export function MapScreen() {
   const [activeFilter, setActiveFilter] = useState('Comida');
 
   return (
@@ -50,9 +49,7 @@ const MapScreen: React.FC = () => {
         <MapView />
       </div>
 
-      <BottomNavBar />
+      <div id="map" className="h-[calc(100vh-4rem)]" />
     </div>
   );
-};
-
-export default MapScreen;
+}

@@ -1,5 +1,4 @@
 import { Search } from 'lucide-react';
-import BottomNavBar from '../../components/BottomNavBar';
 
 const destaques = [
   {
@@ -38,7 +37,7 @@ const atividadesRecomendadas = [
 export function ExploreScreen() {
   return (
     <main
-      className="min-h-screen animate-fade-in-up bg-base-white-light pb-28 text-base-black"
+      className="min-h-screen animate-fade-in-up bg-base-white-light text-base-black"
       style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}
     >
       <div className="flex items-center justify-between p-4 pt-6">
@@ -71,8 +70,6 @@ export function ExploreScreen() {
           ))}
         </div>
       </div>
-
-      <BottomNavBar />
     </main>
   );
 }

@@ -1,51 +1,53 @@
+import { Bell, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import Header from '../../components/Header';
-import BottomNavBar from '../../components/BottomNavBar';
-import { Bell, Trash2 } from 'lucide-react';
 
-const initialAlerts = [
-  { id: 1, title: 'Cerimônia de Abertura', time: '10:00h' },
-  { id: 2, title: 'Pausa para almoço', time: '12:00h' },
-  { id: 3, title: 'Workshop: Agricultura Sustentável', time: '14:00h' },
-  { id: 4, title: 'Sessão de Networking', time: '16:00h' },
-  { id: 5, title: 'Considerações Finais', time: '18:00h' },
-];
-
-const AlertsScreen = () => {
-  const [alerts, setAlerts] = useState(initialAlerts);
+export function AlertsScreen() {
+  const [alerts, setAlerts] = useState([
+    {
+      id: 1,
+      title: 'Alerta de Chuva',
+      description: 'Previsão de chuva forte para amanhã. Proteja seus equipamentos.',
+      date: '2024-03-15',
+    },
+    {
+      id: 2,
+      title: 'Manutenção de Equipamento',
+      description: 'É hora de fazer a manutenção do seu trator.',
+      date: '2024-03-14',
+    },
+  ]);
 
   const handleDelete = (idToDelete: number) => {
-    setAlerts((currentAlerts) => currentAlerts.filter((alert) => alert.id !== idToDelete));
+    setAlerts(alerts.filter((alert) => alert.id !== idToDelete));
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-28 text-base-black">
+    <main className="min-h-screen bg-base-white-light">
       <Header title="Alertas" showBackButton={true} />
 
       <div className="p-4">
-        <div className="space-y-5">
-          {alerts.map((alert) => (
-            <div key={alert.id} className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="rounded-lg bg-green-300 p-3">
-                  <Bell className="h-6 w-6 text-base-white" />
+        {alerts.map((alert) => (
+          <div key={alert.id} className="mb-4 rounded-lg bg-white p-4 shadow-md transition-all hover:shadow-lg">
+            <div className="mb-2 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="rounded-lg bg-green-500 p-2">
+                  <Bell className="h-5 w-5 text-base-white" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-base-black">{alert.title}</h3>
-                  <p className="text-sm text-gray-500">{alert.time}</p>
-                </div>
+                <h3 className="text-lg font-semibold">{alert.title}</h3>
               </div>
-              <button onClick={() => handleDelete(alert.id)} className="p-2">
-                <Trash2 className="h-6 w-6 text-red-100" />
+              <button
+                onClick={() => handleDelete(alert.id)}
+                className="rounded-full p-2 transition-colors hover:bg-red-50"
+              >
+                <Trash2 className="h-5 w-5 text-red-500" />
               </button>
             </div>
-          ))}
-        </div>
+            <p className="mb-2 text-sm text-base-gray">{alert.description}</p>
+            <p className="text-xs text-base-gray">{alert.date}</p>
+          </div>
+        ))}
       </div>
-
-      <BottomNavBar />
-    </div>
+    </main>
   );
-};
-
-export default AlertsScreen;
+}
