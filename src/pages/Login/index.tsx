@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as z from 'zod';
@@ -6,6 +7,16 @@ import * as z from 'zod';
 import { Button } from '../../components/ui/button/index';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form/index';
 import { Input } from '../../components/ui/input';
+import { AuthService } from '../../services';
+import { toastUtils } from '../../utils/toast';
+
+interface ApiError {
+  response?: {
+    data?: {
+      error?: string;
+    };
+  };
+}
 
 const formSchema = z.object({
   email: z.string().email('E-mail inválido'),
@@ -16,6 +27,7 @@ export function LoginScreen() {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/explore';
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -25,15 +37,34 @@ export function LoginScreen() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // TODO: Implementar autenticação real
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const loadingToast = toastUtils.loading('Entrando...');
 
-    // Simula autenticação bem-sucedida
-    localStorage.setItem('isAuthenticated', 'true');
+    try {
+      setIsLoading(true);
 
-    // Redireciona para a página que o usuário tentou acessar originalmente
-    navigate(from, { replace: true });
+      const response = await AuthService.signIn(values);
+
+      // Salva o token
+      localStorage.setItem('auth_token', response.token);
+
+      toastUtils.success('Login realizado com sucesso!', {
+        id: loadingToast,
+      });
+
+      // Redireciona para a página que o usuário tentou acessar originalmente
+      navigate(from, { replace: true });
+    } catch (err: unknown) {
+      const apiError = err as ApiError;
+      toastUtils.error(
+        apiError.response?.data?.error || 'Ocorreu um erro ao fazer login. Por favor, tente novamente.',
+        {
+          id: loadingToast,
+        },
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -52,7 +83,7 @@ export function LoginScreen() {
                   <Input
                     type="email"
                     placeholder="Digite seu e-mail"
-                    className="gradient-border h-10 bg-white text-sm text-base-black focus-visible:ring-0 sm:h-11 sm:text-base md:h-12"
+                    className="h-10 bg-white text-sm text-base-black gradient-border focus-visible:ring-0 sm:h-11 sm:text-base md:h-12"
                     {...field}
                   />
                 </FormControl>
@@ -71,7 +102,7 @@ export function LoginScreen() {
                   <Input
                     type="password"
                     placeholder="Digite sua senha"
-                    className="gradient-border h-10 bg-white text-sm text-base-black focus-visible:ring-0 sm:h-11 sm:text-base md:h-12"
+                    className="h-10 bg-white text-sm text-base-black gradient-border focus-visible:ring-0 sm:h-11 sm:text-base md:h-12"
                     {...field}
                   />
                 </FormControl>
@@ -87,8 +118,12 @@ export function LoginScreen() {
             </Link>
           </p>
 
-          <Button type="submit" className="mt-4 h-10 w-full bg-green-gradient text-sm sm:h-11 sm:text-base md:h-12">
-            Entrar
+          <Button
+            type="submit"
+            className="mt-4 h-10 w-full bg-green-gradient text-sm sm:h-11 sm:text-base md:h-12"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Entrando...' : 'Entrar'}
           </Button>
         </form>
       </Form>

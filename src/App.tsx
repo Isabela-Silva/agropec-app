@@ -1,5 +1,7 @@
+import { Toaster } from 'react-hot-toast';
 import { AppRouter } from './AppRouter';
 import { InstallPWA } from './components/InstallPWA';
+import { toastConfig } from './config/toast.config';
 import PWABadge from './PWABadge';
 
 export function App() {
@@ -8,6 +10,7 @@ export function App() {
       <AppRouter />
       <PWABadge />
       <InstallPWA />
+      <Toaster {...toastConfig} />
     </div>
   );
 }

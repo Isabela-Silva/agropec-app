@@ -1,16 +1,19 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AgropecLogo } from '../../components/AgropecLogo';
+import { useAppStore } from '../../stores/app.store';
 
 export function SplashScreen() {
   const navigate = useNavigate();
+  const setSplashShown = useAppStore((state) => state.setSplashShown);
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      setSplashShown(true);
       navigate('/explore');
     }, 2500);
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, [navigate, setSplashShown]);
 
   return (
     <main className="fixed inset-0 flex flex-col items-center justify-center bg-gray-900 text-white">

@@ -6,7 +6,8 @@ interface AuthGuardProps {
 
 export function AuthGuard({ isPrivate = true }: AuthGuardProps) {
   const location = useLocation();
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const token = localStorage.getItem('auth_token');
+  const isAuthenticated = !!token;
 
   if (!isAuthenticated && isPrivate) {
     // Redireciona para o login, mas salva a rota que o usuário tentou acessar

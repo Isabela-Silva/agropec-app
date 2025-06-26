@@ -1,17 +1,19 @@
 import { Download, X } from 'lucide-react';
 import { useState } from 'react';
 import { useBeforeInstallPrompt } from '../hooks/useBeforeInstallPrompt';
+import { useAppStore } from '../stores/app.store';
 import { Button } from './ui/button';
 
 export function InstallPWA() {
   const { isInstallable, handleInstall } = useBeforeInstallPrompt();
+  const hasSplashShown = useAppStore((state) => state.hasSplashShown);
   const [isDismissed, setIsDismissed] = useState(false);
   const [neverShowAgain, setNeverShowAgain] = useState(false);
 
   // Verifica se o usuário optou por não ver mais
   const hasOptedOut = localStorage.getItem('pwaInstallOptOut') === 'true';
 
-  if (!isInstallable || isDismissed || hasOptedOut) {
+  if (!isInstallable || !hasSplashShown || isDismissed || hasOptedOut) {
     return null;
   }
 
