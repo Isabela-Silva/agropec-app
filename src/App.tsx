@@ -3,7 +3,7 @@ import PWABadge from './PWABadge';
 
 export function App() {
   return (
-    <div className="min-h-screen bg-base-white-light lg:max-w-7xl">
+    <div className="mx-auto min-h-[100dvh] max-w-screen-lg bg-base-white-light">
       <AppRouter />
       <PWABadge />
     </div>
