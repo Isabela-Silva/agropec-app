@@ -1,3 +1,93 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos globais */
+/* html,
+body,
+#root {
+  @apply overflow-x-hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+/* Remover scrollbar horizontal */
+body {
+  position: relative;
+  min-height: 100vh;
+  @apply bg-base-white-light;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 95%; /* #F3F3F3 */
+    --foreground: 0 0% 20%; /* #333333 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 174 75% 17%; /* #053A35 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 173 52% 22%; /* #1C5853 */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 49%; /* #7E7E7E */
+    --muted-foreground: 0 0% 49%;
+
+    --accent: 127 36% 37%; /* #3B7F44 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 174 75% 17%; /* Mesma cor do primary */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 174 75% 17%; /* Invertendo com o primary */
+    --foreground: 0 0% 95%;
+
+    --card: 174 75% 17%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 174 75% 17%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%; /* Invertendo com o background */
+    --primary-foreground: 174 75% 17%;
+
+    --secondary: 173 52% 22%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 49%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 127 36% 37%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 173 52% 22%;
+    --input: 173 52% 22%;
+    --ring: 0 0% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

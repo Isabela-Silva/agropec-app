@@ -1,31 +1,37 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AgropecLogo } from '../../components/AgropecLogo';
 
-const SplashScreen: React.FC = () => {
+export function SplashScreen() {
   const navigate = useNavigate();
 
-  return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col justify-center items-center px-6">
-      <div className="mb-8">
-        <div className="w-48 h-48 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mb-4">
-          <div className="text-6xl font-bold text-white">AGROPEC</div>
-        </div>
-      </div>
-      <h1 className="text-3xl font-bold mb-4 text-center">
-        Bem-Vindo(a) a AgroPec
-      </h1>
-      <p className="text-gray-300 text-center mb-8 max-w-sm">
-        Conheça as últimas novidades em agricultura e pecuária no principal
-        evento de Paragominas.
-      </p>
-      <button
-        onClick={() => navigate("/explore")}
-        className="bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-full w-full max-w-xs transition-colors"
-      >
-        Entrar no evento
-      </button>
-    </div>
-  );
-};
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/explore');
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
-export default SplashScreen;
+  return (
+    <main className="fixed inset-0 flex flex-col items-center justify-center bg-gray-900 text-white">
+      <div className="w-full max-w-sm px-4 md:max-w-md lg:max-w-lg">
+        <div className="mb-8 flex justify-center sm:mb-12">
+          <AgropecLogo className="w-full max-w-[280px] animate-zoom-in md:max-w-[320px] lg:max-w-[400px]" />
+        </div>
+
+        <h1
+          className="mb-4 animate-fade-in-up text-center text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
+          style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}
+        >
+          Bem-Vindo(a) a AgroPec
+        </h1>
+        <p
+          className="mx-auto mb-8 animate-fade-in-up text-center text-sm text-gray-300 sm:text-base md:text-lg"
+          style={{ animationDelay: '0.8s', opacity: 0, animationFillMode: 'forwards' }}
+        >
+          Conheça as últimas novidades em agricultura e pecuária no principal evento de Paragominas.
+        </p>
+      </div>
+    </main>
+  );
+}
