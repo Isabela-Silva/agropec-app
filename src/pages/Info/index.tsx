@@ -38,7 +38,7 @@ export function InfoScreen() {
   const [expandedFAQ, setExpandedFAQ] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-base-white-light pb-28 text-base-black">
+    <main className="min-h-screen bg-base-white-light text-base-black">
       <Header title="AgroPec 2025" showBackButton={true} />
       <div className="space-y-6 p-4">
         <section>
@@ -89,6 +89,6 @@ export function InfoScreen() {
           </div>
         </section>
       </div>
-    </div>
+    </main>
   );
 }
