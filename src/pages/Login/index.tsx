@@ -7,16 +7,9 @@ import * as z from 'zod';
 import { Button } from '../../components/ui/button/index';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form/index';
 import { Input } from '../../components/ui/input';
-import { AuthService } from '../../services';
+import { PasswordInput } from '../../components/ui/PasswordInput';
+import { AuthService, type ApiError } from '../../services';
 import { toastUtils } from '../../utils/toast';
-
-interface ApiError {
-  response?: {
-    data?: {
-      error?: string;
-    };
-  };
-}
 
 const formSchema = z.object({
   email: z.string().email('E-mail inválido'),
@@ -45,22 +38,18 @@ export function LoginScreen() {
 
       const response = await AuthService.signIn(values);
 
-      // Salva o token
       localStorage.setItem('auth_token', response.token);
 
       toastUtils.success('Login realizado com sucesso!', {
         id: loadingToast,
       });
 
-      // Redireciona para a página que o usuário tentou acessar originalmente
       navigate(from, { replace: true });
     } catch (err: unknown) {
       const apiError = err as ApiError;
       toastUtils.error(
         apiError.response?.data?.error || 'Ocorreu um erro ao fazer login. Por favor, tente novamente.',
-        {
-          id: loadingToast,
-        },
+        { id: loadingToast },
       );
     } finally {
       setIsLoading(false);
@@ -99,8 +88,7 @@ export function LoginScreen() {
               <FormItem>
                 <FormLabel className="text-sm font-light sm:text-base">Senha</FormLabel>
                 <FormControl>
-                  <Input
-                    type="password"
+                  <PasswordInput
                     placeholder="Digite sua senha"
                     className="h-10 bg-white text-sm text-base-black gradient-border focus-visible:ring-0 sm:h-11 sm:text-base md:h-12"
                     {...field}
