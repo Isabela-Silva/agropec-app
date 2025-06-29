@@ -32,7 +32,7 @@ export const AuthService = {
   },
 
   async signUp(data: SignUpData): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>('/auth/signup', data);
+    const response = await api.post<AuthResponse>('/users/signup', data);
 
     return response.data;
   },
