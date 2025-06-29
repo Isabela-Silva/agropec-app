@@ -2,28 +2,26 @@ import { AgropecLogo } from '@/components/AgropecLogo';
 import { Eye, EyeOff, LogIn } from 'lucide-react';
 import React, { useState } from 'react';
 import { useAdminAuth } from '../../../../hooks/useAdminAuth';
-import type { LoginInput } from '../../../../types/auth';
+import type { ILoginInput } from '../../../../services/interfaces/admin';
 
 export function LoginForm() {
   const { login } = useAdminAuth();
-  const [credentials, setCredentials] = useState<LoginInput>({
+  const [credentials, setCredentials] = useState<ILoginInput>({
     email: '',
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setIsLoading(true);
 
     try {
       await login(credentials);
-    } catch (err: unknown) {
-      const apiError = err as { response?: { data?: { error?: string } } };
-      setError(apiError.response?.data?.error || 'Erro ao fazer login');
+    } catch (error) {
+      // O erro já é tratado no hook
+      console.error('Erro no login:', error);
     } finally {
       setIsLoading(false);
     }
@@ -94,10 +92,6 @@ export function LoginForm() {
               </div>
             </div>
           </div>
-
-          {error && (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>
-          )}
 
           <button
             type="submit"

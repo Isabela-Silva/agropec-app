@@ -39,6 +39,6 @@ export interface UserAuthContextType {
 export interface AdminAuthContextType {
   admin: Admin | null;
   isLoading: boolean;
-  login: (credentials: LoginInput) => Promise<void>;
+  login: (adminData: { uuid: string; email: string; role: string }) => Promise<void>;
   logout: () => void;
 }
