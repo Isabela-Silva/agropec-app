@@ -1,11 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Users } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as z from 'zod';
-
-import { Button } from '../../components/ui/button/index';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form/index';
+import { Button } from '../../components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form';
 import { Input } from '../../components/ui/input';
 import { PasswordInput } from '../../components/ui/PasswordInput';
 import { AuthService, type ApiError } from '../../services';
@@ -99,13 +99,6 @@ export function LoginScreen() {
             )}
           />
 
-          <p className="text-center text-sm font-light text-base-black">
-            Você não tem uma conta?{' '}
-            <Link to="/signup" className="font-bold text-base-black underline hover:text-green-200">
-              Criar conta
-            </Link>
-          </p>
-
           <Button
             type="submit"
             className="mt-4 h-10 w-full bg-green-gradient text-sm sm:h-11 sm:text-base md:h-12"
@@ -115,6 +108,25 @@ export function LoginScreen() {
           </Button>
         </form>
       </Form>
+
+      <div className="mt-6 flex flex-col items-center gap-4">
+        <p className="text-sm text-base-black">
+          Não tem uma conta?{' '}
+          <Link to="/signup" className="text-sm text-base-black hover:text-green-200">
+            <span className="font-bold underline">Cadastre-se</span>
+          </Link>
+        </p>
+
+        <hr className="w-full border-base-gray-light" />
+
+        <Link
+          to="/admin/login"
+          className="group inline-flex items-center gap-2 rounded-lg bg-base-white-light px-4 py-2 text-sm font-medium text-base-black transition-colors hover:bg-green-100"
+        >
+          <Users className="h-5 w-5 text-base-gray transition-colors group-hover:text-green-300" />
+          Acesso Administrativo
+        </Link>
+      </div>
     </>
   );
 }

@@ -1,24 +1,29 @@
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 interface AuthGuardProps {
   isPrivate?: boolean;
+  redirectTo?: string;
+  tokenKey?: string;
+  children?: React.ReactNode;
 }
 
-export function AuthGuard({ isPrivate = true }: AuthGuardProps) {
-  const location = useLocation();
-  const token = localStorage.getItem('auth_token');
-  const isAuthenticated = !!token;
+export function AuthGuard({
+  isPrivate = true,
+  redirectTo = '/login',
+  tokenKey = 'auth_token',
+  children,
+}: AuthGuardProps) {
+  const isAuthenticated = localStorage.getItem(tokenKey) !== null;
 
-  if (!isAuthenticated && isPrivate) {
-    // Redireciona para o login, mas salva a rota que o usuário tentou acessar
-    return <Navigate to="/login" state={{ from: location }} replace />;
+  if (isPrivate && !isAuthenticated) {
+    return <Navigate to={redirectTo} replace />;
   }
 
-  if (isAuthenticated && !isPrivate) {
-    // Se estiver autenticado e tentar acessar uma rota pública (login/signup)
-    // redireciona para a home
-    return <Navigate to="/explore" replace />;
+  if (!isPrivate && isAuthenticated) {
+    // Se não é privada mas está autenticado, redireciona para dashboard
+    const dashboardPath = tokenKey === 'admin_token' ? '/admin' : '/explore';
+    return <Navigate to={dashboardPath} replace />;
   }
 
-  return <Outlet />;
+  return children ? <>{children}</> : <Outlet />;
 }
