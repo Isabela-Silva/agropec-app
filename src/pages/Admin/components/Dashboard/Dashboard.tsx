@@ -1,0 +1,216 @@
+// import { useQuery } from '@tanstack/react-query';
+import { Activity, Bell, Building2, Calendar, Store, TrendingUp, UserCheck, Users } from 'lucide-react';
+import {
+  mockActivities,
+  mockAdmins,
+  mockCompanies,
+  mockNotifications,
+  mockStands,
+  mockUsers,
+} from '../../data/mockData';
+// import {
+//   userAPI,
+//   adminAPI,
+//   companyAPI,
+//   activityAPI,
+//   standAPI,
+//   notificationAPI
+// } from '../../services/api';
+
+interface StatCardProps {
+  title: string;
+  value: string | number;
+  icon: React.ElementType;
+  color: string;
+  trend?: {
+    value: number;
+    isPositive: boolean;
+  };
+}
+
+function StatCard({ title, value, icon: Icon, color, trend }: StatCardProps) {
+  return (
+    <div className="card">
+      <div className="flex items-center justify-between">
+        <div className="flex-1">
+          <p className="text-sm font-medium text-gray-600">{title}</p>
+          <p className="mt-2 text-3xl font-bold text-gray-900">{value}</p>
+          {trend && (
+            <div className="mt-2 flex items-center">
+              <TrendingUp className={`mr-1 h-4 w-4 ${trend.isPositive ? 'text-green-500' : 'text-red-500'}`} />
+              <span className={`text-sm ${trend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
+                {trend.isPositive ? '+' : ''}
+                {trend.value}%
+              </span>
+              <span className="ml-1 text-sm text-gray-500">vs mês anterior</span>
+            </div>
+          )}
+        </div>
+        <div className={`rounded-lg p-3 ${color}`}>
+          <Icon className="h-6 w-6 text-white" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Dashboard() {
+  // Usando dados mock para desenvolvimento
+  const users = mockUsers;
+  const admins = mockAdmins;
+  const companies = mockCompanies;
+  const activities = mockActivities;
+  const stands = mockStands;
+  const notifications = mockNotifications;
+
+  // Versão com API (comentada para desenvolvimento)
+  // const { data: users = [] } = useQuery({
+  //   queryKey: ['users'],
+  //   queryFn: userAPI.getAll,
+  // });
+
+  // const { data: admins = [] } = useQuery({
+  //   queryKey: ['admins'],
+  //   queryFn: adminAPI.getAll,
+  // });
+
+  // const { data: companies = [] } = useQuery({
+  //   queryKey: ['companies'],
+  //   queryFn: companyAPI.getAll,
+  // });
+
+  // const { data: activities = [] } = useQuery({
+  //   queryKey: ['activities'],
+  //   queryFn: activityAPI.getAll,
+  // });
+
+  // const { data: stands = [] } = useQuery({
+  //   queryKey: ['stands'],
+  //   queryFn: standAPI.getAll,
+  // });
+
+  // const { data: notifications = [] } = useQuery({
+  //   queryKey: ['notifications'],
+  //   queryFn: notificationAPI.getAll,
+  // });
+
+  const stats = [
+    {
+      title: 'Total de Usuários',
+      value: users.length,
+      icon: Users,
+      color: 'bg-blue-500',
+      trend: { value: 12, isPositive: true },
+    },
+    {
+      title: 'Administradores',
+      value: admins.length,
+      icon: UserCheck,
+      color: 'bg-admin-primary-600',
+      trend: { value: 2, isPositive: true },
+    },
+    {
+      title: 'Empresas',
+      value: companies.length,
+      icon: Building2,
+      color: 'bg-purple-500',
+      trend: { value: 8, isPositive: true },
+    },
+    {
+      title: 'Atividades',
+      value: activities.length,
+      icon: Calendar,
+      color: 'bg-orange-500',
+      trend: { value: 15, isPositive: true },
+    },
+    {
+      title: 'Stands',
+      value: stands.length,
+      icon: Store,
+      color: 'bg-pink-500',
+      trend: { value: 5, isPositive: true },
+    },
+    {
+      title: 'Notificações',
+      value: notifications.length,
+      icon: Bell,
+      color: 'bg-red-500',
+      trend: { value: 3, isPositive: false },
+    },
+  ];
+
+  return (
+    <div className="space-y-6">
+      {/* Welcome section */}
+      <div className="from-admin-primary-600 to-admin-primary-700 rounded-lg bg-gradient-to-r p-6 text-white">
+        <h2 className="mb-2 text-2xl font-bold">Bem-vindo ao Painel AGRO PEC! 🌱</h2>
+        <p className="text-admin-primary-100">
+          Gerencie todos os aspectos do evento de forma centralizada e eficiente.
+        </p>
+      </div>
+
+      {/* Statistics grid */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {stats.map((stat, index) => (
+          <StatCard
+            key={index}
+            title={stat.title}
+            value={stat.value}
+            icon={stat.icon}
+            color={stat.color}
+            trend={stat.trend}
+          />
+        ))}
+      </div>
+
+      {/* Recent activity */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="card">
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-gray-900">Atividades Recentes</h3>
+            <Activity className="h-5 w-5 text-gray-400" />
+          </div>
+          <div className="space-y-3">
+            {activities.slice(0, 5).map((activity) => (
+              <div key={activity.uuid} className="flex items-start space-x-3">
+                <div className="bg-admin-primary-500 mt-2 h-2 w-2 flex-shrink-0 rounded-full"></div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium text-gray-900">{activity.name}</p>
+                  <p className="text-sm text-gray-500">
+                    {activity.date} às {activity.startTime}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-gray-900">Notificações Recentes</h3>
+            <Bell className="h-5 w-5 text-gray-400" />
+          </div>
+          <div className="space-y-3">
+            {notifications.slice(0, 5).map((notification) => (
+              <div key={notification.uuid} className="flex items-start space-x-3">
+                <div
+                  className={`mt-2 h-2 w-2 flex-shrink-0 rounded-full ${
+                    notification.type === 'alert'
+                      ? 'bg-red-500'
+                      : notification.type === 'announcement'
+                        ? 'bg-blue-500'
+                        : 'bg-gray-500'
+                  }`}
+                ></div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium text-gray-900">{notification.title}</p>
+                  <p className="truncate text-sm text-gray-500">{notification.message}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
