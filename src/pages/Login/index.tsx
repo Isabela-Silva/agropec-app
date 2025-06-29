@@ -20,7 +20,7 @@ interface ApiError {
 
 const formSchema = z.object({
   email: z.string().email('E-mail inválido'),
-  password: z.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
+  password: z.string().min(8, 'A senha deve ter no mínimo 8 caracteres'),
 });
 
 export function LoginScreen() {

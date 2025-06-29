@@ -5,6 +5,7 @@ import { AppLayout } from './layouts/AppLayout';
 import { AuthLayout } from './layouts/AuthLayout';
 import { AgendaScreen } from './pages/Agenda';
 import { AlertsScreen } from './pages/Alerts';
+import { DetailsScreen } from './pages/Details';
 import { ExploreScreen } from './pages/Explore';
 import { InfoScreen } from './pages/Info';
 import { LoginScreen } from './pages/Login';
@@ -35,7 +36,13 @@ export function AppRouter() {
             <Route path="/map" element={<MapScreen />} />
             <Route path="/alerts" element={<AlertsScreen />} />
             <Route path="/info" element={<InfoScreen />} />
+          <Route path="/details/:type/:id" element={<DetailsScreen />} />
+
           </Route>
+        </Route>
+
+        {/* Rota de detalhes (sem layout para tela cheia) */}
+        <Route element={<AuthGuard isPrivate />}>
         </Route>
       </Routes>
     </Router>

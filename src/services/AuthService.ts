@@ -44,6 +44,6 @@ export const AuthService = {
   async me(): Promise<AuthResponse['user']> {
     const response = await api.get<AuthResponse['user']>('/auth/me');
 
-    return response.data;
+    return response.data; //verificar se é data.data
   },
 };
