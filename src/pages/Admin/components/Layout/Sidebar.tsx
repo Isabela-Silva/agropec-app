@@ -1,3 +1,4 @@
+import { AgropecLogo } from '@/components/AgropecLogo';
 import { Bell, Building2, Calendar, LayoutDashboard, LogOut, Store, Tags, UserCheck, Users } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useAdminAuth } from '../../../../hooks/useAdminAuth';
@@ -19,13 +20,8 @@ export function Sidebar() {
   return (
     <div className="flex h-full flex-col border-r border-gray-200 bg-white">
       {/* Logo */}
-      <div className="flex h-16 items-center justify-center border-b border-gray-200 px-4">
-        <div className="flex items-center space-x-2">
-          <div className="bg-admin-primary-600 flex h-8 w-8 items-center justify-center rounded-lg">
-            <span className="text-sm font-bold text-white">AP</span>
-          </div>
-          <span className="text-xl font-bold text-gray-900">AGRO PEC</span>
-        </div>
+      <div className="flex h-20 items-center justify-center border-b border-gray-200 px-4">
+        <AgropecLogo className="w-20 max-w-full" />
       </div>
 
       {/* Navigation */}
@@ -34,6 +30,7 @@ export function Sidebar() {
           <NavLink
             key={item.name}
             to={item.href}
+            end={item.href === '/admin'}
             className={({ isActive }) =>
               `flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 isActive
@@ -53,13 +50,15 @@ export function Sidebar() {
         <div className="mb-3 flex items-center space-x-3">
           <div className="bg-admin-primary-100 flex h-8 w-8 items-center justify-center rounded-full">
             <span className="text-admin-primary-700 text-sm font-medium">
-              {admin?.firstName?.charAt(0)}
-              {admin?.lastName?.charAt(0)}
+              {admin?.firstName?.charAt(0) || admin?.email?.charAt(0) || '?'}
+              {admin?.lastName?.charAt(0) || ''}
             </span>
           </div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-gray-900">
-              {admin?.firstName} {admin?.lastName}
+              {admin?.firstName || admin?.lastName
+                ? `${admin?.firstName ?? ''} ${admin?.lastName ?? ''}`.trim()
+                : admin?.email}
             </p>
             <p className="truncate text-xs text-gray-500">{admin?.email}</p>
           </div>
