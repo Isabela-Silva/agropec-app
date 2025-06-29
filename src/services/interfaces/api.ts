@@ -22,3 +22,14 @@ export interface AuthResponse {
   };
   token: string;
 }
+
+export interface AdminAuthResponse {
+  admin: {
+    uuid: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    role: string;
+  };
+  token: string;
+}
