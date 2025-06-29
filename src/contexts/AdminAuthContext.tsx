@@ -1,11 +1,22 @@
 import { createContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import type { Admin, AdminAuthContextType, LoginInput } from '../types/auth';
+import type { IAdmin } from '../services/interfaces/admin';
+import type { AdminAuthResponse } from '../services/interfaces/api';
+
+// Tipo para admin logado (sem senha)
+type LoggedInAdmin = Omit<IAdmin, 'password'>;
+
+interface AdminAuthContextType {
+  admin: LoggedInAdmin | null;
+  isLoading: boolean;
+  login: (adminData: AdminAuthResponse['admin']) => Promise<void>;
+  logout: () => void;
+}
 
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(undefined);
 
 export function AdminAuthProvider() {
-  const [admin, setAdmin] = useState<Admin | null>(null);
+  const [admin, setAdmin] = useState<LoggedInAdmin | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,27 +38,16 @@ export function AdminAuthProvider() {
     setIsLoading(false);
   }, []);
 
-  const login = async (credentials: LoginInput) => {
-    // Simula uma chamada de API
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        // Para desenvolvimento, aceita qualquer credencial
-        const mockAdmin: Admin = {
-          uuid: '1',
-          firstName: 'Admin',
-          lastName: 'Principal',
-          email: credentials.email,
-          role: 'SUPER_ADMIN',
-        };
-
-        // Salva o token e dados do admin
-        localStorage.setItem('admin_token', 'mock-admin-token');
-        localStorage.setItem('admin_data', JSON.stringify(mockAdmin));
-
-        setAdmin(mockAdmin);
-        resolve();
-      }, 1000);
-    });
+  const login = async (adminData: AdminAuthResponse['admin']) => {
+    const admin: LoggedInAdmin = {
+      uuid: adminData.uuid,
+      firstName: adminData.firstName,
+      lastName: adminData.lastName,
+      email: adminData.email,
+      role: adminData.role as 'SUPER_ADMIN' | 'admin',
+    };
+    setAdmin(admin);
+    localStorage.setItem('admin_data', JSON.stringify(admin));
   };
 
   const logout = () => {
