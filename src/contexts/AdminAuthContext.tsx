@@ -15,7 +15,7 @@ interface AdminAuthContextType {
 
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(undefined);
 
-export function AdminAuthProvider() {
+function AdminAuthProvider() {
   const [admin, setAdmin] = useState<LoggedInAdmin | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -70,5 +70,5 @@ export function AdminAuthProvider() {
   );
 }
 
-// Exportar o contexto para uso no hook
-export { AdminAuthContext };
+// Exportar o contexto e o provider
+export { AdminAuthContext, AdminAuthProvider };
