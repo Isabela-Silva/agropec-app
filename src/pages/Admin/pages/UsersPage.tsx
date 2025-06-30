@@ -100,8 +100,12 @@ export function UsersPage() {
         firstName: data.firstName || selectedUser.firstName,
         lastName: data.lastName || selectedUser.lastName,
         email: data.email || selectedUser.email,
-        password: data.password || selectedUser.password,
       };
+
+      // Só inclui password se foi fornecida
+      if (data.password && data.password.trim() !== '') {
+        updateData.password = data.password;
+      }
 
       updateMutation.mutate({ uuid: selectedUser.uuid, data: updateData });
     } else {
@@ -202,8 +206,8 @@ export function UsersPage() {
                   <tr key={user.uuid} className="hover:bg-gray-50">
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="flex items-center">
-                        <div className="bg-admin-primary-100 flex h-8 w-8 items-center justify-center rounded-full">
-                          <span className="text-admin-primary-700 text-sm font-medium">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-admin-primary-100">
+                          <span className="text-sm font-medium text-admin-primary-700">
                             {user.firstName.charAt(0)}
                             {user.lastName.charAt(0)}
                           </span>
@@ -219,7 +223,7 @@ export function UsersPage() {
                       <div className="text-sm text-gray-900">{user.email}</div>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
-                      <span className="bg-admin-primary-100 text-admin-primary-800 inline-flex rounded-full px-2 text-xs font-semibold leading-5">
+                      <span className="inline-flex rounded-full bg-admin-primary-100 px-2 text-xs font-semibold leading-5 text-admin-primary-800">
                         {user.role === 'user' ? 'Usuário' : user.role}
                       </span>
                     </td>

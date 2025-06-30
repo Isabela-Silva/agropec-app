@@ -18,7 +18,11 @@ export interface AuthResponse {
   user: {
     uuid: string;
     email: string;
+    firstName: string;
+    lastName: string;
     role: string;
+    activitiesId?: string[];
+    standsId?: string[];
   };
   token: string;
 }

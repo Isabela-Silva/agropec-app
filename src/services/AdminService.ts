@@ -1,6 +1,6 @@
 import { api } from './api';
 import type { IAdmin, ICreateAdmin, IUpdateAdmin } from './interfaces/admin';
-import type { ApiError, ApiResponse } from './interfaces/api';
+import type { AdminAuthResponse, ApiError, ApiResponse } from './interfaces/api';
 
 export class AdminService {
   static async getAll(): Promise<IAdmin[]> {
@@ -21,9 +21,9 @@ export class AdminService {
     }
   }
 
-  static async create(adminData: ICreateAdmin): Promise<IAdmin> {
+  static async create(adminData: ICreateAdmin): Promise<AdminAuthResponse> {
     try {
-      const response = await api.post<IAdmin>('/admin/signup', adminData);
+      const response = await api.post<AdminAuthResponse>('/admin/signup', adminData);
       return response.data;
     } catch (error) {
       throw error as ApiError;
@@ -32,7 +32,10 @@ export class AdminService {
 
   static async update(uuid: string, adminData: IUpdateAdmin): Promise<IAdmin> {
     try {
-      const response = await api.put<IAdmin>(`/admin/${uuid}`, adminData);
+      const response = await api.put<IAdmin>(`/admin/${uuid}`, {
+        ...adminData,
+        uuid,
+      });
       return response.data;
     } catch (error) {
       throw error as ApiError;

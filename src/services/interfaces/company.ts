@@ -1,16 +1,19 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const CompanySchema = z.object({
   uuid: z.string().uuid(),
-  name: z.string().min(1, "Nome é obrigatório"),
-  description: z.string().min(1, "Descrição é obrigatória"),
+  name: z.string().min(1, 'Nome é obrigatório'),
+  description: z.string().min(1, 'Descrição é obrigatória'),
 });
 
 export const CreateCompanySchema = CompanySchema.omit({
   uuid: true,
 });
-export const UpdateCompanySchema = CompanySchema.partial().required({
-  uuid: true,
+
+export const UpdateCompanySchema = z.object({
+  uuid: z.string().uuid(),
+  name: z.string().min(1, 'Nome é obrigatório').optional(),
+  description: z.string().min(1, 'Descrição é obrigatória').optional(),
 });
 
 export type ICompany = z.infer<typeof CompanySchema>;

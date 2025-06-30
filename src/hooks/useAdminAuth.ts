@@ -1,65 +1,79 @@
-import { useCallback, useContext } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AdminAuthContext } from '../contexts/AdminAuthContext';
-import { AuthService } from '../services/AuthService';
+import { AuthService, type ApiError } from '../services';
 import type { ILoginInput } from '../services/interfaces/admin';
-import { toastUtils } from '../utils/toast';
+import { useAppStore } from '../stores/app.store';
 
 export function useAdminAuth() {
-  const context = useContext(AdminAuthContext);
   const navigate = useNavigate();
+  const { admin, isAdminLoading, setAdmin, setAdminLoading, logout: globalLogout } = useAppStore();
 
-  if (!context) {
-    throw new Error('useAdminAuth deve ser usado dentro de um AdminAuthProvider');
-  }
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      const token = localStorage.getItem('admin_token');
 
-  const { admin, isLoading, login: contextLogin, logout: contextLogout } = context;
-
-  const login = useCallback(
-    async (credentials: ILoginInput) => {
-      try {
-        const loadingToast = toastUtils.loading('Entrando...');
-
-        const response = await AuthService.adminSignIn(credentials);
-
-        // Salva o token e dados do admin
-        localStorage.setItem('admin_token', response.token);
-        localStorage.setItem('admin_data', JSON.stringify(response.admin));
-
-        toastUtils.success('Login realizado com sucesso!', {
-          id: loadingToast,
-        });
-
-        // Atualiza o contexto
-        contextLogin(response.admin);
-
-        // Redireciona para o dashboard
-        navigate('/admin', { replace: true });
-      } catch (error: unknown) {
-        const apiError = error as { response?: { data?: { error?: string } } };
-        const errorMessage = apiError.response?.data?.error || 'Erro ao fazer login';
-
-        toastUtils.error(errorMessage);
-        throw error;
+      if (!token) {
+        setAdminLoading(false);
+        return;
       }
-    },
-    [contextLogin, navigate],
-  );
 
-  const logout = useCallback(async () => {
-    // Remove dados locais
-    AuthService.signOut();
+      try {
+        // Valida o token do admin e carrega os dados
+        const response = await AuthService.validateAdminToken();
 
-    // Atualiza o contexto
-    contextLogout();
+        const adminData = {
+          uuid: response.admin.uuid,
+          firstName: response.admin.firstName,
+          lastName: response.admin.lastName,
+          email: response.admin.email,
+          role: response.admin.role as 'SUPER_ADMIN' | 'admin',
+        };
 
-    // Redireciona para login
+        setAdmin(adminData);
+      } catch (error) {
+        // Se o token for inválido, remove do localStorage
+        localStorage.removeItem('admin_token');
+        console.error('Token de admin inválido:', error);
+      } finally {
+        setAdminLoading(false);
+      }
+    };
+
+    checkAuthStatus();
+  }, [setAdmin, setAdminLoading]);
+
+  const login = async (credentials: ILoginInput) => {
+    try {
+      const response = await AuthService.adminSignIn(credentials);
+
+      const adminData = {
+        uuid: response.admin.uuid,
+        firstName: response.admin.firstName,
+        lastName: response.admin.lastName,
+        email: response.admin.email,
+        role: response.admin.role as 'SUPER_ADMIN' | 'admin',
+      };
+
+      localStorage.setItem('admin_token', response.token);
+      setAdmin(adminData);
+
+      // Redireciona para o dashboard do admin após login bem-sucedido
+      navigate('/admin', { replace: true });
+    } catch (error) {
+      const apiError = error as ApiError;
+      throw new Error(apiError.response?.data?.error || 'Erro ao fazer login');
+    }
+  };
+
+  const logout = () => {
+    globalLogout();
+    // Redireciona para a tela de login do admin após logout
     navigate('/admin/login', { replace: true });
-  }, [contextLogout, navigate]);
+  };
 
   return {
     admin,
-    isLoading,
+    isLoading: isAdminLoading,
     login,
     logout,
   };

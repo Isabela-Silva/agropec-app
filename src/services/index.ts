@@ -6,7 +6,9 @@ export { CategoryService } from './CategoryService';
 export { CompanyService } from './CompanyService';
 export { DashboardService } from './DashboardService';
 export { NotificationService } from './NotificationService';
+export * from './ScheduleService';
 export { StandService } from './StandService';
+export { UserNotificationService } from './UserNotificationService';
 export { UserService } from './UserService';
 
 // Interfaces
