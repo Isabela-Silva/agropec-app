@@ -10,7 +10,18 @@ export function SplashScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setSplashShown(true);
-      navigate('/explore');
+
+      // Verifica se o usuário está autenticado
+      const isUserAuthenticated = localStorage.getItem('auth_token') !== null;
+      const isAdminAuthenticated = localStorage.getItem('admin_token') !== null;
+
+      if (isAdminAuthenticated) {
+        navigate('/admin');
+      } else if (isUserAuthenticated) {
+        navigate('/explore');
+      } else {
+        navigate('/login');
+      }
     }, 2500);
     return () => clearTimeout(timer);
   }, [navigate, setSplashShown]);

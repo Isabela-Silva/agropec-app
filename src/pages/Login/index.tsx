@@ -1,22 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { LogIn, Users } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as z from 'zod';
-
-import { Button } from '../../components/ui/button/index';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form/index';
+import { Button } from '../../components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form';
 import { Input } from '../../components/ui/input';
-import { AuthService } from '../../services';
+import { PasswordInput } from '../../components/ui/PasswordInput';
+import { AuthService, type ApiError } from '../../services';
 import { toastUtils } from '../../utils/toast';
-
-interface ApiError {
-  response?: {
-    data?: {
-      error?: string;
-    };
-  };
-}
 
 const formSchema = z.object({
   email: z.string().email('E-mail inválido'),
@@ -45,22 +38,18 @@ export function LoginScreen() {
 
       const response = await AuthService.signIn(values);
 
-      // Salva o token
       localStorage.setItem('auth_token', response.token);
 
       toastUtils.success('Login realizado com sucesso!', {
         id: loadingToast,
       });
 
-      // Redireciona para a página que o usuário tentou acessar originalmente
       navigate(from, { replace: true });
     } catch (err: unknown) {
       const apiError = err as ApiError;
       toastUtils.error(
         apiError.response?.data?.error || 'Ocorreu um erro ao fazer login. Por favor, tente novamente.',
-        {
-          id: loadingToast,
-        },
+        { id: loadingToast },
       );
     } finally {
       setIsLoading(false);
@@ -99,8 +88,7 @@ export function LoginScreen() {
               <FormItem>
                 <FormLabel className="text-sm font-light sm:text-base">Senha</FormLabel>
                 <FormControl>
-                  <Input
-                    type="password"
+                  <PasswordInput
                     placeholder="Digite sua senha"
                     className="h-10 bg-white text-sm text-base-black gradient-border focus-visible:ring-0 sm:h-11 sm:text-base md:h-12"
                     {...field}
@@ -111,22 +99,41 @@ export function LoginScreen() {
             )}
           />
 
-          <p className="text-center text-sm font-light text-base-black">
-            Você não tem uma conta?{' '}
-            <Link to="/signup" className="font-bold text-base-black underline hover:text-green-200">
-              Criar conta
-            </Link>
-          </p>
-
           <Button
             type="submit"
             className="mt-4 h-10 w-full bg-green-gradient text-sm sm:h-11 sm:text-base md:h-12"
             disabled={isLoading}
           >
-            {isLoading ? 'Entrando...' : 'Entrar'}
+            {isLoading ? (
+              <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white"></div>
+            ) : (
+              <>
+                <LogIn className="h-5 w-5" />
+                <span>Entrar</span>
+              </>
+            )}
           </Button>
         </form>
       </Form>
+
+      <div className="mt-6 flex flex-col items-center gap-4">
+        <p className="text-sm text-base-black">
+          Não tem uma conta?{' '}
+          <Link to="/signup" className="text-sm text-base-black hover:text-green-200">
+            <span className="font-bold underline">Cadastre-se</span>
+          </Link>
+        </p>
+
+        <hr className="w-full border-base-gray-light" />
+
+        <Link
+          to="/admin/login"
+          className="group inline-flex items-center gap-2 rounded-lg bg-base-white-light px-4 py-2 text-sm font-medium text-base-black transition-colors hover:bg-green-100"
+        >
+          <Users className="h-5 w-5 text-base-gray transition-colors group-hover:text-green-300" />
+          Acesso Administrativo
+        </Link>
+      </div>
     </>
   );
 }

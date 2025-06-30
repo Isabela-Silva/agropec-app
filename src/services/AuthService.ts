@@ -1,49 +1,52 @@
 import { api } from './api';
+import type { ILoginInput } from './interfaces/admin';
+import type { AdminAuthResponse, ApiError, AuthResponse } from './interfaces/api';
+import type { ICreateUser, ILoginInput as IUserLoginInput } from './interfaces/user';
 
-interface SignInCredentials {
-  email: string;
-  password: string;
-}
+export class AuthService {
+  // Autenticação de usuários
+  static async signIn(credentials: IUserLoginInput): Promise<AuthResponse> {
+    try {
+      const response = await api.post('/users/login', credentials);
+      return response.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
 
-interface SignUpData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
+  static async signUp(userData: ICreateUser): Promise<AuthResponse> {
+    try {
+      const response = await api.post('/users/signup', userData);
+      return response.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
 
-interface AuthResponse {
-  user: {
-    uuid: string;
-    email: string;
-    role: string;
-  };
-  token: string;
-}
+  // Autenticação de administradores
+  static async adminSignIn(credentials: ILoginInput): Promise<AdminAuthResponse> {
+    try {
+      const response = await api.post('/admin/login', credentials);
+      return response.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
 
-export const AuthService = {
-  async signIn({ email, password }: SignInCredentials): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>('/users/login', {
-      email,
-      password,
-    });
+  static async adminSignUp(adminData: ICreateUser): Promise<AdminAuthResponse> {
+    try {
+      const response = await api.post('/admin/signup', adminData);
+      return response.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
 
-    return response.data;
-  },
-
-  async signUp(data: SignUpData): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>('/auth/signup', data);
-
-    return response.data;
-  },
-
-  async signOut(): Promise<void> {
+  // Logout local (remove tokens do localStorage)
+  static signOut(): void {
     localStorage.removeItem('auth_token');
-  },
-
-  async me(): Promise<AuthResponse['user']> {
-    const response = await api.get<AuthResponse['user']>('/auth/me');
-
-    return response.data; //verificar se é data.data
-  },
-};
+    localStorage.removeItem('admin_token');
+    localStorage.removeItem('auth_data');
+    localStorage.removeItem('admin_data');
+  }
+}

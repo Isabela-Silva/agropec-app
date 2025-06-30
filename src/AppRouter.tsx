@@ -1,6 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
+import { InstallPWA } from './components/InstallPWA';
+import { AdminAuthProvider } from './contexts/AdminAuthContext';
 import { AuthGuard } from './guards/AuthGuard';
+import { AdminLayout } from './layouts/AdminLayout';
 import { AppLayout } from './layouts/AppLayout';
 import { AuthLayout } from './layouts/AuthLayout';
 import { AgendaScreen } from './pages/Agenda';
@@ -13,11 +16,22 @@ import { MapScreen } from './pages/Map';
 import { SignupScreen } from './pages/Signup';
 import { SplashScreen } from './pages/Splash';
 
+// Admin imports
+import { LoginForm } from './pages/Admin/components/Auth/LoginForm';
+import { Dashboard } from './pages/Admin/components/Dashboard/Dashboard';
+import { ActivitiesPage } from './pages/Admin/pages/ActivitiesPage';
+import { AdminsPage } from './pages/Admin/pages/AdminsPage';
+import { CategoriesPage } from './pages/Admin/pages/CategoriesPage';
+import { CompaniesPage } from './pages/Admin/pages/CompaniesPage';
+import { NotificationsPage } from './pages/Admin/pages/NotificationsPage';
+import { StandsPage } from './pages/Admin/pages/StandsPage';
+import { UsersPage } from './pages/Admin/pages/UsersPage';
+
 export function AppRouter() {
   return (
     <Router>
       <Routes>
-        {/* Rota pública sem layout */}
+        {/* Rota inicial */}
         <Route path="/" element={<SplashScreen />} />
 
         {/* Rotas públicas com AuthLayout */}
@@ -28,7 +42,7 @@ export function AppRouter() {
           </Route>
         </Route>
 
-        {/* Rotas protegidas com AppLayout */}
+        {/* Rotas protegidas do app mobile com AppLayout */}
         <Route element={<AuthGuard isPrivate />}>
           <Route element={<AppLayout />}>
             <Route path="/explore" element={<ExploreScreen />} />
@@ -41,10 +55,32 @@ export function AppRouter() {
           </Route>
         </Route>
 
-        {/* Rota de detalhes (sem layout para tela cheia) */}
-        <Route element={<AuthGuard isPrivate />}>
+        {/* Rotas do admin com AdminAuthProvider */}
+        <Route element={<AdminAuthProvider />}>
+          {/* Rota de login do admin (pública) */}
+          <Route path="/admin/login" element={<LoginForm />} />
+
+          {/* Rotas protegidas do admin com AdminLayout */}
+          <Route element={<AuthGuard isPrivate tokenKey="admin_token" redirectTo="/admin/login" />}>
+            <Route element={<AdminLayout />}>
+              <Route path="/admin" element={<Dashboard />} />
+              <Route path="/admin/users" element={<UsersPage />} />
+              <Route path="/admin/admins" element={<AdminsPage />} />
+              <Route path="/admin/companies" element={<CompaniesPage />} />
+              <Route path="/admin/categories" element={<CategoriesPage />} />
+              <Route path="/admin/activities" element={<ActivitiesPage />} />
+              <Route path="/admin/stands" element={<StandsPage />} />
+              <Route path="/admin/notifications" element={<NotificationsPage />} />
+            </Route>
+          </Route>
         </Route>
+
+        {/* Fallback */}
+        <Route path="*" element={<SplashScreen />} />
       </Routes>
+
+      {/* InstallPWA fora das rotas, mas dentro do Router */}
+      <InstallPWA />
     </Router>
   );
 }

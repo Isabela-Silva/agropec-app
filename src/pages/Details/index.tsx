@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, Clock, Calendar, Building, Share2, CheckCircle, Info, Users } from 'lucide-react';
-import { ActivityService, StandService } from '../../services';
+import { ActivityService } from '../../services/ActivityService';
+import { StandService } from '../../services/StandService';
 import { IActivityResponse } from '../../services/interfaces/activity';
 import { IStandResponse } from '../../services/interfaces/stand';
 
@@ -122,7 +123,12 @@ export function DetailsScreen() {
 
   const isActivity = 'startTime' in data;
   const isStand = 'openingHours' in data;
-  const imageUrl = isActivity ? (data as IActivityResponse).imageUrls?.[0] : (data as IStandResponse).imageUrl;
+  const imageUrl = isActivity 
+    ? (data as IActivityResponse).imageUrls?.[0] 
+    : (() => {
+        const imageUrls = (data as IStandResponse).imageUrls;
+        return Array.isArray(imageUrls) ? imageUrls[0] : imageUrls;
+      })();
 
   return (
     <div className="min-h-screen bg-base-white-light text-base-black">
@@ -173,7 +179,7 @@ export function DetailsScreen() {
                 <span>
                   {isActivity
                     ? `${data.startTime} - ${data.endTime}`
-                    : `${(data as IStandResponse).openingHours?.openingTime || 'N/A'} - ${(data as IStandResponse).openingHours?.closingTime || 'N/A'}`}
+                    : `${(data as IStandResponse).openingTime || 'N/A'} - ${(data as IStandResponse).closingTime || 'N/A'}`}
                 </span>
               </div>
              
@@ -243,10 +249,10 @@ export function DetailsScreen() {
             </h2>
             <div className="flex items-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-lg font-semibold text-white">
-                {data.companyId.charAt(0).toUpperCase()}
+                {data.companyId ? data.companyId.charAt(0).toUpperCase() : 'C'}
               </div>
               <div>
-                <h3 className="font-semibold text-green-800">Empresa ID: {data.companyId}</h3>
+                <h3 className="font-semibold text-green-800">Empresa ID: {data.companyId || 'N/A'}</h3>
                 <p className="text-sm text-gray-600">Organizador oficial</p>
               </div>
             </div>

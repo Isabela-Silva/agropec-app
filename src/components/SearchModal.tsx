@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, X, MapPin, Clock, Calendar } from 'lucide-react';
-import { ActivityService, StandService } from '../services';
+import { ActivityService } from '../services/ActivityService';
+import { StandService } from '../services/StandService';
 import { IActivityResponse } from '../services/interfaces/activity';
 import { IStandResponse } from '../services/interfaces/stand';
 
@@ -228,17 +229,21 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         )
                       ) : (
                         // Para stands
-                        (data as IStandResponse).imageUrl ? (
-                          <img
-                            src={(data as IStandResponse).imageUrl}
-                            alt={data.name}
-                            className="w-12 h-12 rounded-lg object-cover"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
-                            <MapPin className="h-5 w-5 text-gray-400" />
-                          </div>
-                        )
+                        (() => {
+                          const imageUrls = (data as IStandResponse).imageUrls;
+                          const imageUrl = Array.isArray(imageUrls) ? imageUrls[0] : imageUrls;
+                          return imageUrl ? (
+                            <img
+                              src={imageUrl}
+                              alt={data.name}
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
+                          ) : (
+                            <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                              <MapPin className="h-5 w-5 text-gray-400" />
+                            </div>
+                          );
+                        })()
                       )}
                     </div>
 
@@ -270,7 +275,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           <span>
                             {isActivity 
                               ? `${(data as IActivityResponse).startTime} - ${(data as IActivityResponse).endTime}`
-                              : `${(data as IStandResponse).openingHours?.openingTime || 'N/A'} - ${(data as IStandResponse).openingHours?.closingTime || 'N/A'}`
+                              : `${(data as IStandResponse).openingTime || 'N/A'} - ${(data as IStandResponse).closingTime || 'N/A'}`
                             }
                           </span>
                         </div>

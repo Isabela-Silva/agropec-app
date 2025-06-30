@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { SearchModal } from '../../components/SearchModal';
-import { HighlightService } from '../../services';
+import { HighlightService } from '../../services/HighlightService';
 import { ActivityService } from '../../services/ActivityService';
 import { IHighlightWithDetails } from '../../services/interfaces/highlight';
 import { IActivityResponse } from '../../services/interfaces/activity';
@@ -21,6 +21,7 @@ export function ExploreScreen() {
       try {
         setLoading(true);
         const highlights = await HighlightService.getAllHighlights();
+        console.log(highlights);
         setDestaques(highlights);
       } catch (err: any) {
         setError('Erro ao carregar destaques');
@@ -113,10 +114,14 @@ export function ExploreScreen() {
                 const item = destaque.activity || destaque.stand;
                 if (!item) return null;
 
-                const isActivity = 'startTime' in item;
-                const imageUrl = isActivity 
-                  ? (item as IActivityResponse).imageUrls?.[0] 
-                  : (item as IStandResponse).imageUrl;
+                let imageUrl: string | undefined;
+                const images = item.imageUrls;
+          
+                if (Array.isArray(images)) {
+                  imageUrl = images[0];
+                } else {
+                  imageUrl = images;
+                }
 
                 return (
                   <div 

@@ -1,3 +1,6 @@
+/* Estilos do painel administrativo */
+@import './pages/Admin/styles/admin.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

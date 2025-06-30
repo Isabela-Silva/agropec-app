@@ -12,23 +12,42 @@ export const StandSchema = z.object({
     .number()
     .min(-180)
     .max(180, "Longitude deve estar entre -180 e 180"),
-  imageUrl: z.string().url("URL da imagem deve ser uma URL válida").optional(),
-  date: z.string(), // Mudando para aceitar qualquer formato de data
+  imageUrls: z
+    .array(z.string().url("URL da imagem deve ser uma URL válida"))
+    .optional(),
+  date: z
+    .string()
+    .refine((val) => dateRegex.test(val), {
+      message: "Formato de data inválido. Use dd/mm/yyyy",
+    })
+    .refine(
+      (val) => {
+        const [day, month, year] = val.split("/").map(Number);
+        // JavaScript usa meses de 0-11, então subtraímos 1 do mês
+        const date = new Date(year, month - 1, day);
+        return (
+          date.getFullYear() === year &&
+          date.getMonth() === month - 1 &&
+          date.getDate() === day
+        );
+      },
+      {
+        message: "Data inválida",
+      }
+    ),
   companyId: z.string().min(1, "ID da empresa é obrigatório"),
-  openingHours: z.object({
-    openingTime: z.string().regex(/^\d{2}:\d{2}$/, {
-      message: "Horário de início deve estar no formato HH:MM",
-    }),
-    closingTime: z.string().regex(/^\d{2}:\d{2}$/, {
-      message: "Horário de término deve estar no formato HH:MM",
-    }),
+  openingTime: z.string().regex(/^\d{2}:\d{2}$/, {
+    message: "Horário de início deve estar no formato HH:MM",
+  }),
+  closingTime: z.string().regex(/^\d{2}:\d{2}$/, {
+    message: "Horário de término deve estar no formato HH:MM",
   }),
 });
 
 // Schema para validação do request multipart/form-data
 export const CreateStandRequestSchema = StandSchema.omit({
   uuid: true,
-  imageUrl: true,
+  imageUrls: true,
 });
 
 // Schema para criação no banco de dados (após upload da imagem)
