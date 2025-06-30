@@ -1,21 +1,6 @@
-// import { useQuery } from '@tanstack/react-query';
-import { Activity, Bell, Building2, Calendar, Store, TrendingUp, UserCheck, Users } from 'lucide-react';
-import {
-  mockActivities,
-  mockAdmins,
-  mockCompanies,
-  mockNotifications,
-  mockStands,
-  mockUsers,
-} from '../../data/mockData';
-// import {
-//   userAPI,
-//   adminAPI,
-//   companyAPI,
-//   activityAPI,
-//   standAPI,
-//   notificationAPI
-// } from '../../services/api';
+import { useQuery } from '@tanstack/react-query';
+import { Activity, Bell, Building2, Calendar, Loader2, Store, UserCheck, Users } from 'lucide-react';
+import { DashboardService } from '../../../../services';
 
 interface StatCardProps {
   title: string;
@@ -26,16 +11,24 @@ interface StatCardProps {
     value: number;
     isPositive: boolean;
   };
+  isLoading?: boolean;
 }
 
-function StatCard({ title, value, icon: Icon, color, trend }: StatCardProps) {
+function StatCard({ title, value, icon: Icon, color, /*trend,*/ isLoading }: StatCardProps) {
   return (
     <div className="card">
       <div className="flex items-center justify-between">
         <div className="flex-1">
           <p className="text-sm font-medium text-gray-600">{title}</p>
-          <p className="mt-2 text-3xl font-bold text-gray-900">{value}</p>
-          {trend && (
+          {isLoading ? (
+            <div className="mt-2 flex items-center">
+              <Loader2 className="mr-2 h-6 w-6 animate-spin text-gray-400" />
+              <span className="text-sm text-gray-500">Carregando...</span>
+            </div>
+          ) : (
+            <p className="mt-2 text-3xl font-bold text-gray-900">{value}</p>
+          )}
+          {/* {trend && !isLoading && (
             <div className="mt-2 flex items-center">
               <TrendingUp className={`mr-1 h-4 w-4 ${trend.isPositive ? 'text-green-500' : 'text-red-500'}`} />
               <span className={`text-sm ${trend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
@@ -44,7 +37,7 @@ function StatCard({ title, value, icon: Icon, color, trend }: StatCardProps) {
               </span>
               <span className="ml-1 text-sm text-gray-500">vs mês anterior</span>
             </div>
-          )}
+          )} */}
         </div>
         <div className={`rounded-lg p-3 ${color}`}>
           <Icon className="h-6 w-6 text-white" />
@@ -54,88 +47,104 @@ function StatCard({ title, value, icon: Icon, color, trend }: StatCardProps) {
   );
 }
 
+// Hook customizado para buscar dados do dashboard de forma otimizada
+function useDashboardData() {
+  const {
+    data: overview,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['dashboard-overview'],
+    queryFn: DashboardService.getOverview,
+    staleTime: 2 * 60 * 1000, // 2 minutos
+    refetchOnWindowFocus: false,
+  });
+
+  return {
+    overview,
+    isLoading,
+    error,
+  };
+}
+
 export function Dashboard() {
-  // Usando dados mock para desenvolvimento
-  const users = mockUsers;
-  const admins = mockAdmins;
-  const companies = mockCompanies;
-  const activities = mockActivities;
-  const stands = mockStands;
-  const notifications = mockNotifications;
+  const { overview, isLoading, error } = useDashboardData();
 
-  // Versão com API (comentada para desenvolvimento)
-  // const { data: users = [] } = useQuery({
-  //   queryKey: ['users'],
-  //   queryFn: userAPI.getAll,
-  // });
+  // Se não há dados, mostrar loading ou erro
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[400px] items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="mx-auto mb-4 h-8 w-8 animate-spin text-gray-400" />
+          <p className="text-sm text-gray-500">Carregando dashboard...</p>
+        </div>
+      </div>
+    );
+  }
 
-  // const { data: admins = [] } = useQuery({
-  //   queryKey: ['admins'],
-  //   queryFn: adminAPI.getAll,
-  // });
+  if (error || !overview) {
+    return (
+      <div className="space-y-6">
+        <div className="rounded-lg bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
+          <h2 className="mb-2 text-2xl font-bold">Erro ao Carregar Dashboard</h2>
+          <p className="text-red-100">
+            Não foi possível carregar os dados do dashboard. Verifique sua conexão e tente novamente.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
-  // const { data: companies = [] } = useQuery({
-  //   queryKey: ['companies'],
-  //   queryFn: companyAPI.getAll,
-  // });
+  const { stats, recentActivities, recentNotifications } = overview;
 
-  // const { data: activities = [] } = useQuery({
-  //   queryKey: ['activities'],
-  //   queryFn: activityAPI.getAll,
-  // });
-
-  // const { data: stands = [] } = useQuery({
-  //   queryKey: ['stands'],
-  //   queryFn: standAPI.getAll,
-  // });
-
-  // const { data: notifications = [] } = useQuery({
-  //   queryKey: ['notifications'],
-  //   queryFn: notificationAPI.getAll,
-  // });
-
-  const stats = [
+  const statCards = [
     {
       title: 'Total de Usuários',
-      value: users.length,
+      value: stats.users.total,
       icon: Users,
       color: 'bg-blue-500',
       trend: { value: 12, isPositive: true },
+      isLoading: false,
     },
     {
       title: 'Administradores',
-      value: admins.length,
+      value: stats.admins.total,
       icon: UserCheck,
       color: 'bg-admin-primary-600',
       trend: { value: 2, isPositive: true },
+      isLoading: false,
     },
     {
       title: 'Empresas',
-      value: companies.length,
+      value: stats.companies.total,
       icon: Building2,
       color: 'bg-purple-500',
       trend: { value: 8, isPositive: true },
+      isLoading: false,
     },
     {
       title: 'Atividades',
-      value: activities.length,
+      value: stats.activities.total,
       icon: Calendar,
       color: 'bg-orange-500',
       trend: { value: 15, isPositive: true },
+      isLoading: false,
     },
     {
       title: 'Stands',
-      value: stands.length,
+      value: stats.stands.total,
       icon: Store,
       color: 'bg-pink-500',
       trend: { value: 5, isPositive: true },
+      isLoading: false,
     },
     {
       title: 'Notificações',
-      value: notifications.length,
+      value: stats.notifications.total,
       icon: Bell,
       color: 'bg-red-500',
       trend: { value: 3, isPositive: false },
+      isLoading: false,
     },
   ];
 
@@ -143,7 +152,7 @@ export function Dashboard() {
     <div className="space-y-6">
       {/* Welcome section */}
       <div className="from-admin-primary-600 to-admin-primary-700 rounded-lg bg-gradient-to-r p-6 text-white">
-        <h2 className="mb-2 text-2xl font-bold">Bem-vindo ao Painel AGRO PEC! 🌱</h2>
+        <h2 className="mb-2 text-2xl font-bold">Bem-vindo ao Painel Agropec!</h2>
         <p className="text-admin-primary-100">
           Gerencie todos os aspectos do evento de forma centralizada e eficiente.
         </p>
@@ -151,7 +160,7 @@ export function Dashboard() {
 
       {/* Statistics grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {stats.map((stat, index) => (
+        {statCards.map((stat, index) => (
           <StatCard
             key={index}
             title={stat.title}
@@ -159,6 +168,7 @@ export function Dashboard() {
             icon={stat.icon}
             color={stat.color}
             trend={stat.trend}
+            isLoading={stat.isLoading}
           />
         ))}
       </div>
@@ -171,17 +181,23 @@ export function Dashboard() {
             <Activity className="h-5 w-5 text-gray-400" />
           </div>
           <div className="space-y-3">
-            {activities.slice(0, 5).map((activity) => (
-              <div key={activity.uuid} className="flex items-start space-x-3">
-                <div className="bg-admin-primary-500 mt-2 h-2 w-2 flex-shrink-0 rounded-full"></div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-gray-900">{activity.name}</p>
-                  <p className="text-sm text-gray-500">
-                    {activity.date} às {activity.startTime}
-                  </p>
-                </div>
+            {recentActivities.length === 0 ? (
+              <div className="flex items-center justify-center py-8">
+                <span className="text-sm text-gray-500">Nenhuma atividade encontrada</span>
               </div>
-            ))}
+            ) : (
+              recentActivities.map((activity) => (
+                <div key={activity.uuid} className="flex items-start space-x-3">
+                  <div className="bg-admin-primary-500 mt-2 h-2 w-2 flex-shrink-0 rounded-full"></div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-gray-900">{activity.name}</p>
+                    <p className="text-sm text-gray-500">
+                      {activity.date} às {activity.startTime}
+                    </p>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
@@ -191,23 +207,29 @@ export function Dashboard() {
             <Bell className="h-5 w-5 text-gray-400" />
           </div>
           <div className="space-y-3">
-            {notifications.slice(0, 5).map((notification) => (
-              <div key={notification.uuid} className="flex items-start space-x-3">
-                <div
-                  className={`mt-2 h-2 w-2 flex-shrink-0 rounded-full ${
-                    notification.type === 'alert'
-                      ? 'bg-red-500'
-                      : notification.type === 'announcement'
-                        ? 'bg-blue-500'
-                        : 'bg-gray-500'
-                  }`}
-                ></div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-gray-900">{notification.title}</p>
-                  <p className="truncate text-sm text-gray-500">{notification.message}</p>
-                </div>
+            {recentNotifications.length === 0 ? (
+              <div className="flex items-center justify-center py-8">
+                <span className="text-sm text-gray-500">Nenhuma notificação encontrada</span>
               </div>
-            ))}
+            ) : (
+              recentNotifications.map((notification) => (
+                <div key={notification.uuid} className="flex items-start space-x-3">
+                  <div
+                    className={`mt-2 h-2 w-2 flex-shrink-0 rounded-full ${
+                      notification.type === 'alert'
+                        ? 'bg-red-500'
+                        : notification.type === 'announcement'
+                          ? 'bg-blue-500'
+                          : 'bg-gray-500'
+                    }`}
+                  ></div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-gray-900">{notification.title}</p>
+                    <p className="truncate text-sm text-gray-500">{notification.message}</p>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
