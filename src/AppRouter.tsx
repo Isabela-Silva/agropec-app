@@ -23,6 +23,7 @@ import { ActivitiesPage } from './pages/Admin/pages/ActivitiesPage';
 import { AdminsPage } from './pages/Admin/pages/AdminsPage';
 import { CategoriesPage } from './pages/Admin/pages/CategoriesPage';
 import { CompaniesPage } from './pages/Admin/pages/CompaniesPage';
+import { HighlightsPage } from './pages/Admin/pages/HighlightsPage';
 import { NotificationsPage } from './pages/Admin/pages/NotificationsPage';
 import { StandsPage } from './pages/Admin/pages/StandsPage';
 import { UsersPage } from './pages/Admin/pages/UsersPage';
@@ -50,8 +51,7 @@ export function AppRouter() {
             <Route path="/map" element={<MapScreen />} />
             <Route path="/alerts" element={<AlertsScreen />} />
             <Route path="/info" element={<InfoScreen />} />
-          <Route path="/details/:type/:id" element={<DetailsScreen />} />
-
+            <Route path="/details/:type/:id" element={<DetailsScreen />} />
           </Route>
         </Route>
 
@@ -70,6 +70,7 @@ export function AppRouter() {
               <Route path="/admin/categories" element={<CategoriesPage />} />
               <Route path="/admin/activities" element={<ActivitiesPage />} />
               <Route path="/admin/stands" element={<StandsPage />} />
+              <Route path="/admin/highlights" element={<HighlightsPage />} />
               <Route path="/admin/notifications" element={<NotificationsPage />} />
             </Route>
           </Route>

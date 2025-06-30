@@ -1,13 +1,13 @@
-import { z } from "zod";
-import { IActivityResponse } from "./activity";
-import { IStandResponse } from "./stand";
+import { z } from 'zod';
+import { IActivityResponse } from './activity';
+import { IStandResponse } from './stand';
 
 export const HighlightSchema = z.object({
   uuid: z.string().uuid(),
-  type: z.enum(["activity", "stand"], {
+  type: z.enum(['activity', 'stand'], {
     errorMap: () => ({ message: "Tipo deve ser 'activity' ou 'stand'" }),
   }),
-  referenceId: z.string().min(1, "ID de referência é obrigatório"),
+  referenceId: z.string().min(1, 'ID de referência é obrigatório'),
 });
 
 // Schema para validação do request
@@ -38,4 +38,4 @@ export interface IHighlightResponse extends IHighlight {
 export interface IHighlightWithDetails extends IHighlightResponse {
   activity?: IActivityResponse;
   stand?: IStandResponse;
-} 
+}

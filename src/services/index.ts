@@ -5,6 +5,7 @@ export { AuthService } from './AuthService';
 export { CategoryService } from './CategoryService';
 export { CompanyService } from './CompanyService';
 export { DashboardService } from './DashboardService';
+export { HighlightService } from './HighlightService';
 export { NotificationService } from './NotificationService';
 export { StandService } from './StandService';
 export { UserService } from './UserService';
@@ -16,6 +17,7 @@ export type { IAdmin, ICreateAdmin, ILoginInput, IUpdateAdmin } from './interfac
 export type { ApiError, ApiResponse, AuthResponse } from './interfaces/api';
 export type { ICategory, ICategoryResponse, ICreateCategory } from './interfaces/category';
 export type { ICompany, ICompanyResponse, ICreateCompany, IUpdateCompany } from './interfaces/company';
+export type { ICreateHighlight, IHighlight, IHighlightWithDetails, IUpdateHighlight } from './interfaces/highlight';
 export type {
   ICreateNotification,
   INotification,
