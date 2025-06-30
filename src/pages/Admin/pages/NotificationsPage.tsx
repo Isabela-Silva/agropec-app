@@ -279,7 +279,7 @@ export function NotificationsPage() {
                 <div className="flex space-x-1">
                   <button
                     onClick={() => handleEdit(notification)}
-                    className="text-admin-primary-600 hover:text-admin-primary-900 hover:bg-admin-primary-50 rounded-md p-2 opacity-0 transition-opacity group-hover:opacity-100"
+                    className="rounded-md p-2 text-admin-primary-600 opacity-0 transition-opacity hover:bg-admin-primary-50 hover:text-admin-primary-900 group-hover:opacity-100"
                   >
                     <Edit2 className="h-4 w-4" />
                   </button>

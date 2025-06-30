@@ -1,6 +1,7 @@
 import { AgropecLogo } from '@/components/AgropecLogo';
-import { Eye, EyeOff, LogIn } from 'lucide-react';
+import { Eye, EyeOff, LogIn, User } from 'lucide-react';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAdminAuth } from '../../../../hooks/useAdminAuth';
 import type { ILoginInput } from '../../../../services/interfaces/admin';
 
@@ -108,6 +109,18 @@ export function LoginForm() {
             )}
           </button>
         </form>
+
+        <div className="mt-6 flex flex-col items-center gap-4">
+          <hr className="w-full border-base-gray-light" />
+
+          <Link
+            to="/login"
+            className="group inline-flex items-center gap-2 rounded-lg bg-base-white-light px-4 py-2 text-sm font-medium text-base-black transition-colors hover:bg-green-100"
+          >
+            <User className="h-5 w-5 text-base-gray transition-colors group-hover:text-green-300" />
+            Acesso de Usuário
+          </Link>
+        </div>
       </div>
     </main>
   );

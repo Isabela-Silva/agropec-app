@@ -23,16 +23,28 @@ export class ActivityService {
 
   static async create(data: ICreateActivity | FormData): Promise<IActivityResponse> {
     try {
-      const config = {
-        headers: {
-          'Content-Type': data instanceof FormData ? 'multipart/form-data' : 'application/json',
-        },
-      };
+      // SEMPRE usa FormData - a API espera multipart
+      let formData: FormData;
 
-      const response = await api.post<ApiResponse<IActivityResponse>>('/activities', data, config);
+      if (data instanceof FormData) {
+        formData = data;
+      } else {
+        // Converte objeto para FormData
+        formData = new FormData();
+        Object.entries(data).forEach(([key, value]) => {
+          if (value !== undefined && value !== null) {
+            formData.append(key, value.toString());
+          }
+        });
+      }
+
+      const response = await api.post<ApiResponse<IActivityResponse>>('/activities', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return response.data.data;
     } catch (error) {
-      console.log(error);
       throw error as ApiError;
     }
   }
@@ -51,6 +63,7 @@ export class ActivityService {
     newImages?: File[],
   ): Promise<IActivityResponse> {
     try {
+      // SEMPRE usa FormData - a API espera multipart
       let formData: FormData;
 
       // Se já for FormData, usa ele diretamente
@@ -85,6 +98,7 @@ export class ActivityService {
       });
       return response.data.data;
     } catch (error) {
+      console.error('Erro no ActivityService.update:', error);
       throw error as ApiError;
     }
   }

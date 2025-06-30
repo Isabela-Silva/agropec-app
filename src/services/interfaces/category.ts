@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export type ICategory = z.infer<typeof CategorySchema>;
 
@@ -8,11 +8,13 @@ export interface ICategoryResponse {
   _id: string;
   uuid: string;
   name: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export const CategorySchema = z.object({
   uuid: z.string().uuid(),
-  name: z.string().min(1, "Nome é obrigatório"),
+  name: z.string().min(1, 'Nome é obrigatório'),
 });
 
 export const CreateCategorySchema = CategorySchema.omit({

@@ -51,10 +51,10 @@ export class UserService {
   // Métodos específicos documentados na API
   static async updateActivities(uuid: string, activitiesId: string[]): Promise<IUser> {
     try {
-      const response = await api.patch<ApiResponse<IUser>>(`/users/${uuid}/activities`, {
+      const response = await api.patch<IUser>(`/users/${uuid}/activities`, {
         activitiesId,
       });
-      return response.data.data;
+      return response.data;
     } catch (error) {
       throw error as ApiError;
     }
@@ -62,10 +62,10 @@ export class UserService {
 
   static async updateStands(uuid: string, standsId: string[]): Promise<IUser> {
     try {
-      const response = await api.patch<ApiResponse<IUser>>(`/users/${uuid}/stands`, {
+      const response = await api.patch<IUser>(`/users/${uuid}/stands`, {
         standsId,
       });
-      return response.data.data;
+      return response.data;
     } catch (error) {
       throw error as ApiError;
     }
@@ -73,10 +73,10 @@ export class UserService {
 
   static async removeActivities(uuid: string, activitiesId: string[]): Promise<IUser> {
     try {
-      const response = await api.patch<ApiResponse<IUser>>(`/users/${uuid}/activities/remove`, {
+      const response = await api.patch<IUser>(`/users/${uuid}/activities/remove`, {
         activitiesId,
       });
-      return response.data.data;
+      return response.data;
     } catch (error) {
       throw error as ApiError;
     }
@@ -84,10 +84,10 @@ export class UserService {
 
   static async removeStands(uuid: string, standsId: string[]): Promise<IUser> {
     try {
-      const response = await api.patch<ApiResponse<IUser>>(`/users/${uuid}/stands/remove`, {
+      const response = await api.patch<IUser>(`/users/${uuid}/stands/remove`, {
         standsId,
       });
-      return response.data.data;
+      return response.data;
     } catch (error) {
       throw error as ApiError;
     }
