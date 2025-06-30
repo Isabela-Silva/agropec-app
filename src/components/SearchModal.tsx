@@ -92,10 +92,18 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     try {
       console.log('Iniciando pesquisa para:', query);
       
-      const [activities, stands] = await Promise.all([
-        ActivityService.searchActivities(query),
-        StandService.searchStands(query),
-      ]);
+      // Buscar atividades e stands pelo nome
+      const activities = await ActivityService.getByName(query);
+      let stands: IStandResponse[] = [];
+      
+      try {
+        const stand = await StandService.getByName(query);
+        if (stand) {
+          stands = [stand];
+        }
+      } catch (error) {
+        console.log('Nenhum stand encontrado:', error);
+      }
 
       console.log('Resultados da pesquisa:', { activities, stands });
       console.log('Tipo de activities:', typeof activities, Array.isArray(activities));

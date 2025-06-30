@@ -1,7 +1,16 @@
+export { ActivityService } from './ActivityService';
+export { AdminService } from './AdminService';
 export { api } from './api';
 export { AuthService } from './AuthService';
+export { CategoryService } from './CategoryService';
+export { CompanyService } from './CompanyService';
+export { DashboardService } from './DashboardService';
+export { NotificationService } from './NotificationService';
+export { StandService } from './StandService';
+export { UserService } from './UserService';
 
 // Interfaces
+export type { DashboardOverview, DashboardStats } from './DashboardService';
 export type { IActivity, IActivityResponse, ICreateActivity, IUpdateActivity } from './interfaces/activity';
 export type { IAdmin, ICreateAdmin, ILoginInput, IUpdateAdmin } from './interfaces/admin';
 export type { ApiError, ApiResponse, AuthResponse } from './interfaces/api';

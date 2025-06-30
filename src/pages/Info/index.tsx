@@ -40,8 +40,8 @@ export function InfoScreen() {
   return (
     <main className="min-h-screen bg-base-white-light text-base-black">
       <Header title="AgroPec 2025" showBackButton={true} />
-      <div className="space-y-6 p-4">
-        <section>
+      <div className="mx-auto max-w-4xl px-4 pb-8">
+        <section className="mb-8 rounded-lg bg-white p-6 shadow-sm">
           <h2 className="mb-4 text-2xl font-bold">Informações de perfil</h2>
           <div className="space-y-4">
             <InfoItem label="Nome" value={userProfile.name} />
@@ -49,10 +49,10 @@ export function InfoScreen() {
           </div>
         </section>
 
-        <section>
+        <section className="mb-8 rounded-lg bg-white p-6 shadow-sm">
           <h2 className="mb-4 text-2xl font-bold">Informações do Evento</h2>
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <InfoItem label="Tempo" value="9:00h - 18:00h" />
               <InfoItem label="Data" value="20 a 24 de agosto de 2025" />
             </div>
@@ -61,7 +61,7 @@ export function InfoScreen() {
           </div>
         </section>
 
-        <section>
+        <section className="rounded-lg bg-white p-6 shadow-sm">
           <h2 className="mb-4 text-2xl font-bold">Perguntas frequentes</h2>
           <div className="space-y-2">
             {faqItems.map((item) => (

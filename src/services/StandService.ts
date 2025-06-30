@@ -1,83 +1,168 @@
 import { api } from './api';
-import { IStandResponse } from './interfaces/stand';
+import type { ApiError, ApiResponse } from './interfaces/api';
+import type { ICreateStand, IStandResponse, IUpdateStand } from './interfaces/stand';
 
 export class StandService {
-  static async getAllStands(): Promise<IStandResponse[]> {
-    const response = await api.get('/stands');
-    return response.data.data || response.data;
-  }
-
-  static async getStandById(id: string): Promise<IStandResponse> {
-    console.log('StandService: Buscando stand por ID:', id);
-    
+  static async getAll(): Promise<IStandResponse[]> {
     try {
-      // Primeira tentativa: endpoint com uuid
-      const response = await api.get(`/stands/uuid/${id}`);
-      console.log('StandService: Stand encontrado via /stands/uuid/:', response.data);
-      return response.data.data || response.data;
-    } catch (error: any) {
-      console.log('StandService: Falha no endpoint /stands/uuid/, tentando /stands/:id');
-      try {
-        // Segunda tentativa: endpoint direto
-        const response = await api.get(`/stands/${id}`);
-        console.log('StandService: Stand encontrado via /stands/:id:', response.data);
-        return response.data.data || response.data;
-      } catch (secondError: any) {
-        console.error('StandService: Erro ao buscar stand por ID:', secondError);
-        throw secondError;
-      }
+      const response = await api.get<ApiResponse<IStandResponse[]>>('/stands');
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
     }
   }
 
-  static async searchStands(query: string): Promise<IStandResponse[]> {
+  static async getById(uuid: string): Promise<IStandResponse> {
     try {
-      console.log('StandService: Iniciando busca por stands com query:', query);
-      
-      // Tentar diferentes endpoints de busca
-      let response;
-      try {
-        // Primeira tentativa: busca por nome exato (retorna um objeto único)
-        response = await api.get(`/stands/name/${encodeURIComponent(query)}`);
-        console.log('StandService: Busca por nome exato bem-sucedida');
-        
-        const result = response.data.data || response.data;
-        console.log('StandService: Resultado da busca por nome:', result);
-        
-        // Se retornou um objeto único, converter para array
-        if (result && !Array.isArray(result)) {
-          console.log('StandService: Convertendo objeto único para array');
-          return [result];
-        }
-        
-        return result || [];
-        
-      } catch (error: any) {
-        console.log('StandService: Falha na busca por nome exato, tentando busca por categoria...');
-        try {
-          // Segunda tentativa: busca por categoria (retorna array)
-          response = await api.get(`/stands/category/${encodeURIComponent(query)}`);
-          console.log('StandService: Busca por categoria bem-sucedida');
-          
-          const result = response.data.data || response.data;
-          console.log('StandService: Resultado da busca por categoria:', result);
-          return Array.isArray(result) ? result : [];
-          
-        } catch (secondError: any) {
-          console.log('StandService: Falha na busca por categoria, tentando busca por interesse...');
-          // Terceira tentativa: busca por interesse (retorna array)
-          response = await api.get(`/stands/interest/${encodeURIComponent(query)}`);
-          console.log('StandService: Busca por interesse bem-sucedida');
-          
-          const result = response.data.data || response.data;
-          console.log('StandService: Resultado da busca por interesse:', result);
-          return Array.isArray(result) ? result : [];
-        }
-      }
-    } catch (error: any) {
-      console.error('StandService: Erro na busca de stands:', error);
-      console.error('StandService: Response status:', error.response?.status);
-      console.error('StandService: Response data:', error.response?.data);
-      return []; // Retornar array vazio em caso de erro
+      const response = await api.get<ApiResponse<IStandResponse>>(`/stands/uuid/${uuid}`);
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
     }
   }
-} 
+
+  static async create(data: ICreateStand | FormData): Promise<IStandResponse> {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': data instanceof FormData ? 'multipart/form-data' : 'application/json',
+        },
+      };
+
+      const response = await api.post<ApiResponse<IStandResponse>>('/stands', data, config);
+      return response.data.data;
+    } catch (error) {
+      console.log(error);
+      throw error as ApiError;
+    }
+  }
+
+  /**
+   * Atualiza um stand com dados e/ou imagens
+   * @param uuid - ID do stand
+   * @param data - Dados do stand (pode ser objeto ou FormData)
+   * @param imageIds - Array com IDs das imagens que devem ser mantidas (opcional)
+   * @param newImages - Novas imagens a serem adicionadas (opcional)
+   */
+  static async update(
+    uuid: string,
+    data: IUpdateStand | FormData,
+    imageIds?: string[],
+    newImages?: File[],
+  ): Promise<IStandResponse> {
+    try {
+      let formData: FormData;
+
+      // Se já for FormData, usa ele diretamente
+      if (data instanceof FormData) {
+        formData = data;
+      } else {
+        // Se for objeto, converte para FormData
+        formData = new FormData();
+        Object.entries(data).forEach(([key, value]) => {
+          if (value !== undefined && value !== null) {
+            formData.append(key, value.toString());
+          }
+        });
+      }
+
+      // Adiciona gerenciamento de imagens se fornecido
+      if (imageIds !== undefined) {
+        formData.append('imageIds', JSON.stringify(imageIds));
+      }
+
+      if (newImages && newImages.length > 0) {
+        newImages.forEach((image) => {
+          formData.append('images', image);
+        });
+      }
+
+      const response = await api.put<ApiResponse<IStandResponse>>(`/stands/${uuid}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        transformRequest: [],
+      });
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  static async delete(uuid: string): Promise<void> {
+    try {
+      await api.delete(`/stands/${uuid}`);
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  // Métodos específicos documentados na API
+  static async getByCategory(category: string): Promise<IStandResponse[]> {
+    try {
+      const response = await api.get<ApiResponse<IStandResponse[]>>(`/stands/category/${category}`);
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  static async getByName(name: string): Promise<IStandResponse> {
+    try {
+      const response = await api.get<ApiResponse<IStandResponse>>(`/stands/name/${name}`);
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  static async getByDate(date: string): Promise<IStandResponse[]> {
+    try {
+      const response = await api.get<ApiResponse<IStandResponse[]>>(`/stands/date/${date}`);
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  static async getByInterest(interest: string): Promise<IStandResponse[]> {
+    try {
+      const response = await api.get<ApiResponse<IStandResponse[]>>(`/stands/interest/${interest}`);
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  // Método para buscar stands por empresa (se implementado no backend)
+  static async getByCompany(companyId: string): Promise<IStandResponse[]> {
+    try {
+      const response = await api.get<ApiResponse<IStandResponse[]>>(`/stands/company/${companyId}`);
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  // Método para buscar estatísticas do dashboard (se implementado no backend)
+  static async getStats(): Promise<{
+    total: number;
+    active: number;
+    inactive: number;
+    byCategory: Record<string, number>;
+  }> {
+    try {
+      const response = await api.get<
+        ApiResponse<{
+          total: number;
+          active: number;
+          inactive: number;
+          byCategory: Record<string, number>;
+        }>
+      >('/stands/stats');
+      return response.data.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+}

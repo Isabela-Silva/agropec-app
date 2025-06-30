@@ -8,7 +8,7 @@ interface UserAuthProviderProps {
   children: ReactNode;
 }
 
-export function UserAuthProvider({ children }: UserAuthProviderProps) {
+function UserAuthProvider({ children }: UserAuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -87,5 +87,5 @@ export function UserAuthProvider({ children }: UserAuthProviderProps) {
   return <UserAuthContext.Provider value={value}>{children}</UserAuthContext.Provider>;
 }
 
-// Exportar o contexto para uso no hook
-export { UserAuthContext };
+// Exportar o contexto e o provider
+export { UserAuthContext, UserAuthProvider };

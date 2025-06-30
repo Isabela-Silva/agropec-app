@@ -28,9 +28,9 @@ export function DetailsScreen() {
         let result: DetailsData;
 
         if (type === 'activity') {
-          result = await ActivityService.getActivityById(id);
+          result = await ActivityService.getById(id);
         } else if (type === 'stand') {
-          result = await StandService.getStandById(id);
+          result = await StandService.getById(id);
         } else {
           throw new Error('Tipo inválido');
         }
@@ -252,8 +252,7 @@ export function DetailsScreen() {
                 {data.companyId ? data.companyId.charAt(0).toUpperCase() : 'C'}
               </div>
               <div>
-                <h3 className="font-semibold text-green-800">Empresa ID: {data.companyId || 'N/A'}</h3>
-                <p className="text-sm text-gray-600">Organizador oficial</p>
+                <h3 className="font-semibold text-green-800">{data.company?.name || 'Organizador não especificado'}</h3>
               </div>
             </div>
           </div>
