@@ -1,14 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as z from 'zod';
 
 import { Button } from '../../components/ui/button/index';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form/index';
 import { Input } from '../../components/ui/input';
 import { PasswordInput } from '../../components/ui/PasswordInput';
-import { AuthService, type ApiError } from '../../services';
+import { useUserAuth } from '../../hooks/useUserAuth';
 import { toastUtils } from '../../utils/toast';
 
 const formSchema = z
@@ -16,7 +16,7 @@ const formSchema = z
     firstName: z.string().min(2, 'Nome deve ter no mínimo 2 caracteres'),
     lastName: z.string().min(2, 'Sobrenome deve ter no mínimo 2 caracteres'),
     email: z.string().email('E-mail inválido'),
-    password: z.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
+    password: z.string().min(8, 'A senha deve ter no mínimo 8 caracteres'),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -25,10 +25,8 @@ const formSchema = z
   });
 
 export function SignupScreen() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || '/explore';
   const [isLoading, setIsLoading] = useState(false);
+  const { signUp } = useUserAuth();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,21 +52,18 @@ export function SignupScreen() {
         password: values.password,
       };
 
-      const response = await AuthService.signUp(signUpData);
-
-      localStorage.setItem('auth_token', response.token);
+      await signUp(signUpData);
 
       toastUtils.success('Conta criada com sucesso!', {
         id: loadingToast,
       });
 
-      navigate(from, { replace: true });
+      // O redirecionamento já é feito automaticamente pelo hook useUserAuth
     } catch (err: unknown) {
-      const apiError = err as ApiError;
-      toastUtils.error(
-        apiError.response?.data?.error || 'Ocorreu um erro ao criar a conta. Por favor, tente novamente.',
-        { id: loadingToast },
-      );
+      const error = err as Error;
+      toastUtils.error(error.message || 'Ocorreu um erro ao criar a conta. Por favor, tente novamente.', {
+        id: loadingToast,
+      });
     } finally {
       setIsLoading(false);
     }

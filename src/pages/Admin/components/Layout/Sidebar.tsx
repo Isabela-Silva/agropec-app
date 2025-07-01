@@ -1,5 +1,5 @@
 import { AgropecLogo } from '@/components/AgropecLogo';
-import { Bell, Building2, Calendar, LayoutDashboard, LogOut, Store, Tags, UserCheck, Users } from 'lucide-react';
+import { Bell, Building2, Calendar, LayoutDashboard, LogOut, Star, Store, Tags, UserCheck, Users } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useAdminAuth } from '../../../../hooks/useAdminAuth';
 
@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Categorias', href: '/admin/categories', icon: Tags },
   { name: 'Atividades', href: '/admin/activities', icon: Calendar },
   { name: 'Stands', href: '/admin/stands', icon: Store },
+  { name: 'Destaques', href: '/admin/highlights', icon: Star },
   { name: 'Notificações', href: '/admin/notifications', icon: Bell },
 ];
 
@@ -34,7 +35,7 @@ export function Sidebar() {
             className={({ isActive }) =>
               `flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 isActive
-                  ? 'bg-admin-primary-50 text-admin-primary-700 border-admin-primary-600 border-r-2'
+                  ? 'border-r-2 border-admin-primary-600 bg-admin-primary-50 text-admin-primary-700'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`
             }
@@ -48,8 +49,8 @@ export function Sidebar() {
       {/* User section */}
       <div className="border-t border-gray-200 p-4">
         <div className="mb-3 flex items-center space-x-3">
-          <div className="bg-admin-primary-100 flex h-8 w-8 items-center justify-center rounded-full">
-            <span className="text-admin-primary-700 text-sm font-medium">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-admin-primary-100">
+            <span className="text-sm font-medium text-admin-primary-700">
               {admin?.firstName?.charAt(0) || admin?.email?.charAt(0) || '?'}
               {admin?.lastName?.charAt(0) || ''}
             </span>

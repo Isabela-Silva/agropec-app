@@ -1,26 +1,24 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LogIn, Users } from 'lucide-react';
+import { LogIn, Shield } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as z from 'zod';
 import { Button } from '../../components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form';
 import { Input } from '../../components/ui/input';
 import { PasswordInput } from '../../components/ui/PasswordInput';
-import { AuthService, type ApiError } from '../../services';
+import { useUserAuth } from '../../hooks/useUserAuth';
 import { toastUtils } from '../../utils/toast';
 
 const formSchema = z.object({
   email: z.string().email('E-mail inválido'),
-  password: z.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
+  password: z.string().min(8, 'A senha deve ter no mínimo 8 caracteres'),
 });
 
 export function LoginScreen() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || '/explore';
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useUserAuth();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,21 +34,18 @@ export function LoginScreen() {
     try {
       setIsLoading(true);
 
-      const response = await AuthService.signIn(values);
-
-      localStorage.setItem('auth_token', response.token);
+      await login(values);
 
       toastUtils.success('Login realizado com sucesso!', {
         id: loadingToast,
       });
 
-      navigate(from, { replace: true });
+      // O redirecionamento já é feito automaticamente pelo hook useUserAuth
     } catch (err: unknown) {
-      const apiError = err as ApiError;
-      toastUtils.error(
-        apiError.response?.data?.error || 'Ocorreu um erro ao fazer login. Por favor, tente novamente.',
-        { id: loadingToast },
-      );
+      const error = err as Error;
+      toastUtils.error(error.message || 'Ocorreu um erro ao fazer login. Por favor, tente novamente.', {
+        id: loadingToast,
+      });
     } finally {
       setIsLoading(false);
     }
@@ -130,7 +125,7 @@ export function LoginScreen() {
           to="/admin/login"
           className="group inline-flex items-center gap-2 rounded-lg bg-base-white-light px-4 py-2 text-sm font-medium text-base-black transition-colors hover:bg-green-100"
         >
-          <Users className="h-5 w-5 text-base-gray transition-colors group-hover:text-green-300" />
+          <Shield className="h-5 w-5 text-base-gray transition-colors group-hover:text-green-300" />
           Acesso Administrativo
         </Link>
       </div>

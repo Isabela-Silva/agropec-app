@@ -12,6 +12,7 @@ O mapa interativo foi migrado do HTML/JavaScript original para React/TypeScript 
 
 ### 🚀 Funcionalidades Implementadas
 
+
 - **✅ Renderização de polígonos**: 167 features carregadas do JSON
 - **✅ Sistema de filtros**: Stands, Comida, Shows
 - **✅ Busca textual**: Por nome, tipo ou localização
@@ -182,6 +183,7 @@ src/
 ├── stores/             # Gerenciamento de estado
 ├── types/              # Definições TypeScript
 └── utils/              # Utilitários
+
 ```
 
 ## 🔧 Configuração
