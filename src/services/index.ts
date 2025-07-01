@@ -7,7 +7,9 @@ export { CompanyService } from './CompanyService';
 export { DashboardService } from './DashboardService';
 export { HighlightService } from './HighlightService';
 export { NotificationService } from './NotificationService';
+export * from './ScheduleService';
 export { StandService } from './StandService';
+export { UserNotificationService } from './UserNotificationService';
 export { UserService } from './UserService';
 
 // Interfaces

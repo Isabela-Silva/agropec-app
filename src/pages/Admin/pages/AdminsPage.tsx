@@ -100,8 +100,12 @@ export function AdminsPage() {
         firstName: data.firstName || selectedAdmin.firstName,
         lastName: data.lastName || selectedAdmin.lastName,
         email: data.email || selectedAdmin.email,
-        password: data.password || selectedAdmin.password,
       };
+
+      // Só inclui password se foi fornecida
+      if (data.password && data.password.trim() !== '') {
+        updateData.password = data.password;
+      }
 
       updateMutation.mutate({ uuid: selectedAdmin.uuid, data: updateData });
     } else {
@@ -196,8 +200,8 @@ export function AdminsPage() {
                   <tr key={admin.uuid} className="hover:bg-gray-50">
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="flex items-center">
-                        <div className="bg-admin-primary-100 flex h-10 w-10 items-center justify-center rounded-full">
-                          <Shield className="text-admin-primary-600 h-5 w-5" />
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-admin-primary-100">
+                          <Shield className="h-5 w-5 text-admin-primary-600" />
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">

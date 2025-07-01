@@ -1,5 +1,5 @@
 import { api } from './api';
-import type { ILoginInput } from './interfaces/admin';
+import type { ICreateAdmin, ILoginInput } from './interfaces/admin';
 import type { AdminAuthResponse, ApiError, AuthResponse } from './interfaces/api';
 import type { ICreateUser, ILoginInput as IUserLoginInput } from './interfaces/user';
 
@@ -23,6 +23,15 @@ export class AuthService {
     }
   }
 
+  static async validateToken(): Promise<AuthResponse> {
+    try {
+      const response = await api.get('/users/validate');
+      return response.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
   // Autenticação de administradores
   static async adminSignIn(credentials: ILoginInput): Promise<AdminAuthResponse> {
     try {
@@ -33,9 +42,18 @@ export class AuthService {
     }
   }
 
-  static async adminSignUp(adminData: ICreateUser): Promise<AdminAuthResponse> {
+  static async adminSignUp(adminData: ICreateAdmin): Promise<AdminAuthResponse> {
     try {
       const response = await api.post('/admin/signup', adminData);
+      return response.data;
+    } catch (error) {
+      throw error as ApiError;
+    }
+  }
+
+  static async validateAdminToken(): Promise<AdminAuthResponse> {
+    try {
+      const response = await api.get('/admin/validate');
       return response.data;
     } catch (error) {
       throw error as ApiError;

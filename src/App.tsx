@@ -1,10 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { AppRouter } from './AppRouter';
+import PWABadge from './PWABadge';
 import { toastConfig } from './config/toast.config';
-import { UserAuthProvider } from './contexts/UserAuthContext';
 
-// Configuração do QueryClient
+// Configuração do React Query
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -14,13 +14,14 @@ const queryClient = new QueryClient({
   },
 });
 
-export function App() {
+function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <UserAuthProvider>
-        <AppRouter />
-        <Toaster {...toastConfig} />
-      </UserAuthProvider>
+      <AppRouter />
+      <Toaster {...toastConfig} />
+      <PWABadge />
     </QueryClientProvider>
   );
 }
+
+export default App;

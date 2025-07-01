@@ -9,7 +9,7 @@ import { applyDateMask, applyTimeMask } from '@/utils/inputMasks';
 import { toastUtils } from '@/utils/toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ImagePlus, Loader2, X } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -49,9 +49,15 @@ export function StandModal({
   const [newImages, setNewImages] = useState<File[]>([]);
   const [existingImageUrls, setExistingImageUrls] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [newImagePreviews, setNewImagePreviews] = useState<string[]>([]);
+  const newImagePreviewsRef = useRef<string[]>([]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setNewImages((prev) => [...prev, ...acceptedFiles]);
+    // Cria previews estáveis para as novas imagens
+    const newPreviews = acceptedFiles.map((file) => URL.createObjectURL(file));
+    setNewImagePreviews((prev) => [...prev, ...newPreviews]);
+    newImagePreviewsRef.current = [...newImagePreviewsRef.current, ...newPreviews];
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -67,10 +73,14 @@ export function StandModal({
   };
 
   const removeNewImage = (index: number) => {
-    setNewImages((prev) => {
-      const updated = prev.filter((_, i) => i !== index);
-      return updated;
-    });
+    // Libera a URL do preview antes de remover
+    if (newImagePreviewsRef.current[index]) {
+      URL.revokeObjectURL(newImagePreviewsRef.current[index]);
+    }
+
+    setNewImages((prev) => prev.filter((_, i) => i !== index));
+    setNewImagePreviews((prev) => prev.filter((_, i) => i !== index));
+    newImagePreviewsRef.current = newImagePreviewsRef.current.filter((_, i) => i !== index);
   };
 
   const form = useForm<StandFormData>({
@@ -105,7 +115,12 @@ export function StandModal({
       } else {
         setExistingImageUrls([]);
       }
+
+      // Limpa previews das novas imagens usando ref
+      newImagePreviewsRef.current.forEach((url) => URL.revokeObjectURL(url));
       setNewImages([]);
+      setNewImagePreviews([]);
+      newImagePreviewsRef.current = [];
     }
   }, [isOpen, stand, form]);
 
@@ -129,8 +144,8 @@ export function StandModal({
       const hasImageChanges = existingImageUrls.length !== (stand?.imageUrls?.length || 0) || newImages.length > 0;
 
       if (stand) {
-        // Atualização
-        if (hasImageChanges) {
+        // Atualização - sempre usa FormData pois a API espera multipart
+        if (hasDataChanges || hasImageChanges) {
           // Extrai IDs das imagens existentes que ainda estão no preview
           const imageIds = existingImageUrls
             .map((url) => {
@@ -142,40 +157,28 @@ export function StandModal({
             })
             .filter(Boolean); // Remove IDs vazios
 
-          // Usa o StandService para atualizar imagens
-          await StandService.update(
-            stand.uuid,
-            {}, // Dados vazios, apenas imagens
-            imageIds,
-            newImages.length > 0 ? newImages : undefined,
-          );
-        }
-
-        if (hasDataChanges) {
-          // Atualiza apenas os dados básicos
-          await StandService.update(stand.uuid, data);
+          // Sempre usa FormData (a API sempre espera multipart)
+          await StandService.update(stand.uuid, data, imageIds, newImages.length > 0 ? newImages : undefined);
         }
 
         toastUtils.success('Stand atualizado com sucesso!');
       } else {
-        // Criação
+        // Criação - sempre usa FormData (API espera multipart)
+        const formData = new FormData();
+        Object.entries(data).forEach(([key, value]) => {
+          if (value !== undefined && value !== null) {
+            formData.append(key, value.toString());
+          }
+        });
+
+        // Adiciona imagens se houver
         if (newImages.length > 0) {
-          // Cria com imagens
-          const formData = new FormData();
-          Object.entries(data).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-              formData.append(key, value.toString());
-            }
-          });
           newImages.forEach((image) => {
             formData.append('images', image);
           });
-          await StandService.create(formData);
-        } else {
-          // Cria sem imagens
-          await StandService.create(data);
         }
 
+        await StandService.create(formData);
         toastUtils.success('Stand criado com sucesso!');
       }
 
@@ -190,14 +193,14 @@ export function StandModal({
   };
 
   // Combina imagens existentes e novas para o preview
-  const allPreviews = [...existingImageUrls, ...newImages.map((file) => URL.createObjectURL(file))];
+  const allPreviews = [...existingImageUrls, ...newImagePreviews];
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex min-h-full items-center justify-center p-4 text-center">
         <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={onClose}></div>
         <div className="relative w-full max-w-2xl transform rounded-lg bg-white p-6 text-left shadow-xl transition-all">
-          <h3 className="text-admin-primary-900 border-admin-primary-100 mb-6 border-b pb-3 text-lg font-semibold">
+          <h3 className="mb-6 border-b border-admin-primary-100 pb-3 text-lg font-semibold text-admin-primary-900">
             {stand ? 'Editar Stand' : 'Novo Stand'}
           </h3>
 
@@ -209,11 +212,11 @@ export function StandModal({
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-admin-primary-700 font-medium">Nome do Stand</FormLabel>
+                      <FormLabel className="font-medium text-admin-primary-700">Nome do Stand</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Digite o nome do stand"
-                          className="focus:ring-admin-primary-500 focus:border-admin-primary-500"
+                          className="focus:border-admin-primary-500 focus:ring-admin-primary-500"
                           {...field}
                         />
                       </FormControl>
@@ -227,10 +230,10 @@ export function StandModal({
                   name="categoryId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-admin-primary-700 font-medium">Categoria</FormLabel>
+                      <FormLabel className="font-medium text-admin-primary-700">Categoria</FormLabel>
                       <FormControl>
                         <select
-                          className="focus:ring-admin-primary-500 focus:border-admin-primary-500 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2"
+                          className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-admin-primary-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-admin-primary-500"
                           {...field}
                         >
                           <option value="">Selecione uma categoria</option>
@@ -252,10 +255,10 @@ export function StandModal({
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-admin-primary-700 font-medium">Descrição</FormLabel>
+                    <FormLabel className="font-medium text-admin-primary-700">Descrição</FormLabel>
                     <FormControl>
                       <textarea
-                        className="focus:ring-admin-primary-500 focus:border-admin-primary-500 w-full resize-none rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2"
+                        className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 focus:border-admin-primary-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-admin-primary-500"
                         rows={4}
                         placeholder="Digite a descrição do stand"
                         {...field}
@@ -272,10 +275,10 @@ export function StandModal({
                   name="companyId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-admin-primary-700 font-medium">Empresa</FormLabel>
+                      <FormLabel className="font-medium text-admin-primary-700">Empresa</FormLabel>
                       <FormControl>
                         <select
-                          className="focus:ring-admin-primary-500 focus:border-admin-primary-500 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2"
+                          className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-admin-primary-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-admin-primary-500"
                           {...field}
                         >
                           <option value="">Selecione uma empresa</option>
@@ -296,11 +299,11 @@ export function StandModal({
                   name="date"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-admin-primary-700 font-medium">Data</FormLabel>
+                      <FormLabel className="font-medium text-admin-primary-700">Data</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="DD/MM/AAAA"
-                          className="focus:ring-admin-primary-500 focus:border-admin-primary-500"
+                          className="focus:border-admin-primary-500 focus:ring-admin-primary-500"
                           maxLength={10}
                           value={field.value}
                           onChange={(e) => {
@@ -321,11 +324,11 @@ export function StandModal({
                   name="openingTime"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-admin-primary-700 font-medium">Horário de Abertura</FormLabel>
+                      <FormLabel className="font-medium text-admin-primary-700">Horário de Abertura</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="HH:MM"
-                          className="focus:ring-admin-primary-500 focus:border-admin-primary-500"
+                          className="focus:border-admin-primary-500 focus:ring-admin-primary-500"
                           maxLength={5}
                           value={field.value}
                           onChange={(e) => {
@@ -344,11 +347,11 @@ export function StandModal({
                   name="closingTime"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-admin-primary-700 font-medium">Horário de Fechamento</FormLabel>
+                      <FormLabel className="font-medium text-admin-primary-700">Horário de Fechamento</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="HH:MM"
-                          className="focus:ring-admin-primary-500 focus:border-admin-primary-500"
+                          className="focus:border-admin-primary-500 focus:ring-admin-primary-500"
                           maxLength={5}
                           value={field.value}
                           onChange={(e) => {
@@ -365,10 +368,10 @@ export function StandModal({
 
               {/* Dropzone para imagens */}
               <div className="space-y-2">
-                <label className="text-admin-primary-700 block font-medium">Imagens</label>
+                <label className="block font-medium text-admin-primary-700">Imagens</label>
                 <div
                   {...getRootProps()}
-                  className={`focus:ring-admin-primary-500 focus:border-admin-primary-500 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-6 transition-colors hover:border-gray-400 ${
+                  className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-6 transition-colors hover:border-gray-400 focus:border-admin-primary-500 focus:ring-admin-primary-500 ${
                     isDragActive ? 'border-blue-500 bg-blue-50' : ''
                   }`}
                 >
@@ -386,7 +389,10 @@ export function StandModal({
                 {allPreviews.length > 0 && (
                   <div className="mt-4 grid grid-cols-3 gap-4">
                     {allPreviews.map((preview, index) => (
-                      <div key={preview} className="group relative">
+                      <div
+                        key={`preview-${index}-${preview.substring(preview.length - 20)}`}
+                        className="group relative"
+                      >
                         <img
                           src={preview}
                           alt={`Preview ${index + 1}`}
@@ -424,7 +430,7 @@ export function StandModal({
                 <Button
                   type="submit"
                   disabled={externalLoading || isSubmitting}
-                  className="bg-admin-primary-600 hover:bg-admin-primary-700 text-white"
+                  className="bg-admin-primary-600 text-white hover:bg-admin-primary-700"
                 >
                   {externalLoading || isSubmitting ? (
                     <>

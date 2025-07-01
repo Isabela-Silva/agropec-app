@@ -1,18 +1,17 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { InstallPWA } from './components/InstallPWA';
-import { AdminAuthProvider } from './contexts/AdminAuthContext';
 import { AuthGuard } from './guards/AuthGuard';
 import { AdminLayout } from './layouts/AdminLayout';
 import { AppLayout } from './layouts/AppLayout';
 import { AuthLayout } from './layouts/AuthLayout';
 import { AgendaScreen } from './pages/Agenda';
-import { AlertsScreen } from './pages/Alerts';
 import { DetailsScreen } from './pages/Details';
 import { ExploreScreen } from './pages/Explore';
 import { InfoScreen } from './pages/Info';
 import { LoginScreen } from './pages/Login';
 import { MapScreen } from './pages/Map';
+import { NotificationsScreen } from './pages/Notifications';
 import { SignupScreen } from './pages/Signup';
 import { SplashScreen } from './pages/Splash';
 
@@ -49,16 +48,15 @@ export function AppRouter() {
             <Route path="/explore" element={<ExploreScreen />} />
             <Route path="/agenda" element={<AgendaScreen />} />
             <Route path="/map" element={<MapScreen />} />
-            <Route path="/alerts" element={<AlertsScreen />} />
+            <Route path="/notifications" element={<NotificationsScreen />} />
             <Route path="/info" element={<InfoScreen />} />
             <Route path="/details/:type/:id" element={<DetailsScreen />} />
           </Route>
         </Route>
 
-        {/* Rotas do admin com AdminAuthProvider */}
-        <Route element={<AdminAuthProvider />}>
-          {/* Rota de login do admin (pública) */}
-          <Route path="/admin/login" element={<LoginForm />} />
+        {/* Rotas do admin - removido AdminAuthProvider */}
+        {/* Rota de login do admin (pública) */}
+        <Route path="/admin/login" element={<LoginForm />} />
 
           {/* Rotas protegidas do admin com AdminLayout */}
           <Route element={<AuthGuard isPrivate tokenKey="admin_token" redirectTo="/admin/login" />}>
