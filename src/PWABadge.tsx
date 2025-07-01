@@ -35,9 +35,9 @@ function PWABadge() {
         <div className="PWABadge-toast">
           <div className="PWABadge-message">
             {offlineReady ? (
-              <span id="toast-message">App ready to work offline</span>
+              <span id="toast-message">App pronto para funcionar offline</span>
             ) : (
-              <span id="toast-message">New content available, click on reload button to update.</span>
+              <span id="toast-message">Novo conteúdo disponível, clique no botão de recarregar para atualizar.</span>
             )}
           </div>
           <div className="PWABadge-buttons">
