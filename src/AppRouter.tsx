@@ -58,19 +58,18 @@ export function AppRouter() {
         {/* Rota de login do admin (pública) */}
         <Route path="/admin/login" element={<LoginForm />} />
 
-          {/* Rotas protegidas do admin com AdminLayout */}
-          <Route element={<AuthGuard isPrivate tokenKey="admin_token" redirectTo="/admin/login" />}>
-            <Route element={<AdminLayout />}>
-              <Route path="/admin" element={<Dashboard />} />
-              <Route path="/admin/users" element={<UsersPage />} />
-              <Route path="/admin/admins" element={<AdminsPage />} />
-              <Route path="/admin/companies" element={<CompaniesPage />} />
-              <Route path="/admin/categories" element={<CategoriesPage />} />
-              <Route path="/admin/activities" element={<ActivitiesPage />} />
-              <Route path="/admin/stands" element={<StandsPage />} />
-              <Route path="/admin/highlights" element={<HighlightsPage />} />
-              <Route path="/admin/notifications" element={<NotificationsPage />} />
-            </Route>
+        {/* Rotas protegidas do admin com AdminLayout */}
+        <Route element={<AuthGuard isPrivate tokenKey="admin_token" redirectTo="/admin/login" />}>
+          <Route element={<AdminLayout />}>
+            <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin/users" element={<UsersPage />} />
+            <Route path="/admin/admins" element={<AdminsPage />} />
+            <Route path="/admin/companies" element={<CompaniesPage />} />
+            <Route path="/admin/categories" element={<CategoriesPage />} />
+            <Route path="/admin/activities" element={<ActivitiesPage />} />
+            <Route path="/admin/stands" element={<StandsPage />} />
+            <Route path="/admin/highlights" element={<HighlightsPage />} />
+            <Route path="/admin/notifications" element={<NotificationsPage />} />
           </Route>
         </Route>
 
