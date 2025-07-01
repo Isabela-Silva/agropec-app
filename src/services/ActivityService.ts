@@ -1,5 +1,10 @@
 import { api } from './api';
-import type { IActivityResponse, ICreateActivity, IUpdateActivity } from './interfaces/activity';
+import type {
+  IActivityResponse,
+  IActivityWithCompanyResponse,
+  ICreateActivity,
+  IUpdateActivity,
+} from './interfaces/activity';
 import type { ApiError, ApiResponse } from './interfaces/api';
 
 export class ActivityService {
@@ -12,9 +17,9 @@ export class ActivityService {
     }
   }
 
-  static async getById(uuid: string): Promise<IActivityResponse> {
+  static async getById(uuid: string): Promise<IActivityWithCompanyResponse> {
     try {
-      const response = await api.get<ApiResponse<IActivityResponse>>(`/activities/uuid/${uuid}`);
+      const response = await api.get<ApiResponse<IActivityWithCompanyResponse>>(`/activities/uuid/${uuid}`);
       return response.data.data;
     } catch (error) {
       throw error as ApiError;

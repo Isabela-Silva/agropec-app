@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ICompany } from './company';
 
 const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
 
@@ -57,4 +58,11 @@ export interface IActivityResponse extends IActivity {
   createdAt?: Date;
   updatedAt?: Date;
   imageUrls?: string[]; // URLs das imagens após upload
+}
+
+export interface IActivityWithCompanyResponse extends Omit<IActivity, 'companyId'> {
+  _id: string;
+  company: ICompany;
+  createdAt: Date;
+  updatedAt: Date;
 }

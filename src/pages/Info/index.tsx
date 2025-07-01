@@ -1,6 +1,5 @@
 import { Calendar, Clock, LogOut, MapPin, MapPin as MapPinIcon, Phone, User } from 'lucide-react';
 import { useState } from 'react';
-import Header from '../../components/Header';
 import { useUserAuth } from '../../hooks/useUserAuth';
 import FaqItem from './components/FaqItem';
 import InfoItem from './components/InfoItem';
@@ -44,7 +43,6 @@ export function InfoScreen() {
   if (!user) {
     return (
       <main className="min-h-screen bg-base-white-light text-base-black">
-        <Header title="Perfil" showBackButton={true} />
         <div className="flex min-h-[400px] items-center justify-center p-4">
           <div className="text-center">
             <User className="mx-auto mb-4 h-12 w-12 text-gray-400" />
@@ -57,7 +55,6 @@ export function InfoScreen() {
 
   return (
     <main className="min-h-screen bg-base-white-light text-base-black">
-      <Header title="AgroPec 2025" showBackButton={true} />
       <div className="space-y-4 p-3 sm:space-y-6 sm:p-4">
         {/* Seção do usuário logado */}
         {user && (

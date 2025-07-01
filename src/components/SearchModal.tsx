@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { Calendar, Clock, MapPin, Search, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, X, MapPin, Clock, Calendar } from 'lucide-react';
 import { ActivityService } from '../services/ActivityService';
 import { StandService } from '../services/StandService';
 import { IActivityResponse } from '../services/interfaces/activity';
@@ -24,18 +24,18 @@ const formatDate = (dateString: string): string => {
       const date = new Date(dateString);
       return date.toLocaleDateString('pt-BR');
     }
-    
+
     // Se for uma data no formato dd/mm/yyyy
     if (dateString.includes('/')) {
       return dateString;
     }
-    
+
     // Se for uma data no formato yyyy-mm-dd
     if (dateString.includes('-') && dateString.length === 10) {
       const [year, month, day] = dateString.split('-');
       return `${day}/${month}/${year}`;
     }
-    
+
     // Se não conseguir formatar, retorna como está
     return dateString;
   } catch (error) {
@@ -88,14 +88,14 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
     setLoading(true);
     setError(null);
-    
+
     try {
       console.log('Iniciando pesquisa para:', query);
-      
+
       // Buscar atividades e stands pelo nome
       const activities = await ActivityService.getByName(query);
       let stands: IStandResponse[] = [];
-      
+
       try {
         const stand = await StandService.getByName(query);
         if (stand) {
@@ -113,9 +113,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       const activitiesArray = Array.isArray(activities) ? activities : [];
       const standsArray = Array.isArray(stands) ? stands : [];
 
-      console.log('Arrays processados:', { 
-        activitiesArray: activitiesArray.length, 
-        standsArray: standsArray.length 
+      console.log('Arrays processados:', {
+        activitiesArray: activitiesArray.length,
+        standsArray: standsArray.length,
       });
 
       const searchResults: SearchResult[] = [
@@ -125,14 +125,15 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
       setResults(searchResults);
       console.log('Total de resultados:', searchResults.length);
-      
     } catch (error: any) {
       console.error('Erro detalhado na pesquisa:', error);
       console.error('Response data:', error.response?.data);
       console.error('Response status:', error.response?.status);
       console.error('Response headers:', error.response?.headers);
-      
-      setError(`Erro na pesquisa: ${error.response?.status || 'Desconhecido'} - ${error.response?.data?.message || error.message}`);
+
+      setError(
+        `Erro na pesquisa: ${error.response?.status || 'Desconhecido'} - ${error.response?.data?.message || error.message}`,
+      );
       setResults([]);
     } finally {
       setLoading(false);
@@ -143,7 +144,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     // Usar uuid em vez de _id para navegação
     const id = result.data.uuid || result.data._id;
     console.log('Navegando para detalhes do resultado:', { type: result.type, id, data: result.data });
-    navigate(`/details/${result.type}/${id}`);
+    navigate(`/detalhes/${result.type}/${id}`);
     onClose();
     setQuery('');
     setResults([]);
@@ -158,23 +159,20 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-start justify-center p-4">
-      <div className="bg-white rounded-lg w-full max-w-md mt-16 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 p-4">
+      <div className="mt-16 w-full max-w-md rounded-lg bg-white shadow-xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center justify-between border-b p-4">
           <h2 className="text-lg font-semibold">Pesquisar</h2>
-          <button
-            onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-full"
-          >
+          <button onClick={onClose} className="rounded-full p-1 hover:bg-gray-100">
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Search Input */}
-        <div className="p-4 border-b">
+        <div className="border-b p-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
             <input
               ref={inputRef}
               type="text"
@@ -182,7 +180,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
         </div>
@@ -191,14 +189,14 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         <div className="max-h-96 overflow-y-auto">
           {loading && (
             <div className="p-4 text-center">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto"></div>
+              <div className="mx-auto h-6 w-6 animate-spin rounded-full border-b-2 border-primary"></div>
               <p className="mt-2 text-sm text-gray-500">Pesquisando...</p>
             </div>
           )}
 
           {error && (
             <div className="p-4 text-center">
-              <p className="text-red-500 text-sm">{error}</p>
+              <p className="text-sm text-red-500">{error}</p>
             </div>
           )}
 
@@ -213,12 +211,12 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               {results.map((result, index) => {
                 const isActivity = result.type === 'activity';
                 const data = result.data;
-                
+
                 return (
                   <div
                     key={`${result.type}-${result.data.uuid || result.data._id}`}
                     onClick={() => handleResultClick(result)}
-                    className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors"
+                    className="flex cursor-pointer items-center space-x-3 rounded-lg p-3 transition-colors hover:bg-gray-50"
                   >
                     {/* Thumbnail */}
                     <div className="flex-shrink-0">
@@ -228,10 +226,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           <img
                             src={(data as IActivityResponse).imageUrls![0]}
                             alt={data.name}
-                            className="w-12 h-12 rounded-lg object-cover"
+                            className="h-12 w-12 rounded-lg object-cover"
                           />
                         ) : (
-                          <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-200">
                             <MapPin className="h-5 w-5 text-gray-400" />
                           </div>
                         )
@@ -241,13 +239,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           const imageUrls = (data as IStandResponse).imageUrls;
                           const imageUrl = Array.isArray(imageUrls) ? imageUrls[0] : imageUrls;
                           return imageUrl ? (
-                            <img
-                              src={imageUrl}
-                              alt={data.name}
-                              className="w-12 h-12 rounded-lg object-cover"
-                            />
+                            <img src={imageUrl} alt={data.name} className="h-12 w-12 rounded-lg object-cover" />
                           ) : (
-                            <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-200">
                               <MapPin className="h-5 w-5 text-gray-400" />
                             </div>
                           );
@@ -256,35 +250,32 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <h3 className="font-medium text-sm truncate">{data.name}</h3>
-                        <span className={`text-xs px-2 py-1 rounded-full ${
-                          isActivity 
-                            ? 'bg-blue-100 text-blue-800' 
-                            : 'bg-green-100 text-green-800'
-                        }`}>
+                    <div className="min-w-0 flex-1">
+                      <div className="mb-1 flex items-center space-x-2">
+                        <h3 className="truncate text-sm font-medium">{data.name}</h3>
+                        <span
+                          className={`rounded-full px-2 py-1 text-xs ${
+                            isActivity ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
+                          }`}
+                        >
                           {isActivity ? 'Atividade' : 'Stand'}
                         </span>
                       </div>
-                      
-                      <p className="text-xs text-gray-500 truncate mb-1">
-                        {data.description}
-                      </p>
-                      
+
+                      <p className="mb-1 truncate text-xs text-gray-500">{data.description}</p>
+
                       <div className="flex items-center space-x-3 text-xs text-gray-400">
                         <div className="flex items-center space-x-1">
                           <Calendar className="h-3 w-3" />
                           <span>{formatDate(data.date)}</span>
                         </div>
-                        
+
                         <div className="flex items-center space-x-1">
                           <Clock className="h-3 w-3" />
                           <span>
-                            {isActivity 
+                            {isActivity
                               ? `${(data as IActivityResponse).startTime} - ${(data as IActivityResponse).endTime}`
-                              : `${(data as IStandResponse).openingTime || 'N/A'} - ${(data as IStandResponse).closingTime || 'N/A'}`
-                            }
+                              : `${(data as IStandResponse).openingTime || 'N/A'} - ${(data as IStandResponse).closingTime || 'N/A'}`}
                           </span>
                         </div>
                       </div>
@@ -298,4 +289,4 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       </div>
     </div>
   );
-} 
+}

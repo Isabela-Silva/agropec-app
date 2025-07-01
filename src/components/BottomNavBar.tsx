@@ -27,12 +27,12 @@ const BottomNavBar: React.FC = () => {
     { path: '/explore', icon: Home },
     { path: '/agenda', icon: Calendar },
     { path: '/map', icon: MapPin },
-    { path: '/notifications', icon: Bell, badge: unreadCount },
+    { path: '/notificacoes', icon: Bell, badge: unreadCount },
     { path: '/info', icon: Info },
   ];
 
   return (
-    <div className="fixed inset-x-4 bottom-4 mx-auto max-w-md">
+    <div className="fixed inset-x-4 bottom-4 z-40 mx-auto max-w-md">
       <div className="flex items-center justify-around rounded-full bg-green-500 px-6 py-4 shadow-lg shadow-base-gray-light">
         {navItems.map((item) => {
           const Icon = item.icon;

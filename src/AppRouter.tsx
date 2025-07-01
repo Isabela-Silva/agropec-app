@@ -48,9 +48,9 @@ export function AppRouter() {
             <Route path="/explore" element={<ExploreScreen />} />
             <Route path="/agenda" element={<AgendaScreen />} />
             <Route path="/map" element={<MapScreen />} />
-            <Route path="/notifications" element={<NotificationsScreen />} />
+            <Route path="/notificacoes" element={<NotificationsScreen />} />
             <Route path="/info" element={<InfoScreen />} />
-            <Route path="/details/:type/:id" element={<DetailsScreen />} />
+            <Route path="/detalhes/:type/:id" element={<DetailsScreen />} />
           </Route>
         </Route>
 

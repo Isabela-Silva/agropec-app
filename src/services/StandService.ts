@@ -1,6 +1,6 @@
 import { api } from './api';
 import type { ApiError, ApiResponse } from './interfaces/api';
-import type { ICreateStand, IStandResponse, IUpdateStand } from './interfaces/stand';
+import type { ICreateStand, IStandResponse, IStandWithCompanyResponse, IUpdateStand } from './interfaces/stand';
 
 export class StandService {
   static async getAll(): Promise<IStandResponse[]> {
@@ -12,9 +12,9 @@ export class StandService {
     }
   }
 
-  static async getById(uuid: string): Promise<IStandResponse> {
+  static async getById(uuid: string): Promise<IStandWithCompanyResponse> {
     try {
-      const response = await api.get<ApiResponse<IStandResponse>>(`/stands/uuid/${uuid}`);
+      const response = await api.get<ApiResponse<IStandWithCompanyResponse>>(`/stands/uuid/${uuid}`);
       return response.data.data;
     } catch (error) {
       throw error as ApiError;

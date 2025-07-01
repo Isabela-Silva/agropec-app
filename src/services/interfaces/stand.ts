@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ICompany } from './company';
 
 const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
 
@@ -52,6 +53,12 @@ export type IUpdateStand = z.infer<typeof UpdateStandSchema>;
 
 export interface IStandResponse extends IStand {
   _id: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export interface IStandWithCompanyResponse extends Omit<IStand, 'companyId'> {
+  _id: string;
+  company: ICompany;
   createdAt?: Date;
   updatedAt?: Date;
 }

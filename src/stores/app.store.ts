@@ -6,12 +6,24 @@ import type { IUser } from '../services/interfaces/user';
 type LoggedInUser = Omit<IUser, 'password'>;
 type LoggedInAdmin = Omit<IAdmin, 'password'>;
 
+// Tipo para configuração do header
+interface PageHeader {
+  title: string;
+  showBackButton: boolean;
+  showSearch: boolean;
+  hasCustomHeader: boolean;
+}
+
 interface AppState {
   // Splash e PWA
   hasSplashShown: boolean;
   setSplashShown: (value: boolean) => void;
   hasClosedPWA: boolean;
   setClosedPWA: (value: boolean) => void;
+
+  // Page Header
+  pageHeader: PageHeader;
+  setPageHeader: (header: PageHeader) => void;
 
   // Autenticação de usuário
   user: LoggedInUser | null;
@@ -35,6 +47,15 @@ export const useAppStore = create<AppState>((set) => ({
   setSplashShown: (value) => set({ hasSplashShown: value }),
   hasClosedPWA: false,
   setClosedPWA: (value) => set({ hasClosedPWA: value }),
+
+  // Page Header
+  pageHeader: {
+    title: 'AgroPec',
+    showBackButton: false,
+    showSearch: false,
+    hasCustomHeader: false,
+  },
+  setPageHeader: (header) => set({ pageHeader: header }),
 
   // Autenticação de usuário
   user: null,

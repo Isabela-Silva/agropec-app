@@ -3,7 +3,6 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { AlertCircle, Bell, Calendar, Check, CheckCheck, Loader2, Store, Trash2, User } from 'lucide-react';
 import { useState } from 'react';
-import Header from '../../components/Header';
 import { useUserAuth } from '../../hooks/useUserAuth';
 import { UserNotificationService } from '../../services/UserNotificationService';
 import type { INotificationItem } from '../../services/interfaces/userNotification';
@@ -207,7 +206,6 @@ export function NotificationsScreen() {
   if (!user) {
     return (
       <main className="min-h-screen bg-base-white-light text-base-black">
-        <Header title="Notificações" showBackButton={true} />
         <div className="flex min-h-[400px] items-center justify-center p-3 sm:p-4">
           <div className="text-center">
             <User className="mx-auto mb-3 h-8 w-8 text-gray-400 sm:mb-4 sm:h-12 sm:w-12" />
@@ -221,7 +219,6 @@ export function NotificationsScreen() {
   if (isLoading) {
     return (
       <main className="min-h-screen bg-base-white-light text-base-black">
-        <Header title="Notificações" showBackButton={true} />
         <div className="flex min-h-[400px] items-center justify-center p-3 sm:p-4">
           <div className="text-center">
             <Loader2 className="mx-auto mb-3 h-6 w-6 animate-spin text-gray-400 sm:mb-4 sm:h-8 sm:w-8" />
@@ -235,7 +232,6 @@ export function NotificationsScreen() {
   if (error) {
     return (
       <main className="min-h-screen bg-base-white-light text-base-black">
-        <Header title="Notificações" showBackButton={true} />
         <div className="flex min-h-[400px] items-center justify-center p-3 sm:p-4">
           <div className="text-center">
             <AlertCircle className="mx-auto mb-3 h-8 w-8 text-red-400 sm:mb-4 sm:h-12 sm:w-12" />
@@ -255,8 +251,6 @@ export function NotificationsScreen() {
 
   return (
     <main className="min-h-screen bg-base-white-light text-base-black">
-      <Header title="Notificações" showBackButton={true} />
-
       <div className="p-3 sm:p-4">
         {/* Cabeçalho com descrição */}
         <div className="mb-4 rounded-lg bg-white p-4 shadow-sm sm:mb-6 sm:p-6">
