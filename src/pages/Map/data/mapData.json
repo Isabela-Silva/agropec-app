@@ -1,0 +1,5997 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Área Comum",
+        "color": "#2196f3",
+        "localização": "",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              949.792501,
+              842.998656
+            ],
+            [
+              950.069435,
+              1039.05188
+            ],
+            [
+              1355.17059,
+              1039.05188
+            ],
+            [
+              1355.17059,
+              849.926226
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              948.068935,
+              1041.05321
+            ],
+            [
+              948.068935,
+              1169.138308
+            ],
+            [
+              1015.08567,
+              1169.138308
+            ],
+            [
+              1015.08567,
+              1041.05321
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1210.134374,
+              1045.055869
+            ],
+            [
+              1210.134374,
+              1169.138308
+            ],
+            [
+              1355.17059,
+              1169.138308
+            ],
+            [
+              1355.17059,
+              1045.055869
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              902.768295,
+              965.923218
+            ],
+            [
+              902.768295,
+              1039.972415
+            ],
+            [
+              938.0271,
+              1039.972415
+            ],
+            [
+              938.0271,
+              965.923218
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Banheiro",
+        "tipo": "Banheiros",
+        "color": "#64d2ff",
+        "localização": "",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1101.800392,
+              781.309075
+            ],
+            [
+              1102.394996,
+              833.634188
+            ],
+            [
+              1166.61218,
+              835.417998
+            ],
+            [
+              1166.017576,
+              781.309075
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Baia de animais",
+        "tipo": "Área Comum",
+        "color": "#4caf50",
+        "localização": "",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1402.197315,
+              569.631728
+            ],
+            [
+              1402.197315,
+              1332.138331
+            ],
+            [
+              1598.246269,
+              1332.138331
+            ],
+            [
+              1598.246269,
+              569.631728
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1404.5,
+              320.997341
+            ],
+            [
+              1404.5,
+              518.419899
+            ],
+            [
+              1592,
+              518.419899
+            ],
+            [
+              1592,
+              320.997341
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1190.523353,
+              489.448819
+            ],
+            [
+              1190.523353,
+              597.520621
+            ],
+            [
+              1352.563815,
+              597.520621
+            ],
+            [
+              1352.563815,
+              489.448819
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1353.06394,
+              561.496687
+            ],
+            [
+              1353.06394,
+              586.012976
+            ],
+            [
+              1371.568561,
+              586.012976
+            ],
+            [
+              1371.568561,
+              561.496687
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1353.06394,
+              537.480731
+            ],
+            [
+              1353.06394,
+              560.996355
+            ],
+            [
+              1371.568561,
+              560.996355
+            ],
+            [
+              1371.568561,
+              537.480731
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1352.563815,
+              514.46544
+            ],
+            [
+              1352.563815,
+              536.980399
+            ],
+            [
+              1371.568561,
+              536.980399
+            ],
+            [
+              1371.568561,
+              514.46544
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1352.563815,
+              489.448819
+            ],
+            [
+              1352.563815,
+              512.46411
+            ],
+            [
+              1371.568561,
+              512.46411
+            ],
+            [
+              1371.568561,
+              489.448819
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1150.013238,
+              535.479402
+            ],
+            [
+              1150.013238,
+              597.020289
+            ],
+            [
+              1190.023228,
+              597.020289
+            ],
+            [
+              1190.023228,
+              535.479402
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1149.513113,
+              470.936188
+            ],
+            [
+              1149.513113,
+              531.476742
+            ],
+            [
+              1190.523603,
+              531.476742
+            ],
+            [
+              1190.523603,
+              470.936188
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1191.009616,
+              472.495518
+            ],
+            [
+              1191.009616,
+              488.005823
+            ],
+            [
+              1219.766797,
+              488.005823
+            ],
+            [
+              1219.766797,
+              472.495518
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1220.516984,
+              472.495518
+            ],
+            [
+              1220.516984,
+              488.005823
+            ],
+            [
+              1247.023603,
+              488.005823
+            ],
+            [
+              1247.023603,
+              472.495518
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1248.023853,
+              472.495518
+            ],
+            [
+              1248.023853,
+              488.255989
+            ],
+            [
+              1275.530721,
+              488.255989
+            ],
+            [
+              1275.530721,
+              472.495518
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1276.030846,
+              473.496183
+            ],
+            [
+              1276.030846,
+              488.506155
+            ],
+            [
+              1303.787777,
+              488.506155
+            ],
+            [
+              1303.787777,
+              473.496183
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1304.287902,
+              473.246017
+            ],
+            [
+              1304.287902,
+              489.256654
+            ],
+            [
+              1331.544708,
+              489.256654
+            ],
+            [
+              1331.544708,
+              473.246017
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo rectangle",
+        "tipo": "Ponto",
+        "color": "#2196F3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1332.044833,
+              473.996515
+            ],
+            [
+              1332.044833,
+              488.756322
+            ],
+            [
+              1372.554948,
+              488.756322
+            ],
+            [
+              1372.554948,
+              473.996515
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Escritorio Projeto",
+        "tipo": "Área Comum",
+        "color": "#007aff",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:00:32.357Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1180.868325,
+              1232.48712
+            ],
+            [
+              1180.868325,
+              1333.249836
+            ],
+            [
+              1373.908476,
+              1333.249836
+            ],
+            [
+              1373.908476,
+              1232.48712
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Entrada/Saida",
+        "tipo": "Entradas",
+        "color": "#ff9800",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:01:58.663Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1113.339627,
+              1339.613797
+            ],
+            [
+              1113.339627,
+              1368.605175
+            ],
+            [
+              1169.554616,
+              1368.605175
+            ],
+            [
+              1169.554616,
+              1339.613797
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Escritorios",
+        "tipo": "Área Comum",
+        "color": "#007aff",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:04:09.836Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              809.637264,
+              1269.963779
+            ],
+            [
+              809.637264,
+              1342.088671
+            ],
+            [
+              1036.972095,
+              1342.088671
+            ],
+            [
+              1036.972095,
+              1269.963779
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "04",
+        "tipo": "Área Comum",
+        "color": "#007aff",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:06:12.510Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              660.791287,
+              1353.755933
+            ],
+            [
+              793.727362,
+              1352.695272
+            ],
+            [
+              790.898935,
+              1213.041683
+            ],
+            [
+              753.775829,
+              1211.62747
+            ],
+            [
+              754.129382,
+              1276.681293
+            ],
+            [
+              660.08418,
+              1277.3884
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:06:46.354Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              657.96286,
+              1210.920363
+            ],
+            [
+              657.96286,
+              1276.32774
+            ],
+            [
+              689.782665,
+              1276.32774
+            ],
+            [
+              689.782665,
+              1210.920363
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:07:09.636Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              690.843325,
+              1211.62747
+            ],
+            [
+              690.843325,
+              1276.681293
+            ],
+            [
+              753.068722,
+              1276.681293
+            ],
+            [
+              753.068722,
+              1211.62747
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:07:26.295Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              611.647366,
+              1211.273916
+            ],
+            [
+              611.647366,
+              1353.755933
+            ],
+            [
+              659.730627,
+              1353.755933
+            ],
+            [
+              659.730627,
+              1211.273916
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:07:52.461Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              519.016377,
+              1353.048826
+            ],
+            [
+              539.522474,
+              1212.334576
+            ],
+            [
+              610.233152,
+              1210.920363
+            ],
+            [
+              610.586706,
+              1353.402379
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:08:15.994Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1147.403159,
+              684.91013
+            ],
+            [
+              1147.403159,
+              747.767137
+            ],
+            [
+              1190.4991,
+              747.767137
+            ],
+            [
+              1190.4991,
+              684.91013
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:08:27.467Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1147.403159,
+              622.683795
+            ],
+            [
+              1147.403159,
+              684.069234
+            ],
+            [
+              1190.919548,
+              684.069234
+            ],
+            [
+              1190.919548,
+              622.683795
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:08:40.604Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1191.970669,
+              622.263347
+            ],
+            [
+              1191.970669,
+              685.120354
+            ],
+            [
+              1235.697282,
+              685.120354
+            ],
+            [
+              1235.697282,
+              622.263347
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:08:51.783Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1191.129772,
+              685.751027
+            ],
+            [
+              1191.129772,
+              747.556913
+            ],
+            [
+              1234.856386,
+              747.556913
+            ],
+            [
+              1234.856386,
+              685.751027
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:09:02.436Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1235.697282,
+              684.489682
+            ],
+            [
+              1235.697282,
+              747.767137
+            ],
+            [
+              1279.844344,
+              747.767137
+            ],
+            [
+              1279.844344,
+              684.489682
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:09:13.530Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1235.487058,
+              623.524692
+            ],
+            [
+              1235.487058,
+              683.648786
+            ],
+            [
+              1280.475016,
+              683.648786
+            ],
+            [
+              1280.475016,
+              623.524692
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:09:28.638Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1280.054568,
+              685.540803
+            ],
+            [
+              1280.054568,
+              747.556913
+            ],
+            [
+              1323.781182,
+              747.556913
+            ],
+            [
+              1323.781182,
+              685.540803
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:09:36.944Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1280.895465,
+              623.314468
+            ],
+            [
+              1280.895465,
+              683.648786
+            ],
+            [
+              1324.411854,
+              683.648786
+            ],
+            [
+              1324.411854,
+              623.314468
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:09:43.482Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1324.832302,
+              623.104244
+            ],
+            [
+              1324.832302,
+              684.489682
+            ],
+            [
+              1368.348692,
+              684.489682
+            ],
+            [
+              1368.348692,
+              623.104244
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:09:54.536Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1324.20163,
+              685.540803
+            ],
+            [
+              1324.20163,
+              747.556913
+            ],
+            [
+              1368.138468,
+              747.556913
+            ],
+            [
+              1368.138468,
+              685.540803
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:10:30.585Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              896.662165,
+              616.901191
+            ],
+            [
+              896.662165,
+              679.037263
+            ],
+            [
+              943.338544,
+              679.037263
+            ],
+            [
+              943.338544,
+              616.901191
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:10:39.879Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              943.933148,
+              616.306587
+            ],
+            [
+              943.933148,
+              678.145357
+            ],
+            [
+              989.42032,
+              678.145357
+            ],
+            [
+              989.42032,
+              616.306587
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:10:48.592Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              990.609527,
+              616.306587
+            ],
+            [
+              990.609527,
+              677.848056
+            ],
+            [
+              1035.204794,
+              677.848056
+            ],
+            [
+              1035.204794,
+              616.306587
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:10:56.178Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1036.394001,
+              616.306587
+            ],
+            [
+              1036.394001,
+              677.848056
+            ],
+            [
+              1081.881173,
+              677.848056
+            ],
+            [
+              1081.881173,
+              616.306587
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:11:06.940Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1082.773078,
+              616.603889
+            ],
+            [
+              1082.773078,
+              679.037263
+            ],
+            [
+              1128.26025,
+              679.037263
+            ],
+            [
+              1128.26025,
+              616.603889
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:11:18.515Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              895.770259,
+              679.929168
+            ],
+            [
+              895.770259,
+              741.470636
+            ],
+            [
+              942.149337,
+              741.470636
+            ],
+            [
+              942.149337,
+              679.929168
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:11:27.276Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1081.881173,
+              679.929168
+            ],
+            [
+              1081.881173,
+              740.876033
+            ],
+            [
+              1128.26025,
+              740.876033
+            ],
+            [
+              1128.26025,
+              679.929168
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:11:33.644Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              943.041242,
+              680.523772
+            ],
+            [
+              943.041242,
+              740.876033
+            ],
+            [
+              989.42032,
+              740.876033
+            ],
+            [
+              989.42032,
+              680.523772
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:11:44.617Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              988.825716,
+              679.334564
+            ],
+            [
+              988.825716,
+              739.686826
+            ],
+            [
+              1035.502095,
+              739.686826
+            ],
+            [
+              1035.502095,
+              679.334564
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:11:57.689Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1035.799397,
+              678.739961
+            ],
+            [
+              1035.799397,
+              741.470636
+            ],
+            [
+              1081.583871,
+              741.470636
+            ],
+            [
+              1081.583871,
+              678.739961
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:12:43.924Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              897.851372,
+              467.655698
+            ],
+            [
+              897.851372,
+              493.818255
+            ],
+            [
+              942.74394,
+              493.818255
+            ],
+            [
+              942.74394,
+              467.655698
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:12:57.804Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              943.933148,
+              467.061094
+            ],
+            [
+              943.933148,
+              493.520953
+            ],
+            [
+              989.42032,
+              493.520953
+            ],
+            [
+              989.42032,
+              467.061094
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:13:24.949Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              990.312225,
+              467.061094
+            ],
+            [
+              990.312225,
+              495.304763
+            ],
+            [
+              1036.096699,
+              495.304763
+            ],
+            [
+              1036.096699,
+              467.061094
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:13:33.700Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1036.691303,
+              467.061094
+            ],
+            [
+              1036.691303,
+              495.007462
+            ],
+            [
+              1082.178475,
+              495.007462
+            ],
+            [
+              1082.178475,
+              467.061094
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:13:46.407Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1083.07038,
+              467.655698
+            ],
+            [
+              1083.07038,
+              496.196669
+            ],
+            [
+              1128.557552,
+              496.196669
+            ],
+            [
+              1128.557552,
+              467.655698
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:13:58.214Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              897.851372,
+              495.007462
+            ],
+            [
+              897.851372,
+              591.333238
+            ],
+            [
+              943.041242,
+              591.333238
+            ],
+            [
+              943.041242,
+              495.007462
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:14:07.985Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1082.178475,
+              497.385876
+            ],
+            [
+              1082.178475,
+              594.008954
+            ],
+            [
+              1127.962949,
+              594.008954
+            ],
+            [
+              1127.962949,
+              497.385876
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:14:16.404Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              943.933148,
+              495.304763
+            ],
+            [
+              943.933148,
+              591.927841
+            ],
+            [
+              989.42032,
+              591.927841
+            ],
+            [
+              989.42032,
+              495.304763
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:14:23.434Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              989.717621,
+              496.196669
+            ],
+            [
+              989.717621,
+              592.522445
+            ],
+            [
+              1035.799397,
+              592.522445
+            ],
+            [
+              1035.799397,
+              496.196669
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:14:33.550Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1036.096699,
+              496.196669
+            ],
+            [
+              1036.096699,
+              592.522445
+            ],
+            [
+              1082.178475,
+              592.522445
+            ],
+            [
+              1082.178475,
+              496.196669
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Parque de Diversão",
+        "tipo": "Área Comum",
+        "color": "#007aff",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:15:57.810Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              862.769762,
+              258.652548
+            ],
+            [
+              1369.371993,
+              262.220169
+            ],
+            [
+              1366.993579,
+              94.541966
+            ],
+            [
+              683.794091,
+              87.406723
+            ],
+            [
+              695.686162,
+              438.222822
+            ],
+            [
+              864.553573,
+              433.465993
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:16:53.797Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              895.472958,
+              292.842252
+            ],
+            [
+              895.472958,
+              442.087745
+            ],
+            [
+              938.284414,
+              442.087745
+            ],
+            [
+              938.284414,
+              292.842252
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:17:06.593Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              939.770923,
+              351.410702
+            ],
+            [
+              939.770923,
+              441.790443
+            ],
+            [
+              994.771752,
+              441.790443
+            ],
+            [
+              994.771752,
+              351.410702
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:17:17.484Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              995.621356,
+              351.074253
+            ],
+            [
+              995.960959,
+              441.493141
+            ],
+            [
+              1051.556391,
+              441.493141
+            ],
+            [
+              1052.17164,
+              351.494702
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:17:24.765Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1052.745599,
+              351.708004
+            ],
+            [
+              1052.745599,
+              442.97965
+            ],
+            [
+              1109.82754,
+              442.97965
+            ],
+            [
+              1109.82754,
+              351.708004
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:17:35.708Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1110.422144,
+              351.410702
+            ],
+            [
+              1110.422144,
+              443.276952
+            ],
+            [
+              1168.098689,
+              443.276952
+            ],
+            [
+              1168.098689,
+              351.410702
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:17:45.592Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1168.098689,
+              353.194513
+            ],
+            [
+              1168.098689,
+              442.385047
+            ],
+            [
+              1224.288725,
+              442.385047
+            ],
+            [
+              1224.288725,
+              353.194513
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:17:54.297Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1225.18063,
+              352.59991
+            ],
+            [
+              1225.18063,
+              443.574254
+            ],
+            [
+              1282.857175,
+              443.574254
+            ],
+            [
+              1282.857175,
+              352.59991
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:18:09.165Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1283.451779,
+              352.897211
+            ],
+            [
+              1283.451779,
+              443.871556
+            ],
+            [
+              1330.42546,
+              443.871556
+            ],
+            [
+              1330.42546,
+              352.897211
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:18:18.889Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1331.317365,
+              353.194513
+            ],
+            [
+              1331.317365,
+              444.466159
+            ],
+            [
+              1369.966596,
+              444.466159
+            ],
+            [
+              1369.966596,
+              353.194513
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:18:43.062Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1352.792108,
+              294.103521
+            ],
+            [
+              1352.792108,
+              351.704926
+            ],
+            [
+              1369.610036,
+              351.704926
+            ],
+            [
+              1369.610036,
+              294.103521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:19:33.082Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1335.343507,
+              294.313745
+            ],
+            [
+              1335.343507,
+              351.704926
+            ],
+            [
+              1351.320539,
+              351.704926
+            ],
+            [
+              1351.320539,
+              294.313745
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:19:40.374Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1319.366476,
+              294.103521
+            ],
+            [
+              1319.366476,
+              351.704926
+            ],
+            [
+              1334.923059,
+              351.704926
+            ],
+            [
+              1334.923059,
+              294.103521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:19:49.859Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1302.338323,
+              294.313745
+            ],
+            [
+              1302.338323,
+              351.494702
+            ],
+            [
+              1318.525579,
+              351.494702
+            ],
+            [
+              1318.525579,
+              294.313745
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:19:57.070Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1285.310171,
+              294.313745
+            ],
+            [
+              1285.310171,
+              351.494702
+            ],
+            [
+              1301.707651,
+              351.494702
+            ],
+            [
+              1301.707651,
+              294.313745
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:20:08.813Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1268.282018,
+              294.734194
+            ],
+            [
+              1268.282018,
+              351.91515
+            ],
+            [
+              1284.469274,
+              351.91515
+            ],
+            [
+              1284.469274,
+              294.734194
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:20:25.437Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1251.884538,
+              294.103521
+            ],
+            [
+              1251.884538,
+              352.125374
+            ],
+            [
+              1267.651346,
+              352.125374
+            ],
+            [
+              1267.651346,
+              294.103521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:20:32.968Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1235.06661,
+              294.103521
+            ],
+            [
+              1235.06661,
+              351.074253
+            ],
+            [
+              1251.253866,
+              351.074253
+            ],
+            [
+              1251.253866,
+              294.103521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:20:44.422Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1218.038457,
+              293.893297
+            ],
+            [
+              1218.038457,
+              351.704926
+            ],
+            [
+              1234.225713,
+              351.704926
+            ],
+            [
+              1234.225713,
+              293.893297
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:20:57.239Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1201.640977,
+              294.103521
+            ],
+            [
+              1201.640977,
+              351.91515
+            ],
+            [
+              1217.828233,
+              351.91515
+            ],
+            [
+              1217.828233,
+              294.103521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:21:10.305Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1185.243497,
+              294.734194
+            ],
+            [
+              1185.243497,
+              350.653805
+            ],
+            [
+              1201.010305,
+              350.653805
+            ],
+            [
+              1201.010305,
+              294.734194
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:21:19.469Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1168.425569,
+              294.734194
+            ],
+            [
+              1168.425569,
+              350.653805
+            ],
+            [
+              1184.612825,
+              350.653805
+            ],
+            [
+              1184.612825,
+              294.734194
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:21:29.029Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1078.659877,
+              294.734194
+            ],
+            [
+              1078.659877,
+              350.653805
+            ],
+            [
+              1168.005121,
+              350.653805
+            ],
+            [
+              1168.005121,
+              294.734194
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:21:40.510Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              939.911968,
+              294.103521
+            ],
+            [
+              939.911968,
+              349.812909
+            ],
+            [
+              978.172755,
+              349.812909
+            ],
+            [
+              978.172755,
+              294.103521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:21:47.662Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              978.803427,
+              293.893297
+            ],
+            [
+              978.803427,
+              349.812909
+            ],
+            [
+              995.200907,
+              349.812909
+            ],
+            [
+              995.200907,
+              293.893297
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:22:00.908Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              995.83158,
+              293.683073
+            ],
+            [
+              995.83158,
+              350.864029
+            ],
+            [
+              1011.808612,
+              350.864029
+            ],
+            [
+              1011.808612,
+              293.683073
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:22:36.240Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1012.859732,
+              293.893297
+            ],
+            [
+              1012.859732,
+              349.812909
+            ],
+            [
+              1028.416316,
+              349.812909
+            ],
+            [
+              1028.416316,
+              293.893297
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:22:50.631Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1028.836764,
+              293.683073
+            ],
+            [
+              1028.836764,
+              350.233357
+            ],
+            [
+              1045.864916,
+              350.233357
+            ],
+            [
+              1045.864916,
+              293.683073
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:23:00.448Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1045.654692,
+              294.944418
+            ],
+            [
+              1045.654692,
+              351.074253
+            ],
+            [
+              1062.262397,
+              351.074253
+            ],
+            [
+              1062.262397,
+              294.944418
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007aff",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:23:08.615Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1062.893069,
+              293.893297
+            ],
+            [
+              1062.893069,
+              350.443581
+            ],
+            [
+              1078.870101,
+              350.443581
+            ],
+            [
+              1078.870101,
+              293.893297
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:24:07.374Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              489.65603,
+              387.086916
+            ],
+            [
+              489.65603,
+              440.601236
+            ],
+            [
+              609.765948,
+              440.601236
+            ],
+            [
+              609.765948,
+              387.086916
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:45:42.488Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              784.579394,
+              643.955653
+            ],
+            [
+              784.579394,
+              687.956316
+            ],
+            [
+              863.958969,
+              687.956316
+            ],
+            [
+              863.958969,
+              643.955653
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:45:51.289Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              702.821405,
+              600.252291
+            ],
+            [
+              702.821405,
+              643.658351
+            ],
+            [
+              782.498282,
+              643.658351
+            ],
+            [
+              782.498282,
+              600.252291
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:45:59.503Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              784.282092,
+              600.252291
+            ],
+            [
+              784.282092,
+              642.766446
+            ],
+            [
+              863.661667,
+              642.766446
+            ],
+            [
+              863.661667,
+              600.252291
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:46:06.557Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              703.71331,
+              644.550256
+            ],
+            [
+              703.71331,
+              687.659014
+            ],
+            [
+              783.092885,
+              687.659014
+            ],
+            [
+              783.092885,
+              644.550256
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:46:20.698Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              702.524103,
+              557.440835
+            ],
+            [
+              702.524103,
+              599.360386
+            ],
+            [
+              782.20098,
+              599.360386
+            ],
+            [
+              782.20098,
+              557.440835
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:46:27.713Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              783.390187,
+              555.954326
+            ],
+            [
+              783.390187,
+              598.765782
+            ],
+            [
+              860.985951,
+              598.765782
+            ],
+            [
+              860.985951,
+              555.954326
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:46:38.795Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              701.334896,
+              513.737474
+            ],
+            [
+              701.334896,
+              555.954326
+            ],
+            [
+              780.714471,
+              555.954326
+            ],
+            [
+              780.714471,
+              513.737474
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:46:51.197Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              781.903678,
+              511.656361
+            ],
+            [
+              781.903678,
+              555.954326
+            ],
+            [
+              860.688649,
+              555.954326
+            ],
+            [
+              860.688649,
+              511.656361
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:46:59.371Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              700.145689,
+              468.547603
+            ],
+            [
+              700.145689,
+              511.656361
+            ],
+            [
+              779.822566,
+              511.656361
+            ],
+            [
+              779.822566,
+              468.547603
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:47:10.233Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              782.20098,
+              468.844905
+            ],
+            [
+              782.20098,
+              511.061758
+            ],
+            [
+              860.094046,
+              511.061758
+            ],
+            [
+              860.094046,
+              468.844905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:47:40.905Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              706.142765,
+              811.254817
+            ],
+            [
+              706.142765,
+              853.509861
+            ],
+            [
+              787.499493,
+              853.509861
+            ],
+            [
+              787.499493,
+              811.254817
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:47:54.194Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705.091644,
+              767.528203
+            ],
+            [
+              705.091644,
+              809.993472
+            ],
+            [
+              786.027924,
+              809.993472
+            ],
+            [
+              786.027924,
+              767.528203
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:48:02.486Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              787.079045,
+              766.897531
+            ],
+            [
+              787.079045,
+              809.993472
+            ],
+            [
+              865.913084,
+              809.993472
+            ],
+            [
+              865.913084,
+              766.897531
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:48:14.702Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              787.709717,
+              811.465041
+            ],
+            [
+              787.709717,
+              854.140534
+            ],
+            [
+              867.594876,
+              854.140534
+            ],
+            [
+              867.594876,
+              811.465041
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:48:30.710Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705.301868,
+              723.170917
+            ],
+            [
+              705.301868,
+              766.687307
+            ],
+            [
+              784.976804,
+              766.687307
+            ],
+            [
+              784.976804,
+              723.170917
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:48:55.648Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              785.397252,
+              722.540245
+            ],
+            [
+              785.397252,
+              765.84641
+            ],
+            [
+              866.333532,
+              765.84641
+            ],
+            [
+              866.333532,
+              722.540245
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:49:36.347Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              708.874548,
+              899.263049
+            ],
+            [
+              708.874548,
+              942.573339
+            ],
+            [
+              788.954391,
+              942.573339
+            ],
+            [
+              788.954391,
+              899.263049
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:49:43.491Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              708.344218,
+              854.361768
+            ],
+            [
+              708.344218,
+              897.672059
+            ],
+            [
+              787.363401,
+              897.672059
+            ],
+            [
+              787.363401,
+              854.361768
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:49:56.648Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              789.661498,
+              898.732719
+            ],
+            [
+              789.661498,
+              940.805572
+            ],
+            [
+              869.564564,
+              940.805572
+            ],
+            [
+              869.564564,
+              898.732719
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:50:20.689Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              788.247284,
+              854.538545
+            ],
+            [
+              788.247284,
+              897.495282
+            ],
+            [
+              868.680681,
+              897.495282
+            ],
+            [
+              868.680681,
+              854.538545
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:51:14.824Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              709.296126,
+              942.434657
+            ],
+            [
+              709.296126,
+              986.791943
+            ],
+            [
+              789.39151,
+              986.791943
+            ],
+            [
+              789.39151,
+              942.434657
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:51:22.267Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              790.022182,
+              942.224433
+            ],
+            [
+              790.022182,
+              985.530599
+            ],
+            [
+              870.958462,
+              985.530599
+            ],
+            [
+              870.958462,
+              942.224433
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:51:30.915Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              790.652854,
+              986.371495
+            ],
+            [
+              790.652854,
+              1029.467436
+            ],
+            [
+              871.168686,
+              1029.467436
+            ],
+            [
+              871.168686,
+              986.371495
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:51:45.149Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              710.557471,
+              987.002167
+            ],
+            [
+              710.557471,
+              1030.518557
+            ],
+            [
+              789.811958,
+              1030.518557
+            ],
+            [
+              789.811958,
+              987.002167
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:51:51.899Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              791.914199,
+              1030.518557
+            ],
+            [
+              791.914199,
+              1072.142929
+            ],
+            [
+              872.219807,
+              1072.142929
+            ],
+            [
+              872.219807,
+              1030.518557
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:51:58.372Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              711.818816,
+              1030.728781
+            ],
+            [
+              711.818816,
+              1074.034946
+            ],
+            [
+              791.283527,
+              1074.034946
+            ],
+            [
+              791.283527,
+              1030.728781
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:52:24.376Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              712.410082,
+              1074.095201
+            ],
+            [
+              712.410082,
+              1118.289374
+            ],
+            [
+              792.136372,
+              1118.289374
+            ],
+            [
+              792.136372,
+              1074.095201
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:52:35.592Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              793.373808,
+              1073.03454
+            ],
+            [
+              793.373808,
+              1117.582268
+            ],
+            [
+              872.569768,
+              1117.582268
+            ],
+            [
+              872.569768,
+              1073.03454
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:52:53.081Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              712.233305,
+              1118.996481
+            ],
+            [
+              712.233305,
+              1160.892558
+            ],
+            [
+              793.727362,
+              1160.892558
+            ],
+            [
+              793.727362,
+              1118.996481
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:53:00.368Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              793.727362,
+              1117.935821
+            ],
+            [
+              793.727362,
+              1161.246111
+            ],
+            [
+              873.983982,
+              1161.246111
+            ],
+            [
+              873.983982,
+              1117.935821
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:54:37.794Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              453.663616,
+              1314.741545
+            ],
+            [
+              480.782525,
+              1314.741545
+            ],
+            [
+              504.748073,
+              1305.281461
+            ],
+            [
+              504.537849,
+              1276.480758
+            ],
+            [
+              453.87384,
+              1276.270534
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:54:43.959Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              453.663616,
+              1252.935659
+            ],
+            [
+              453.663616,
+              1275.219414
+            ],
+            [
+              504.327625,
+              1275.219414
+            ],
+            [
+              504.327625,
+              1252.935659
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:54:50.154Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              453.453392,
+              1231.072352
+            ],
+            [
+              453.453392,
+              1251.674314
+            ],
+            [
+              504.537849,
+              1251.674314
+            ],
+            [
+              504.537849,
+              1231.072352
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:55:06.643Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              453.243168,
+              1209.419269
+            ],
+            [
+              453.243168,
+              1230.231456
+            ],
+            [
+              504.117401,
+              1230.231456
+            ],
+            [
+              504.117401,
+              1209.419269
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:55:17.663Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              453.243168,
+              1187.135514
+            ],
+            [
+              453.243168,
+              1207.947701
+            ],
+            [
+              504.748073,
+              1207.947701
+            ],
+            [
+              504.748073,
+              1187.135514
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:55:29.413Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              453.243168,
+              1160.016605
+            ],
+            [
+              453.243168,
+              1186.084394
+            ],
+            [
+              504.327625,
+              1186.084394
+            ],
+            [
+              504.327625,
+              1160.016605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:55:38.559Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              451.981823,
+              1131.846575
+            ],
+            [
+              451.981823,
+              1158.334812
+            ],
+            [
+              504.117401,
+              1158.334812
+            ],
+            [
+              504.117401,
+              1131.846575
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:56:01.125Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              451.140927,
+              1130.58523
+            ],
+            [
+              449.038686,
+              1102.4152
+            ],
+            [
+              500.753815,
+              1102.4152
+            ],
+            [
+              503.276505,
+              1129.954558
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:56:17.013Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              447.356893,
+              1075.296291
+            ],
+            [
+              499.492471,
+              1074.875843
+            ],
+            [
+              501.594712,
+              1100.733408
+            ],
+            [
+              450.089806,
+              1101.784528
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Entrada/Saida",
+        "tipo": "Área Comum",
+        "color": "#4caf50",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T16:56:30.488Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              452.616083,
+              1331.991821
+            ],
+            [
+              454.087652,
+              1348.599525
+            ],
+            [
+              506.643678,
+              1348.179077
+            ],
+            [
+              503.280092,
+              1330.099804
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:00:23.188Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              443.886282,
+              1014.521454
+            ],
+            [
+              443.886282,
+              1055.533648
+            ],
+            [
+              484.014592,
+              1055.533648
+            ],
+            [
+              484.014592,
+              1014.521454
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:00:44.409Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              443.709505,
+              1013.107241
+            ],
+            [
+              483.661038,
+              1011.51625
+            ],
+            [
+              485.782359,
+              1054.826541
+            ],
+            [
+              497.979951,
+              1055.533648
+            ],
+            [
+              492.499873,
+              967.852407
+            ],
+            [
+              441.057855,
+              970.857611
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:01:08.251Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              438.75,
+              927.5
+            ],
+            [
+              441.25,
+              969.875
+            ],
+            [
+              480.125,
+              967.375
+            ],
+            [
+              477.375,
+              924.25
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:01:34.684Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              492.625,
+              966.75
+            ],
+            [
+              487.089249,
+              883.15146
+            ],
+            [
+              435.584343,
+              883.15146
+            ],
+            [
+              438.317256,
+              926.037177
+            ],
+            [
+              478.680284,
+              924.14516
+            ],
+            [
+              479.941629,
+              967.451326
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:02:58.428Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              485.197232,
+              854.98143
+            ],
+            [
+              479.731405,
+              767.738427
+            ],
+            [
+              429.067396,
+              767.528203
+            ],
+            [
+              431.800309,
+              809.783248
+            ],
+            [
+              470.27132,
+              807.260559
+            ],
+            [
+              473.424682,
+              853.299637
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:03:14.981Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              428.857172,
+              746.295569
+            ],
+            [
+              428.857172,
+              766.687307
+            ],
+            [
+              479.100733,
+              766.687307
+            ],
+            [
+              479.100733,
+              746.295569
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:03:22.913Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              425.283362,
+              701.728059
+            ],
+            [
+              425.283362,
+              722.750469
+            ],
+            [
+              477.208716,
+              722.750469
+            ],
+            [
+              477.208716,
+              701.728059
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:03:33.844Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              427.595827,
+              724.011814
+            ],
+            [
+              427.595827,
+              745.664896
+            ],
+            [
+              478.049612,
+              745.664896
+            ],
+            [
+              478.049612,
+              724.011814
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:06:39.562Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              424.862914,
+              680.074976
+            ],
+            [
+              424.862914,
+              700.676938
+            ],
+            [
+              474.896251,
+              700.676938
+            ],
+            [
+              474.896251,
+              680.074976
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:06:47.307Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              422.13,
+              657.580997
+            ],
+            [
+              422.13,
+              678.603407
+            ],
+            [
+              474.475802,
+              678.603407
+            ],
+            [
+              474.475802,
+              657.580997
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:06:54.236Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              418.135742,
+              591.780852
+            ],
+            [
+              421.919776,
+              656.319652
+            ],
+            [
+              472.794009,
+              656.319652
+            ],
+            [
+              469.850872,
+              591.360404
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:08:14.462Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              412.459692,
+              482.254094
+            ],
+            [
+              418.345967,
+              590.939956
+            ],
+            [
+              469.640648,
+              591.15018
+            ],
+            [
+              463.544149,
+              482.674542
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:09:38.663Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              584.777308,
+              1125.360442
+            ],
+            [
+              586.191522,
+              1174.857917
+            ],
+            [
+              678.468957,
+              1175.565024
+            ],
+            [
+              678.468957,
+              1123.592675
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:18:59.401Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              532.7647875212191,
+              1083.0703799887283
+            ],
+            [
+              581.5222792363306,
+              1081.583871094975
+            ],
+            [
+              584.1979952450868,
+              1174.3420260651872
+            ],
+            [
+              537.8189177599806,
+              1175.2339314014391
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:19:08.281Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              582.7114863513334,
+              1081.2865693162241
+            ],
+            [
+              584.4952970238375,
+              1124.0980254563221
+            ],
+            [
+              677.5507537728004,
+              1121.7196112263166
+            ],
+            [
+              676.3615466577976,
+              1079.8000604224708
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:19:30.058Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              581.241774135342,
+              1039.4469683442248
+            ],
+            [
+              582.6559876977151,
+              1079.752054871858
+            ],
+            [
+              676.2128957684223,
+              1078.3135515287174
+            ],
+            [
+              675.4696413215456,
+              1035.5020953886194
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:23:02.552Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              533.128327270855,
+              1080.97234180865
+            ],
+            [
+              580.6389747326899,
+              1078.8701007705158
+            ],
+            [
+              578.9571819021825,
+              1026.7345230247854
+            ],
+            [
+              550.3667037835562,
+              1025.8936266095318
+            ],
+            [
+              549.1053591606756,
+              967.0308775417717
+            ],
+            [
+              525.9807077411984,
+              967.0308775417717
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:23:12.923Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              525.770483637385,
+              944.3266743299215
+            ],
+            [
+              525.770483637385,
+              965.3490847112644
+            ],
+            [
+              549.3155832644891,
+              965.3490847112644
+            ],
+            [
+              549.3155832644891,
+              944.3266743299215
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:23:20.382Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              550.1564796797428,
+              944.116450226108
+            ],
+            [
+              552.258720717877,
+              1025.2629542980915
+            ],
+            [
+              578.9571819021825,
+              1025.6834025057183
+            ],
+            [
+              577.0651649678616,
+              943.2755538108544
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:23:42.965Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              580.4287506288765,
+              994.7804592451444
+            ],
+            [
+              581.2696470441302,
+              1037.4559523192704
+            ],
+            [
+              675.4500455525463,
+              1033.882142554442
+            ],
+            [
+              673.9784768258522,
+              991.4168735841295
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:24:00.455Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              578.9571819021825,
+              949.7925010290706
+            ],
+            [
+              579.7980783174362,
+              993.0986664146369
+            ],
+            [
+              673.5580286182254,
+              990.1555289612489
+            ],
+            [
+              672.5069080991582,
+              946.8493635756826
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:24:41.519Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              590.7386343776017,
+              875.5537384207535
+            ],
+            [
+              592.5224450501058,
+              948.3926742146701
+            ],
+            [
+              671.6047181977867,
+              946.3115617634153
+            ],
+            [
+              670.4155110827841,
+              873.7699277482493
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Polígono",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:25:19.315Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              525.9268466099534,
+              943.3385439759086
+            ],
+            [
+              549.7109889100078,
+              942.7439404184072
+            ],
+            [
+              548.8190835737558,
+              903.7974074020681
+            ],
+            [
+              589.549427262599,
+              902.013596729564
+            ],
+            [
+              588.3602201475962,
+              875.2564366420028
+            ],
+            [
+              522.656527043696,
+              878.2294544295096
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:25:56.232Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              507.0605383979899,
+              594.5137655843762
+            ],
+            [
+              518.8330882115418,
+              811.8854889274614
+            ],
+            [
+              572.2300105801528,
+              811.4650407198345
+            ],
+            [
+              565.0823910504962,
+              594.5137655843762
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:26:28.105Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              519.4637605229822,
+              835.220364450752
+            ],
+            [
+              521.355777457303,
+              855.4018784168411
+            ],
+            [
+              573.9118034106602,
+              854.350757897774
+            ],
+            [
+              573.2811310992199,
+              835.0101403469386
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:26:50.816Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              519.4637605229822,
+              812.9366094465286
+            ],
+            [
+              519.4637605229822,
+              833.748795724058
+            ],
+            [
+              572.0197864763394,
+              833.748795724058
+            ],
+            [
+              572.0197864763394,
+              812.9366094465286
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:27:11.381Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              575.5,
+              813.25
+            ],
+            [
+              575.5,
+              854
+            ],
+            [
+              667.5,
+              854
+            ],
+            [
+              667.5,
+              813.25
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:27:20.357Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              573,
+              771.5
+            ],
+            [
+              574,
+              813.25
+            ],
+            [
+              668,
+              812
+            ],
+            [
+              666.75,
+              771.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:27:29.233Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              571.75,
+              730.5
+            ],
+            [
+              572.75,
+              770.5
+            ],
+            [
+              667,
+              770.5
+            ],
+            [
+              665.25,
+              730.25
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:28:31.268Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              570.2816190269506,
+              688.368451485104
+            ],
+            [
+              570.2816190269506,
+              729.9109748798136
+            ],
+            [
+              665.3874810965411,
+              729.9109748798136
+            ],
+            [
+              665.3874810965411,
+              688.368451485104
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:28:53.547Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              568.1602986833909,
+              647.3562581762842
+            ],
+            [
+              569.574512245764,
+              687.3077913133242
+            ],
+            [
+              664.3268209247614,
+              687.1310146180275
+            ],
+            [
+              662.2055005812017,
+              646.8259280903943
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:29:15.224Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              566.3437356733767,
+              593.6728691691225
+            ],
+            [
+              567.8153044000708,
+              646.4391192262931
+            ],
+            [
+              662.6263752199271,
+              646.0186710186662
+            ],
+            [
+              661.1548064932331,
+              593.2524209614957
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:30:04.758Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              502.7373078674004,
+              532.4674857424684
+            ],
+            [
+              506.3049292124085,
+              593.4143503863578
+            ],
+            [
+              583.008788130084,
+              592.5224450501058
+            ],
+            [
+              581.2249774575799,
+              531.872882184967
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:30:28.847Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              584,
+              545.5
+            ],
+            [
+              584,
+              592.5
+            ],
+            [
+              659,
+              592.5
+            ],
+            [
+              659,
+              545.5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:30:38.733Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              581,
+              499.5
+            ],
+            [
+              582.7412157708242,
+              544.6906529805937
+            ],
+            [
+              659.25,
+              544.5
+            ],
+            [
+              658.0014449360317,
+              498.65157424545276
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:31:07.513Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              580.4287506288765,
+              465.436165842931
+            ],
+            [
+              580.4287506288765,
+              498.02090193401244
+            ],
+            [
+              657.5809967284048,
+              498.02090193401244
+            ],
+            [
+              657.5809967284048,
+              465.436165842931
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Novo Retângulo",
+        "tipo": "Área Comum",
+        "color": "#007AFF",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:31:26.889Z",
+        "layerId": "default"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              501.25079897364697,
+              464.8313310766886
+            ],
+            [
+              502.7373078674004,
+              531.7242312955917
+            ],
+            [
+              580.779024789454,
+              530.8323259593396
+            ],
+            [
+              579.4411667850759,
+              465.1286328554393
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Entrada/Saida",
+        "tipo": "Área Comum",
+        "color": "#007aff",
+        "opacity": 0.3,
+        "borderWidth": 2,
+        "borderStyle": "solid",
+        "created": "2025-06-29T17:34:12.283Z",
+        "layerId": "default",
+        "localização": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              189.5,
+              444.5
+            ],
+            [
+              189.5,
+              477
+            ],
+            [
+              257.5,
+              477
+            ],
+            [
+              257.5,
+              444.5
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

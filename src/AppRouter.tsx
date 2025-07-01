@@ -10,7 +10,7 @@ import { DetailsScreen } from './pages/Details';
 import { ExploreScreen } from './pages/Explore';
 import { InfoScreen } from './pages/Info';
 import { LoginScreen } from './pages/Login';
-import { MapScreen } from './pages/Map';
+import Map from './pages/Map';
 import { NotificationsScreen } from './pages/Notifications';
 import { SignupScreen } from './pages/Signup';
 import { SplashScreen } from './pages/Splash';
@@ -47,7 +47,7 @@ export function AppRouter() {
           <Route element={<AppLayout />}>
             <Route path="/explore" element={<ExploreScreen />} />
             <Route path="/agenda" element={<AgendaScreen />} />
-            <Route path="/map" element={<MapScreen />} />
+            <Route path="/map" element={<Map />} />
             <Route path="/notificacoes" element={<NotificationsScreen />} />
             <Route path="/info" element={<InfoScreen />} />
             <Route path="/detalhes/:type/:id" element={<DetailsScreen />} />

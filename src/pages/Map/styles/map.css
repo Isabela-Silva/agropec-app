@@ -1,0 +1,100 @@
+/* Estilos personalizados para o mapa Leaflet */
+
+.leaflet-container {
+  background-color: #f8f9fa;
+  font-family: inherit;
+}
+
+/* Personalização dos popups */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px;
+  line-height: 1.4;
+}
+
+.leaflet-popup-tip {
+  background: white;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o controle de zoom */
+.leaflet-control-zoom {
+  margin-bottom: 80px !important; /* Espaço para o dock de navegação */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 6px !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: white !important;
+  border: 1px solid #ddd !important;
+  color: #333 !important;
+  font-weight: bold !important;
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 38px !important;
+  font-size: 18px !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #f8f9fa !important;
+  border-color: #007bff !important;
+}
+
+.leaflet-control-zoom a:first-child {
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+}
+
+.leaflet-control-zoom a:last-child {
+  border-bottom-left-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+}
+
+/* Poligonos com hover effect */
+.leaflet-interactive:hover {
+  filter: brightness(1.1);
+  cursor: pointer;
+}
+
+/* Loading state */
+.leaflet-container.leaflet-loading {
+  background-color: #f8f9fa;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .leaflet-control-zoom {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+  
+  .leaflet-popup-content-wrapper {
+    max-width: 280px;
+  }
+}
+
+/* Esconder scrollbar dos filtros mas manter funcionalidade */
+.filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animações suaves para os elementos flutuantes */
+.floating-element {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-element:hover {
+  transform: translateY(-1px);
+} 
