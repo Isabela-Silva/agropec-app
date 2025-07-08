@@ -26,19 +26,16 @@ export function SafeNotificationProvider({ children }: SafeNotificationProviderP
         const token = localStorage.getItem('auth_token') || localStorage.getItem('admin_token');
 
         if (!token) {
-          console.error('❌ Nenhum token disponível');
           return;
         }
 
-        const baseUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:3000/ws';
+        const baseUrl = 'ws://localhost:3000/ws';
         const wsUrl = `${baseUrl}?token=${encodeURIComponent(token)}`;
-
-        console.log('🌐 Conectando WebSocket:', wsUrl);
-
         socket = new WebSocket(wsUrl);
 
         socket.onopen = () => {
-          console.log('✅ WebSocket conectado');
+          console.log('✅ WebSocket conectado com sucesso');
+
           reconnectAttempts = 0;
         };
 
@@ -48,7 +45,7 @@ export function SafeNotificationProvider({ children }: SafeNotificationProviderP
 
             if (data.type === 'notification' || data.uuid) {
               const notification: INotificationItem = data.type === 'notification' ? data.data : data;
-              console.log('📨 Nova notificação:', notification);
+              console.log('📨 Nova notificação processada:', notification);
 
               // Adiciona toast
               setActiveToasts((prev) => [...prev, notification]);
@@ -58,24 +55,41 @@ export function SafeNotificationProvider({ children }: SafeNotificationProviderP
             }
           } catch (error) {
             console.error('❌ Erro ao processar notificação:', error);
+            console.error('📦 Dados que causaram erro:', event.data);
           }
         };
 
         socket.onclose = (event) => {
           console.log('🔌 WebSocket desconectado:', event.code, event.reason);
+          console.log('📊 Status da conexão:', {
+            wasClean: event.wasClean,
+            code: event.code,
+            reason: event.reason,
+          });
+
           socket = null;
 
           if (reconnectAttempts < maxReconnectAttempts) {
             reconnectAttempts++;
-            setTimeout(connect, 2000 * reconnectAttempts);
+            const delay = 2000 * reconnectAttempts;
+            console.log(
+              `🔄 Tentando reconectar em ${delay / 1000} segundos... (Tentativa ${reconnectAttempts}/${maxReconnectAttempts})`,
+            );
+            setTimeout(connect, delay);
+          } else {
+            console.log('❌ Número máximo de tentativas de reconexão atingido');
           }
         };
 
         socket.onerror = (error) => {
           console.error('❌ Erro WebSocket:', error);
+          console.error('🔍 Detalhes da conexão:', {
+            readyState: socket?.readyState,
+            protocol: socket?.protocol,
+          });
         };
       } catch (error) {
-        console.error('❌ Erro ao conectar WebSocket:', error);
+        console.error('❌ Erro ao configurar WebSocket:', error);
       }
     };
 
@@ -83,6 +97,7 @@ export function SafeNotificationProvider({ children }: SafeNotificationProviderP
 
     return () => {
       if (socket) {
+        console.log('🔌 Fechando conexão WebSocket...');
         socket.close();
         socket = null;
       }

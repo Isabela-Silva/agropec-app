@@ -30,10 +30,9 @@ export function useAdminAuth() {
         };
 
         setAdmin(adminData);
-      } catch (error) {
+      } catch {
         // Se o token for inválido, remove do localStorage
         localStorage.removeItem('admin_token');
-        console.error('Token de admin inválido:', error);
       } finally {
         setAdminLoading(false);
       }

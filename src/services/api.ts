@@ -1,17 +1,18 @@
 import axios from 'axios';
 
 // Configuração da API
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const apiBaseUrl = 'http://localhost:3000';
 
 export const api = axios.create({
-  baseURL: API_BASE_URL,
-  timeout: 10000,
+  baseURL: apiBaseUrl,
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
-// Interceptor para adicionar o token de autenticação
+// Interceptor para adicionar token
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('auth_token');
   const adminToken = localStorage.getItem('admin_token');

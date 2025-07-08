@@ -32,10 +32,9 @@ export function useUserAuth() {
         };
 
         setUser(userData);
-      } catch (error) {
+      } catch {
         // Se o token for inválido, remove do localStorage
         localStorage.removeItem('auth_token');
-        console.error('Token inválido:', error);
       } finally {
         setUserLoading(false);
       }
