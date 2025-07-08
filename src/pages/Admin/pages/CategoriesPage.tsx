@@ -31,6 +31,7 @@ export function CategoriesPage() {
     mutationFn: CategoryService.create,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedCategory(undefined);
       toastUtils.success('Categoria criada com sucesso!');
@@ -46,6 +47,7 @@ export function CategoriesPage() {
     mutationFn: ({ uuid, data }: { uuid: string; data: { name: string } }) => CategoryService.update(uuid, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedCategory(undefined);
       toastUtils.success('Categoria atualizada com sucesso!');
@@ -61,6 +63,7 @@ export function CategoriesPage() {
     mutationFn: CategoryService.delete,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       toastUtils.success('Categoria excluída com sucesso!');
     },
     onError: (error: ApiError) => {
@@ -176,8 +179,8 @@ export function CategoriesPage() {
             <div key={category.uuid} className="card group transition-shadow hover:shadow-md">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-admin-primary-100 flex h-8 w-8 items-center justify-center rounded-full">
-                    <Tag className="text-admin-primary-600 h-4 w-4" />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-admin-primary-100">
+                    <Tag className="h-4 w-4 text-admin-primary-600" />
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-gray-900">{category.name}</h3>
@@ -187,7 +190,7 @@ export function CategoriesPage() {
                 <div className="flex items-center space-x-1 opacity-0 transition-opacity group-hover:opacity-100">
                   <button
                     onClick={() => handleEdit(category)}
-                    className="text-admin-primary-600 hover:text-admin-primary-900 hover:bg-admin-primary-50 rounded-md p-1"
+                    className="rounded-md p-1 text-admin-primary-600 hover:bg-admin-primary-50 hover:text-admin-primary-900"
                     disabled={deleteMutation.isPending}
                   >
                     <Edit2 className="h-3 w-3" />

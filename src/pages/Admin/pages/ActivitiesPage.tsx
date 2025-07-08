@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Calendar, Clock, Edit2, Loader2, Plus, Search, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { ActivityService, CategoryService, CompanyService } from '../../../services';
@@ -10,6 +10,8 @@ export function ActivitiesPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<IActivityResponse | undefined>();
+
+  const queryClient = useQueryClient();
 
   const {
     data: activities = [],
@@ -63,11 +65,17 @@ export function ActivitiesPage() {
         await ActivityService.delete(uuid);
         toastUtils.success('Atividade excluída com sucesso!');
         await refetch();
+        queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       } catch (error) {
         console.error('Erro ao excluir atividade:', error);
         toastUtils.error('Erro ao excluir atividade');
       }
     }
+  };
+
+  const handleModalSuccess = async () => {
+    await refetch();
+    queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
   };
 
   if (isPageLoading) {
@@ -161,7 +169,7 @@ export function ActivitiesPage() {
               <div className="mt-4 flex justify-end space-x-2">
                 <button
                   onClick={() => handleEdit(activity)}
-                  className="text-admin-primary-600 hover:text-admin-primary-900 hover:bg-admin-primary-50 rounded-md p-2"
+                  className="rounded-md p-2 text-admin-primary-600 hover:bg-admin-primary-50 hover:text-admin-primary-900"
                 >
                   <Edit2 className="h-4 w-4" />
                 </button>
@@ -200,7 +208,7 @@ export function ActivitiesPage() {
         isLoading={false}
         companies={companies}
         categories={categories}
-        onSuccess={refetch}
+        onSuccess={handleModalSuccess}
       />
     </div>
   );

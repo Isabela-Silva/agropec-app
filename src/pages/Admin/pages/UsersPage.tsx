@@ -31,6 +31,7 @@ export function UsersPage() {
     mutationFn: UserService.create,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedUser(undefined);
       toastUtils.success('Usuário criado com sucesso!');
@@ -46,6 +47,7 @@ export function UsersPage() {
     mutationFn: ({ uuid, data }: { uuid: string; data: IUpdateUser }) => UserService.update(uuid, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedUser(undefined);
       toastUtils.success('Usuário atualizado com sucesso!');
@@ -61,6 +63,7 @@ export function UsersPage() {
     mutationFn: UserService.delete,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       toastUtils.success('Usuário excluído com sucesso!');
     },
     onError: (error: ApiError) => {

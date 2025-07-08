@@ -35,6 +35,7 @@ export function NotificationsPage() {
     mutationFn: NotificationService.create,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notifications'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedNotification(undefined);
       toastUtils.success('Notificação criada com sucesso!');
@@ -50,6 +51,7 @@ export function NotificationsPage() {
     mutationFn: ({ uuid, data }: { uuid: string; data: IUpdateNotification }) => NotificationService.update(uuid, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notifications'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedNotification(undefined);
       toastUtils.success('Notificação atualizada com sucesso!');
@@ -65,6 +67,7 @@ export function NotificationsPage() {
     mutationFn: NotificationService.delete,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notifications'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       toastUtils.success('Notificação excluída com sucesso!');
     },
     onError: (error: ApiError) => {

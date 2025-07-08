@@ -31,6 +31,7 @@ export function CompaniesPage() {
     mutationFn: CompanyService.create,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['companies'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedCompany(undefined);
       toastUtils.success('Empresa criada com sucesso!');
@@ -46,6 +47,7 @@ export function CompaniesPage() {
     mutationFn: ({ uuid, data }: { uuid: string; data: IUpdateCompany }) => CompanyService.update(uuid, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['companies'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedCompany(undefined);
       toastUtils.success('Empresa atualizada com sucesso!');
@@ -61,6 +63,7 @@ export function CompaniesPage() {
     mutationFn: CompanyService.delete,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['companies'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       toastUtils.success('Empresa excluída com sucesso!');
     },
     onError: (error: ApiError) => {
@@ -171,8 +174,8 @@ export function CompaniesPage() {
           filteredCompanies.map((company) => (
             <div key={company.uuid} className="card">
               <div className="flex items-start space-x-4">
-                <div className="bg-admin-primary-100 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg">
-                  <Building2 className="text-admin-primary-600 h-6 w-6" />
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-admin-primary-100">
+                  <Building2 className="h-6 w-6 text-admin-primary-600" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="truncate text-lg font-semibold text-gray-900">{company.name}</h3>
@@ -183,7 +186,7 @@ export function CompaniesPage() {
               <div className="mt-4 flex items-center justify-end space-x-2 border-t border-gray-200 pt-4">
                 <button
                   onClick={() => handleEdit(company)}
-                  className="text-admin-primary-600 hover:text-admin-primary-900 hover:bg-admin-primary-50 rounded-md p-2"
+                  className="rounded-md p-2 text-admin-primary-600 hover:bg-admin-primary-50 hover:text-admin-primary-900"
                   disabled={deleteMutation.isPending}
                 >
                   <Edit2 className="h-4 w-4" />

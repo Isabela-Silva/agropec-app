@@ -31,6 +31,7 @@ export function AdminsPage() {
     mutationFn: AdminService.create,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admins'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedAdmin(undefined);
       toastUtils.success('Administrador criado com sucesso!');
@@ -46,6 +47,7 @@ export function AdminsPage() {
     mutationFn: ({ uuid, data }: { uuid: string; data: IUpdateAdmin }) => AdminService.update(uuid, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admins'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       setIsModalOpen(false);
       setSelectedAdmin(undefined);
       toastUtils.success('Administrador atualizado com sucesso!');
@@ -61,6 +63,7 @@ export function AdminsPage() {
     mutationFn: AdminService.delete,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admins'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       toastUtils.success('Administrador excluído com sucesso!');
     },
     onError: (error: ApiError) => {

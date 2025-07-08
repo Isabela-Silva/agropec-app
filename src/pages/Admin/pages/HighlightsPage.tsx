@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Calendar, Edit2, Loader2, Plus, Search, Star, Store, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import type { ICreateHighlight, IHighlightWithDetails, IUpdateHighlight } from '../../../services';
@@ -11,6 +11,8 @@ export function HighlightsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedHighlight, setSelectedHighlight] = useState<IHighlightWithDetails | undefined>();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const queryClient = useQueryClient();
 
   const {
     data: highlights = [],
@@ -48,6 +50,7 @@ export function HighlightsPage() {
         await HighlightService.deleteHighlight(uuid);
         toastUtils.success('Destaque excluído com sucesso!');
         await refetch();
+        queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       } catch (error) {
         console.error('Erro ao excluir destaque:', error);
         toastUtils.error('Erro ao excluir destaque');
@@ -71,6 +74,7 @@ export function HighlightsPage() {
       setIsModalOpen(false);
       setSelectedHighlight(undefined);
       await refetch();
+      queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
     } catch (error) {
       console.error('Erro ao salvar destaque:', error);
       toastUtils.error('Erro ao salvar destaque');

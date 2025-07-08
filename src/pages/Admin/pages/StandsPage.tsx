@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Clock, Edit2, Loader2, Plus, Search, Store, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { CategoryService, CompanyService, StandService } from '../../../services';
@@ -10,6 +10,8 @@ export function StandsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStand, setSelectedStand] = useState<IStandResponse | undefined>();
+
+  const queryClient = useQueryClient();
 
   const {
     data: stands = [],
@@ -63,11 +65,17 @@ export function StandsPage() {
         await StandService.delete(uuid);
         toastUtils.success('Stand excluído com sucesso!');
         await refetch();
+        queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
       } catch (error) {
         console.error('Erro ao excluir stand:', error);
         toastUtils.error('Erro ao excluir stand');
       }
     }
+  };
+
+  const handleModalSuccess = async () => {
+    await refetch();
+    queryClient.invalidateQueries({ queryKey: ['dashboard-overview'] });
   };
 
   if (isPageLoading) {
@@ -158,7 +166,7 @@ export function StandsPage() {
               <div className="mt-4 flex justify-end space-x-2">
                 <button
                   onClick={() => handleEdit(stand)}
-                  className="text-admin-primary-600 hover:text-admin-primary-900 hover:bg-admin-primary-50 rounded-md p-2"
+                  className="rounded-md p-2 text-admin-primary-600 hover:bg-admin-primary-50 hover:text-admin-primary-900"
                 >
                   <Edit2 className="h-4 w-4" />
                 </button>
@@ -197,7 +205,7 @@ export function StandsPage() {
         isLoading={false}
         companies={companies}
         categories={categories}
-        onSuccess={refetch}
+        onSuccess={handleModalSuccess}
       />
     </div>
   );
