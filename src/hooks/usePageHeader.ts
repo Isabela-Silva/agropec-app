@@ -14,7 +14,7 @@ const pageTitles: Record<string, string> = {
 };
 
 // Configuração de quais páginas mostram botão voltar
-const showBackButtonPages = ['/notificacoes', '/info', '/login', '/signup'];
+const showBackButtonPages = ['/map', '/notificacoes', '/info', '/login', '/signup'];
 
 // Configuração de páginas com header customizado (que não usam o header padrão)
 const customHeaderPages: string[] = [

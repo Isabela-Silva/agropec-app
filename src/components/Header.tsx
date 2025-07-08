@@ -1,5 +1,6 @@
 import { ArrowLeft, Search } from 'lucide-react';
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../stores/app.store';
 import { SearchModal } from './SearchModal';
@@ -21,8 +22,7 @@ const Header: React.FC<HeaderProps> = ({
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const { pageHeader } = useAppStore();
 
-  // Usar props se fornecidas, senão usar configuração da store
-  const title = propTitle ?? pageHeader.title;
+  const title = propTitle || pageHeader.title;
   const showBackButton = propShowBackButton ?? pageHeader.showBackButton;
   const showSearch = propShowSearch ?? pageHeader.showSearch;
 
@@ -34,42 +34,46 @@ const Header: React.FC<HeaderProps> = ({
     }
   };
 
-  const handleSearchClick = () => {
-    setIsSearchModalOpen(true);
-  };
-
-  const handleSearchModalClose = () => {
-    setIsSearchModalOpen(false);
-  };
-
   return (
     <>
-      <div className="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-base-white-light/95 backdrop-blur-sm">
-        <div className="flex items-center justify-between px-4 py-3">
-          <div className="flex items-center">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-base-white-light/95 backdrop-blur-sm lg:bg-white">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 lg:h-16 lg:px-8">
+          <div className="flex items-center gap-3">
+            {/* Back Button - Mobile Only */}
             {showBackButton && (
               <button
                 onClick={handleBackClick}
-                className="mr-3 flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-gray-100"
+                className="flex items-center justify-center rounded-lg p-2 text-base-black hover:bg-gray-100 lg:hidden"
               >
-                <ArrowLeft className="h-5 w-5 text-base-black" />
+                <ArrowLeft className="h-5 w-5" />
               </button>
             )}
-            <h1 className="text-xl font-bold text-base-black">{title}</h1>
+
+            {/* Title */}
+            {title && <h1 className="text-lg font-semibold text-base-black lg:hidden">{title}</h1>}
           </div>
 
-          {showSearch && (
-            <button
-              onClick={handleSearchClick}
-              className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-gray-100"
-            >
-              <Search className="h-5 w-5 text-base-black" />
-            </button>
-          )}
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            {/* Search Button */}
+            {showSearch && (
+              <button
+                onClick={() => setIsSearchModalOpen(true)}
+                className="flex items-center justify-center rounded-lg p-2 text-base-black hover:bg-gray-100"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      </header>
 
-      {showSearch && <SearchModal isOpen={isSearchModalOpen} onClose={handleSearchModalClose} />}
+      {/* Search Modal - Renderizado no nível do documento */}
+      {isSearchModalOpen &&
+        createPortal(
+          <SearchModal isOpen={isSearchModalOpen} onClose={() => setIsSearchModalOpen(false)} />,
+          document.body,
+        )}
     </>
   );
 };
