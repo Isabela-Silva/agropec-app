@@ -1,10 +1,9 @@
 import { Calendar, Clock, MapPin, Search, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ActivityService } from '../services/ActivityService';
-import { StandService } from '../services/StandService';
-import { IActivityResponse } from '../services/interfaces/activity';
-import { IStandResponse } from '../services/interfaces/stand';
+import { ScheduleService } from '../services/ScheduleService';
+import { ApiError } from '../services/interfaces/api';
+import { ActivityScheduleItem, ScheduleItem, StandScheduleItem } from '../services/interfaces/schedule';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -13,7 +12,7 @@ interface SearchModalProps {
 
 type SearchResult = {
   type: 'activity' | 'stand';
-  data: IActivityResponse | IStandResponse;
+  data: ScheduleItem;
 };
 
 // Função para formatar datas
@@ -49,7 +48,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
@@ -59,91 +57,55 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (searchTimeout) {
-      clearTimeout(searchTimeout);
-    }
-
-    if (query.trim().length < 2) {
-      setResults([]);
-      setError(null);
-      return;
-    }
-
-    const timeout = setTimeout(async () => {
-      await performSearch();
-    }, 300);
-
-    setSearchTimeout(timeout);
-
-    return () => {
-      if (searchTimeout) {
-        clearTimeout(searchTimeout);
-      }
-    };
-  }, [query]);
-
-  const performSearch = async () => {
+  const performSearch = useCallback(async () => {
     if (query.trim().length < 2) return;
 
     setLoading(true);
     setError(null);
 
     try {
-      console.log('Iniciando pesquisa para:', query);
+      const schedule = await ScheduleService.getSchedule();
 
-      // Buscar atividades e stands pelo nome
-      const activities = await ActivityService.getByName(query);
-      let stands: IStandResponse[] = [];
+      const filteredResults = schedule
+        .filter(
+          (item) =>
+            item.name.toLowerCase().includes(query.toLowerCase()) ||
+            item.description.toLowerCase().includes(query.toLowerCase()),
+        )
+        .map((item) => ({
+          type: item.type,
+          data: item,
+        }));
 
-      try {
-        const stand = await StandService.getByName(query);
-        if (stand) {
-          stands = [stand];
-        }
-      } catch (error) {
-        console.log('Nenhum stand encontrado:', error);
+      setResults(filteredResults);
+    } catch (error: unknown) {
+      if (error instanceof Error || (error as ApiError).response) {
+        setError(
+          `Erro na pesquisa: ${(error as ApiError).response?.status || 'Desconhecido'} - ${(error as ApiError).response?.data?.message || (error as Error).message}`,
+        );
+      } else {
+        setError('Erro desconhecido na pesquisa');
       }
-
-      console.log('Resultados da pesquisa:', { activities, stands });
-      console.log('Tipo de activities:', typeof activities, Array.isArray(activities));
-      console.log('Tipo de stands:', typeof stands, Array.isArray(stands));
-
-      // Garantir que activities e stands sejam arrays
-      const activitiesArray = Array.isArray(activities) ? activities : [];
-      const standsArray = Array.isArray(stands) ? stands : [];
-
-      console.log('Arrays processados:', {
-        activitiesArray: activitiesArray.length,
-        standsArray: standsArray.length,
-      });
-
-      const searchResults: SearchResult[] = [
-        ...activitiesArray.map((activity) => ({ type: 'activity' as const, data: activity })),
-        ...standsArray.map((stand) => ({ type: 'stand' as const, data: stand })),
-      ];
-
-      setResults(searchResults);
-      console.log('Total de resultados:', searchResults.length);
-    } catch (error: any) {
-      console.error('Erro detalhado na pesquisa:', error);
-      console.error('Response data:', error.response?.data);
-      console.error('Response status:', error.response?.status);
-      console.error('Response headers:', error.response?.headers);
-
-      setError(
-        `Erro na pesquisa: ${error.response?.status || 'Desconhecido'} - ${error.response?.data?.message || error.message}`,
-      );
       setResults([]);
     } finally {
       setLoading(false);
     }
-  };
+  }, [query]);
+
+  useEffect(() => {
+    if (query.trim().length < 2) {
+      setResults([]);
+      setError(null);
+      return;
+    }
+
+    const timeout = setTimeout(performSearch, 300);
+
+    return () => clearTimeout(timeout);
+  }, [query, performSearch]);
 
   const handleResultClick = (result: SearchResult) => {
-    // Usar uuid em vez de _id para navegação
-    const id = result.data.uuid || result.data._id;
-    console.log('Navegando para detalhes do resultado:', { type: result.type, id, data: result.data });
+    const id = result.data.uuid;
     navigate(`/detalhes/${result.type}/${id}`);
     onClose();
     setQuery('');
@@ -153,6 +115,14 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
       onClose();
+    }
+  };
+
+  const getTimeDisplay = (item: ScheduleItem) => {
+    if (item.type === 'activity') {
+      return `${(item as ActivityScheduleItem).startTime} - ${(item as ActivityScheduleItem).endTime}`;
+    } else {
+      return `${(item as StandScheduleItem).openingTime || 'N/A'} - ${(item as StandScheduleItem).closingTime || 'N/A'}`;
     }
   };
 
@@ -208,44 +178,24 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
           {!loading && !error && results.length > 0 && (
             <div className="p-2">
-              {results.map((result, index) => {
+              {results.map((result) => {
                 const isActivity = result.type === 'activity';
                 const data = result.data;
 
                 return (
                   <div
-                    key={`${result.type}-${result.data.uuid || result.data._id}`}
+                    key={`${result.type}-${data.uuid}`}
                     onClick={() => handleResultClick(result)}
                     className="flex cursor-pointer items-center space-x-3 rounded-lg p-3 transition-colors hover:bg-gray-50"
                   >
                     {/* Thumbnail */}
                     <div className="flex-shrink-0">
-                      {isActivity ? (
-                        // Para atividades
-                        (data as IActivityResponse).imageUrls && (data as IActivityResponse).imageUrls!.length > 0 ? (
-                          <img
-                            src={(data as IActivityResponse).imageUrls![0]}
-                            alt={data.name}
-                            className="h-12 w-12 rounded-lg object-cover"
-                          />
-                        ) : (
-                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-200">
-                            <MapPin className="h-5 w-5 text-gray-400" />
-                          </div>
-                        )
+                      {data.imageUrls && data.imageUrls.length > 0 ? (
+                        <img src={data.imageUrls[0]} alt={data.name} className="h-12 w-12 rounded-lg object-cover" />
                       ) : (
-                        // Para stands
-                        (() => {
-                          const imageUrls = (data as IStandResponse).imageUrls;
-                          const imageUrl = Array.isArray(imageUrls) ? imageUrls[0] : imageUrls;
-                          return imageUrl ? (
-                            <img src={imageUrl} alt={data.name} className="h-12 w-12 rounded-lg object-cover" />
-                          ) : (
-                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-200">
-                              <MapPin className="h-5 w-5 text-gray-400" />
-                            </div>
-                          );
-                        })()
+                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-200">
+                          <MapPin className="h-5 w-5 text-gray-400" />
+                        </div>
                       )}
                     </div>
 
@@ -272,11 +222,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
                         <div className="flex items-center space-x-1">
                           <Clock className="h-3 w-3" />
-                          <span>
-                            {isActivity
-                              ? `${(data as IActivityResponse).startTime} - ${(data as IActivityResponse).endTime}`
-                              : `${(data as IStandResponse).openingTime || 'N/A'} - ${(data as IStandResponse).closingTime || 'N/A'}`}
-                          </span>
+                          <span>{getTimeDisplay(data)}</span>
                         </div>
                       </div>
                     </div>
