@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Activity, Bell, Building2, Calendar, Loader2, Store, UserCheck, Users } from 'lucide-react';
+import { Activity, Bell, Building2, Calendar, Loader2, RefreshCw, Store, UserCheck, Users } from 'lucide-react';
 import { DashboardService } from '../../../../services';
 
 interface StatCardProps {
@@ -53,22 +53,29 @@ function useDashboardData() {
     data: overview,
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ['dashboard-overview'],
     queryFn: DashboardService.getOverview,
-    staleTime: 2 * 60 * 1000, // 2 minutos
-    refetchOnWindowFocus: false,
+    staleTime: 30 * 1000, // 30 segundos - mais atualizado
+    refetchOnWindowFocus: true, // Atualiza quando a janela ganha foco
+    refetchInterval: 5 * 60 * 1000, // Atualiza automaticamente a cada 5 minutos
   });
 
   return {
     overview,
     isLoading,
     error,
+    refetch,
   };
 }
 
 export function Dashboard() {
-  const { overview, isLoading, error } = useDashboardData();
+  const { overview, isLoading, error, refetch } = useDashboardData();
+
+  const handleRefresh = async () => {
+    await refetch();
+  };
 
   // Se não há dados, mostrar loading ou erro
   if (isLoading) {
@@ -90,6 +97,14 @@ export function Dashboard() {
           <p className="text-red-100">
             Não foi possível carregar os dados do dashboard. Verifique sua conexão e tente novamente.
           </p>
+          <button
+            onClick={handleRefresh}
+            className="mt-4 flex items-center gap-2 rounded bg-white/20 px-4 py-2 text-sm font-medium text-white hover:bg-white/30"
+            disabled={isLoading}
+          >
+            <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+            Tentar Novamente
+          </button>
         </div>
       </div>
     );
@@ -150,12 +165,25 @@ export function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Welcome section */}
-      <div className="from-admin-primary-600 to-admin-primary-700 rounded-lg bg-gradient-to-r p-6 text-white">
-        <h2 className="mb-2 text-2xl font-bold">Bem-vindo ao Painel Agropec!</h2>
-        <p className="text-admin-primary-100">
-          Gerencie todos os aspectos do evento de forma centralizada e eficiente.
-        </p>
+      {/* Welcome section with refresh button */}
+      <div className="rounded-lg bg-gradient-to-r from-admin-primary-600 to-admin-primary-700 p-6 text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="mb-2 text-2xl font-bold">Bem-vindo ao Painel Agropec!</h2>
+            <p className="text-admin-primary-100">
+              Gerencie todos os aspectos do evento de forma centralizada e eficiente.
+            </p>
+          </div>
+          <button
+            onClick={handleRefresh}
+            className="flex items-center gap-2 rounded-lg bg-white/20 px-4 py-2 text-sm font-medium text-white hover:bg-white/30 disabled:opacity-50"
+            disabled={isLoading}
+            title="Atualizar dados do dashboard"
+          >
+            <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+            Atualizar
+          </button>
+        </div>
       </div>
 
       {/* Statistics grid */}
@@ -188,7 +216,7 @@ export function Dashboard() {
             ) : (
               recentActivities.map((activity) => (
                 <div key={activity.uuid} className="flex items-start space-x-3">
-                  <div className="bg-admin-primary-500 mt-2 h-2 w-2 flex-shrink-0 rounded-full"></div>
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-admin-primary-500"></div>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-gray-900">{activity.name}</p>
                     <p className="text-sm text-gray-500">
