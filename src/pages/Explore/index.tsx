@@ -75,7 +75,7 @@ export function ExploreScreen() {
         <div className="mx-auto max-w-4xl px-4 pb-24">
           {/* Destaques Section */}
           <section className="mb-8">
-            <h2 className="mb-4 text-base font-semibold text-base-black sm:text-lg">Destaques</h2>
+            <h2 className="mb-4 mt-4 text-base font-semibold text-base-black sm:text-lg">Destaques</h2>
 
             {loading && (
               <div className="flex items-center justify-center py-8">
