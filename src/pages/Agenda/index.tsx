@@ -146,71 +146,69 @@ export function AgendaScreen() {
     <main className="min-h-screen bg-base-white-light text-base-black">
       <Header title="Agenda" showBackButton={true} />
 
-      <div className="p-3 sm:p-4">
-        <div className="mb-6 rounded-lg bg-white px-3 py-3 shadow-sm sm:px-4 sm:py-2">
-          <h2 className="text-base font-semibold text-base-black sm:text-lg">Programação Geral</h2>
-          <p className="mt-1 text-xs text-base-gray sm:text-sm">
-            {activeFilter === 'all' && 'Confira todos os eventos e atividades do evento.'}
-            {activeFilter === 'stands' && 'Confira todos os stands disponíveis.'}
-            {activeFilter === 'activities' && 'Confira todas as atividades programadas.'}
-            {activeFilter === 'subscribed' && 'Confira os eventos em que você está inscrito.'}
+      <div className="mb-6 rounded-lg bg-white px-3 py-3 shadow-sm sm:px-4 sm:py-2">
+        <h2 className="text-base font-semibold text-base-black sm:text-lg">Programação Geral</h2>
+        <p className="mt-1 text-xs text-base-gray sm:text-sm">
+          {activeFilter === 'all' && 'Confira todos os eventos e atividades do evento.'}
+          {activeFilter === 'stands' && 'Confira todos os stands disponíveis.'}
+          {activeFilter === 'activities' && 'Confira todas as atividades programadas.'}
+          {activeFilter === 'subscribed' && 'Confira os eventos em que você está inscrito.'}
+        </p>
+      </div>
+
+      {/* Filtros */}
+      <div className="mb-6">
+        <div className="mb-3 flex items-center gap-2">
+          <Filter className="h-4 w-4 text-base-gray" />
+          <span className="text-xs font-medium text-base-gray sm:text-sm">Filtros:</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2">
+          {(['all', 'stands', 'activities', 'subscribed'] as FilterType[]).map((filter) => {
+            const count = getFilterCount(filter);
+            const isDisabled = count === 0;
+
+            return (
+              <button
+                key={filter}
+                onClick={() => !isDisabled && setActiveFilter(filter)}
+                disabled={isDisabled}
+                className={`flex items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 text-xs font-medium transition-colors sm:gap-2 sm:px-3 sm:py-2 sm:text-sm ${
+                  isDisabled
+                    ? 'cursor-not-allowed bg-gray-100 text-gray-400'
+                    : activeFilter === filter
+                      ? 'bg-green-500 text-white shadow-sm'
+                      : 'border border-gray-200 bg-white text-base-gray hover:bg-gray-50'
+                }`}
+              >
+                {getFilterIcon(filter)}
+                <span className="truncate">{getFilterLabel(filter)}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {Object.entries(filteredSchedule).map(([date, items]) => (
+        <div key={date} className="mb-6 sm:mb-8">
+          <h2 className="mb-3 text-lg font-bold sm:mb-4 sm:text-xl">{formatDate(date)}</h2>
+          <div className="space-y-3 sm:space-y-4">
+            {items.map((item) => (
+              <ScheduleItem key={item.uuid} item={item} />
+            ))}
+          </div>
+        </div>
+      ))}
+
+      {Object.keys(filteredSchedule).length === 0 && (
+        <div className="mt-6 text-center sm:mt-8">
+          <Calendar className="mx-auto mb-2 h-10 w-10 text-gray-400 sm:mb-3 sm:h-12 sm:w-12" />
+          <p className="text-sm text-gray-500 sm:text-base">
+            {activeFilter === 'subscribed'
+              ? 'Você não está inscrito em nenhum evento ainda.'
+              : 'Nenhum evento encontrado com o filtro selecionado.'}
           </p>
         </div>
-
-        {/* Filtros */}
-        <div className="mb-6">
-          <div className="mb-3 flex items-center gap-2">
-            <Filter className="h-4 w-4 text-base-gray" />
-            <span className="text-xs font-medium text-base-gray sm:text-sm">Filtros:</span>
-          </div>
-          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2">
-            {(['all', 'stands', 'activities', 'subscribed'] as FilterType[]).map((filter) => {
-              const count = getFilterCount(filter);
-              const isDisabled = count === 0;
-
-              return (
-                <button
-                  key={filter}
-                  onClick={() => !isDisabled && setActiveFilter(filter)}
-                  disabled={isDisabled}
-                  className={`flex items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 text-xs font-medium transition-colors sm:gap-2 sm:px-3 sm:py-2 sm:text-sm ${
-                    isDisabled
-                      ? 'cursor-not-allowed bg-gray-100 text-gray-400'
-                      : activeFilter === filter
-                        ? 'bg-green-500 text-white shadow-sm'
-                        : 'border border-gray-200 bg-white text-base-gray hover:bg-gray-50'
-                  }`}
-                >
-                  {getFilterIcon(filter)}
-                  <span className="truncate">{getFilterLabel(filter)}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {Object.entries(filteredSchedule).map(([date, items]) => (
-          <div key={date} className="mb-6 sm:mb-8">
-            <h2 className="mb-3 text-lg font-bold sm:mb-4 sm:text-xl">{formatDate(date)}</h2>
-            <div className="space-y-3 sm:space-y-4">
-              {items.map((item) => (
-                <ScheduleItem key={item.uuid} item={item} />
-              ))}
-            </div>
-          </div>
-        ))}
-
-        {Object.keys(filteredSchedule).length === 0 && (
-          <div className="mt-6 text-center sm:mt-8">
-            <Calendar className="mx-auto mb-2 h-10 w-10 text-gray-400 sm:mb-3 sm:h-12 sm:w-12" />
-            <p className="text-sm text-gray-500 sm:text-base">
-              {activeFilter === 'subscribed'
-                ? 'Você não está inscrito em nenhum evento ainda.'
-                : 'Nenhum evento encontrado com o filtro selecionado.'}
-            </p>
-          </div>
-        )}
-      </div>
+      )}
     </main>
   );
 }

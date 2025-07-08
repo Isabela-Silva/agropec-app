@@ -55,7 +55,7 @@ export function InfoScreen() {
 
   return (
     <main className="min-h-screen bg-base-white-light text-base-black">
-      <div className="space-y-4 p-3 sm:space-y-6 sm:p-4">
+      <div className="space-y-4 sm:space-y-6">
         {/* Seção do usuário logado */}
         {user && (
           <>

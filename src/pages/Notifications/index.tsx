@@ -251,162 +251,160 @@ export function NotificationsScreen() {
 
   return (
     <main className="min-h-screen bg-base-white-light text-base-black">
-      <div className="p-3 sm:p-4">
-        {/* Cabeçalho com descrição */}
-        <div className="mb-4 rounded-lg bg-white p-4 shadow-sm sm:mb-6 sm:p-6">
-          <h2 className="text-base font-semibold text-base-black sm:text-lg">Central de Notificações</h2>
-          <p className="mt-1 text-xs text-base-gray sm:text-sm">
-            Acompanhe suas notificações pessoais e os avisos gerais do evento.
-          </p>
-        </div>
+      {/* Cabeçalho com descrição */}
+      <div className="mb-4 rounded-lg bg-white p-4 shadow-sm sm:mb-6 sm:p-6">
+        <h2 className="text-base font-semibold text-base-black sm:text-lg">Central de Notificações</h2>
+        <p className="mt-1 text-xs text-base-gray sm:text-sm">
+          Acompanhe suas notificações pessoais e os avisos gerais do evento.
+        </p>
+      </div>
 
-        {/* Filtros por status */}
-        <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-2">
-            {(['all', 'unread', 'read'] as const).map((status) => (
-              <button
-                key={status}
-                onClick={() => setSelectedStatus(status)}
-                className={`rounded-lg px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
-                  selectedStatus === status
-                    ? 'bg-green-500 text-white shadow-sm'
-                    : 'border border-gray-200 bg-white text-base-gray hover:bg-gray-50'
-                }`}
-              >
-                {status === 'all' && `Todas (${totalCount})`}
-                {status === 'unread' && `Não lidas (${personalUnreadCount})`}
-                {status === 'read' && `Lidas (${personalReadCount})`}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex gap-2">
-            {personalUnreadCount > 0 && (
-              <button
-                onClick={handleMarkAllAsRead}
-                disabled={markAllAsReadMutation.isPending}
-                className="flex items-center gap-1.5 rounded-lg bg-green-500 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-green-600 disabled:opacity-50 sm:gap-2 sm:px-4 sm:text-sm"
-              >
-                {markAllAsReadMutation.isPending ? (
-                  <Loader2 className="h-3 w-3 animate-spin sm:h-4 sm:w-4" />
-                ) : (
-                  <CheckCheck className="h-3 w-3 sm:h-4 sm:w-4" />
-                )}
-                Marcar como lidas
-              </button>
-            )}
-
-            {personalNotifications.length > 0 && (
-              <button
-                onClick={handleDeleteAll}
-                disabled={deleteAllMutation.isPending}
-                className="flex items-center gap-1.5 rounded-lg bg-red-500 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-red-600 disabled:opacity-50 sm:gap-2 sm:px-4 sm:text-sm"
-              >
-                {deleteAllMutation.isPending ? (
-                  <Loader2 className="h-3 w-3 animate-spin sm:h-4 sm:w-4" />
-                ) : (
-                  <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
-                )}
-                Limpar pessoais
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Lista de notificações */}
-        <div className="space-y-3 sm:space-y-4">
-          {filteredNotifications.map((notification) => (
-            <div
-              key={notification.uuid}
-              className={`rounded-lg border-l-4 bg-white p-4 shadow-sm transition-all hover:shadow-md ${
-                notification.isGlobal ? 'border-l-blue-300' : 'border-l-green-300'
+      {/* Filtros por status */}
+      <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-2">
+          {(['all', 'unread', 'read'] as const).map((status) => (
+            <button
+              key={status}
+              onClick={() => setSelectedStatus(status)}
+              className={`rounded-lg px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
+                selectedStatus === status
+                  ? 'bg-green-500 text-white shadow-sm'
+                  : 'border border-gray-200 bg-white text-base-gray hover:bg-gray-50'
               }`}
             >
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-3">
-                  <div className={`rounded-lg p-2 ${notification.isGlobal ? 'bg-blue-50' : 'bg-green-50'}`}>
-                    <div className={`${notification.isGlobal ? 'text-blue-600' : 'text-green-600'}`}>
-                      {getNotificationIcon(notification)}
-                    </div>
-                  </div>
-
-                  <div className="min-w-0 flex-1">
-                    {notification.isGlobal && notification.title && (
-                      <h3 className="text-sm font-semibold text-base-black sm:text-base">{notification.title}</h3>
-                    )}
-                    <p
-                      className={`text-sm ${notification.isGlobal && notification.title ? 'text-base-gray' : 'font-medium text-base-black'} sm:text-base`}
-                    >
-                      {notification.message}
-                    </p>
-
-                    <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <span
-                        className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${getStatusColor(notification.status)}`}
-                      >
-                        {getStatusLabel(notification.status)}
-                      </span>
-                      <span
-                        className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
-                          notification.isGlobal ? 'bg-blue-50 text-blue-700' : 'bg-gray-50 text-base-gray'
-                        }`}
-                      >
-                        {getTypeLabel(notification)}
-                      </span>
-                      {notification.isGlobal && (
-                        <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700">
-                          Global
-                        </span>
-                      )}
-                      <span className="text-xs text-base-gray">{formatDate(notification.createdAt)}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-1">
-                  {!notification.isGlobal &&
-                    (notification.status === 'pending' || notification.status === 'delivered') && (
-                      <button
-                        onClick={() => handleMarkAsRead(notification.uuid)}
-                        disabled={markAsReadMutation.isPending}
-                        className="rounded-full p-1.5 transition-colors hover:bg-green-50 disabled:opacity-50"
-                        title="Marcar como lida"
-                      >
-                        <Check className="h-4 w-4 text-green-500" />
-                      </button>
-                    )}
-                  {!notification.isGlobal && (
-                    <button
-                      onClick={() => handleDelete(notification.uuid)}
-                      disabled={deleteMutation.isPending}
-                      className="rounded-full p-1.5 transition-colors hover:bg-red-50 disabled:opacity-50"
-                      title="Remover notificação"
-                    >
-                      <Trash2 className="h-4 w-4 text-red-500" />
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
+              {status === 'all' && `Todas (${totalCount})`}
+              {status === 'unread' && `Não lidas (${personalUnreadCount})`}
+              {status === 'read' && `Lidas (${personalReadCount})`}
+            </button>
           ))}
         </div>
 
-        {/* Estado vazio */}
-        {filteredNotifications.length === 0 && (
-          <div className="mt-8 rounded-lg bg-white p-6 shadow-sm sm:p-8">
-            <div className="text-center">
-              <Bell className="mx-auto mb-3 h-8 w-8 text-gray-400 sm:mb-4 sm:h-12 sm:w-12" />
-              <p className="text-sm text-base-gray sm:text-base">
-                {selectedStatus === 'unread'
-                  ? 'Você não tem notificações pessoais não lidas.'
-                  : selectedStatus === 'read'
-                    ? 'Você não tem notificações pessoais lidas.'
-                    : 'Você não tem notificações ainda.'}
-              </p>
+        <div className="flex gap-2">
+          {personalUnreadCount > 0 && (
+            <button
+              onClick={handleMarkAllAsRead}
+              disabled={markAllAsReadMutation.isPending}
+              className="flex items-center gap-1.5 rounded-lg bg-green-500 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-green-600 disabled:opacity-50 sm:gap-2 sm:px-4 sm:text-sm"
+            >
+              {markAllAsReadMutation.isPending ? (
+                <Loader2 className="h-3 w-3 animate-spin sm:h-4 sm:w-4" />
+              ) : (
+                <CheckCheck className="h-3 w-3 sm:h-4 sm:w-4" />
+              )}
+              Marcar como lidas
+            </button>
+          )}
+
+          {personalNotifications.length > 0 && (
+            <button
+              onClick={handleDeleteAll}
+              disabled={deleteAllMutation.isPending}
+              className="flex items-center gap-1.5 rounded-lg bg-red-500 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-red-600 disabled:opacity-50 sm:gap-2 sm:px-4 sm:text-sm"
+            >
+              {deleteAllMutation.isPending ? (
+                <Loader2 className="h-3 w-3 animate-spin sm:h-4 sm:w-4" />
+              ) : (
+                <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
+              )}
+              Limpar pessoais
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Lista de notificações */}
+      <div className="space-y-3 sm:space-y-4">
+        {filteredNotifications.map((notification) => (
+          <div
+            key={notification.uuid}
+            className={`rounded-lg border-l-4 bg-white p-4 shadow-sm transition-all hover:shadow-md ${
+              notification.isGlobal ? 'border-l-blue-300' : 'border-l-green-300'
+            }`}
+          >
+            <div className="flex items-start justify-between">
+              <div className="flex items-start gap-3">
+                <div className={`rounded-lg p-2 ${notification.isGlobal ? 'bg-blue-50' : 'bg-green-50'}`}>
+                  <div className={`${notification.isGlobal ? 'text-blue-600' : 'text-green-600'}`}>
+                    {getNotificationIcon(notification)}
+                  </div>
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  {notification.isGlobal && notification.title && (
+                    <h3 className="text-sm font-semibold text-base-black sm:text-base">{notification.title}</h3>
+                  )}
+                  <p
+                    className={`text-sm ${notification.isGlobal && notification.title ? 'text-base-gray' : 'font-medium text-base-black'} sm:text-base`}
+                  >
+                    {notification.message}
+                  </p>
+
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <span
+                      className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${getStatusColor(notification.status)}`}
+                    >
+                      {getStatusLabel(notification.status)}
+                    </span>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
+                        notification.isGlobal ? 'bg-blue-50 text-blue-700' : 'bg-gray-50 text-base-gray'
+                      }`}
+                    >
+                      {getTypeLabel(notification)}
+                    </span>
+                    {notification.isGlobal && (
+                      <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700">
+                        Global
+                      </span>
+                    )}
+                    <span className="text-xs text-base-gray">{formatDate(notification.createdAt)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1">
+                {!notification.isGlobal &&
+                  (notification.status === 'pending' || notification.status === 'delivered') && (
+                    <button
+                      onClick={() => handleMarkAsRead(notification.uuid)}
+                      disabled={markAsReadMutation.isPending}
+                      className="rounded-full p-1.5 transition-colors hover:bg-green-50 disabled:opacity-50"
+                      title="Marcar como lida"
+                    >
+                      <Check className="h-4 w-4 text-green-500" />
+                    </button>
+                  )}
+                {!notification.isGlobal && (
+                  <button
+                    onClick={() => handleDelete(notification.uuid)}
+                    disabled={deleteMutation.isPending}
+                    className="rounded-full p-1.5 transition-colors hover:bg-red-50 disabled:opacity-50"
+                    title="Remover notificação"
+                  >
+                    <Trash2 className="h-4 w-4 text-red-500" />
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        )}
+        ))}
       </div>
+
+      {/* Estado vazio */}
+      {filteredNotifications.length === 0 && (
+        <div className="mt-8 rounded-lg bg-white p-6 shadow-sm sm:p-8">
+          <div className="text-center">
+            <Bell className="mx-auto mb-3 h-8 w-8 text-gray-400 sm:mb-4 sm:h-12 sm:w-12" />
+            <p className="text-sm text-base-gray sm:text-base">
+              {selectedStatus === 'unread'
+                ? 'Você não tem notificações pessoais não lidas.'
+                : selectedStatus === 'read'
+                  ? 'Você não tem notificações pessoais lidas.'
+                  : 'Você não tem notificações ainda.'}
+            </p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

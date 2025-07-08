@@ -169,7 +169,7 @@ export function DetailsScreen() {
 
   return (
     <div className="min-h-screen bg-base-white-light text-base-black">
-      <div className="mx-auto max-w-2xl px-4 pb-24">
+      <div className="mx-auto max-w-2xl">
         {/* Hero Section */}
         <div className="mt-6 overflow-hidden rounded-2xl bg-white shadow-xl">
           <div className="relative">
