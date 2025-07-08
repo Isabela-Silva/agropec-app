@@ -3,8 +3,8 @@ export interface MapFeature {
   properties: {
     nome: string;
     tipo: string;
-    color: string;
-    opacity: number;
+    color?: string;
+    opacity?: number;
     localização?: string;
   };
   geometry: {
@@ -23,4 +23,4 @@ export type FilterType = 'Stands' | 'Comida' | 'Shows' | 'WC' | '';
 export interface MapViewProps {
   activeFilter?: FilterType;
   searchTerm?: string;
-} 
+}
